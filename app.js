@@ -25,7 +25,13 @@ const Store = {
 };
 
 function loadFavoritesWithMigration() {
-  const keysToTry = ["drinkshoppe:favorites","drinkshoppe:favorites:v7","drinkshoppe:favorites:v8","drinkshoppe:favorites:editable:v1","drinkshoppe:favorites:base44:v1"];
+  const keysToTry = [
+    "drinkshoppe:favorites",
+    "drinkshoppe:favorites:v7",
+    "drinkshoppe:favorites:v8",
+    "drinkshoppe:favorites:editable:v1",
+    "drinkshoppe:favorites:base44:v1"
+  ];
   for (const key of keysToTry) {
     try {
       const raw = localStorage.getItem(key);
@@ -65,6 +71,12 @@ function stableHash(str) {
   return h >>> 0;
 }
 function pick(arr, seed) { return arr[seed % arr.length]; }
+function byOrder(a, b) {
+  const ao = typeof a.order === "number" ? a.order : 9999;
+  const bo = typeof b.order === "number" ? b.order : 9999;
+  if (ao !== bo) return ao - bo;
+  return (a.label || "").localeCompare(b.label || "");
+}
 function drinkId({ base, primary, secondary, tertiary, lotus }) {
   return `${base.id}|${primary.id}|${secondary ? secondary.id : ""}|${tertiary ? tertiary.id : ""}|${lotus ? "L" : "N"}`;
 }
@@ -92,8 +104,8 @@ function drinkRecipe({ base, primary, secondary, tertiary, lotus }) {
 
 function applyMenu(menu) {
   MENU = menu;
-  BASES = (menu.bases || []).filter(x => x.active !== false);
-  SYRUPS = (menu.syrups || []).filter(x => x.active !== false);
+  BASES = (menu.bases || []).filter(x => x.active !== false).slice().sort(byOrder);
+  SYRUPS = (menu.syrups || []).filter(x => x.active !== false).slice().sort(byOrder);
 }
 
 async function loadMenu() {
@@ -152,6 +164,7 @@ function getThreeSyrupCombos() {
       }
     }
   }
+
   return result;
 }
 
@@ -169,7 +182,9 @@ function applyFilters(combos) {
     .filter(c => !favOnly || favorites.has(drinkId(c)))
     .filter(c => {
       if (selectedSyrups.size === 0) return true;
-      return selectedSyrups.has(c.primary.id) || (c.secondary && selectedSyrups.has(c.secondary.id)) || (c.tertiary && selectedSyrups.has(c.tertiary.id));
+      return selectedSyrups.has(c.primary.id)
+        || (c.secondary && selectedSyrups.has(c.secondary.id))
+        || (c.tertiary && selectedSyrups.has(c.tertiary.id));
     })
     .map(c => {
       const id = drinkId(c);
@@ -182,11 +197,27 @@ function renderItem(d) {
   const div = document.createElement("div");
   div.className = "drink";
   div.dataset.id = d.id;
+
   let actionsHtml = "";
   if (specific) {
-    actionsHtml = `<button class="icon-btn ${d.isFav ? "fav-on" : ""}" data-action="fav" title="Favorite">${d.isFav ? "★" : "☆"}</button><button class="icon-btn" data-action="hide" title="Hide drink">✕</button>`;
+    actionsHtml = `
+      <button class="icon-btn ${d.isFav ? "fav-on" : ""}" data-action="fav" title="Favorite">${d.isFav ? "★" : "☆"}</button>
+      <button class="icon-btn" data-action="hide" title="Hide drink">✕</button>
+    `;
   }
-  div.innerHTML = `<div class="drink-emoji">${d.base.emoji}</div><div class="drink-body"><div class="drink-name">${d.name}</div><div class="drink-tags"><span class="dtag">${d.recipe}</span><span class="dtag">${d.base.category.toUpperCase()}</span>${d.lotus ? `<span class="dtag lotus">${LOTUS.emoji} Lotus</span>` : ""}</div></div><div class="drink-actions">${actionsHtml}</div>`;
+
+  div.innerHTML = `
+    <div class="drink-emoji">${d.base.emoji}</div>
+    <div class="drink-body">
+      <div class="drink-name">${d.name}</div>
+      <div class="drink-tags">
+        <span class="dtag">${d.recipe}</span>
+        <span class="dtag">${d.base.category.toUpperCase()}</span>
+        ${d.lotus ? `<span class="dtag lotus">${LOTUS.emoji} Lotus</span>` : ""}
+      </div>
+    </div>
+    <div class="drink-actions">${actionsHtml}</div>
+  `;
   return div;
 }
 
@@ -195,12 +226,14 @@ function renderColumn({ listEl, footEl, countEl, prevBtn, nextBtn, items, pageKe
   const maxPage = Math.max(0, Math.ceil(total / CFG.PAGE_SIZE) - 1);
   state.pages[pageKey] = Math.min(Math.max(state.pages[pageKey], 0), maxPage);
   const slice = items.slice(state.pages[pageKey] * CFG.PAGE_SIZE, (state.pages[pageKey] + 1) * CFG.PAGE_SIZE);
+
   listEl.innerHTML = "";
   if (slice.length === 0) {
     listEl.innerHTML = `<div class="empty"><div class="empty-icon">🥤</div><div class="empty-msg">No drinks match your filters</div></div>`;
   } else {
     slice.forEach(d => listEl.appendChild(renderItem(d)));
   }
+
   countEl.textContent = `${total} · pg ${state.pages[pageKey] + 1}/${maxPage + 1}`;
   prevBtn.disabled = state.pages[pageKey] <= 0;
   nextBtn.disabled = state.pages[pageKey] >= maxPage;
@@ -210,19 +243,14 @@ function renderColumn({ listEl, footEl, countEl, prevBtn, nextBtn, items, pageKe
 function renderSyrupChips() {
   const el = document.getElementById("syrupChips");
   el.innerHTML = "";
-  if (state.selectedSyrups.size > 0) {
-    const clear = document.createElement("button");
-    clear.className = "chip chip-clear";
-    clear.textContent = "Clear all";
-    clear.onclick = () => { state.selectedSyrups.clear(); resetPages(); render(); };
-    el.appendChild(clear);
-  }
+
   const sortedSyrups = [...SYRUPS].sort((a, b) => {
     const aSelected = state.selectedSyrups.has(a.id) ? 0 : 1;
     const bSelected = state.selectedSyrups.has(b.id) ? 0 : 1;
     if (aSelected !== bSelected) return aSelected - bSelected;
-    return 0;
+    return byOrder(a, b);
   });
+
   for (const s of sortedSyrups) {
     const btn = document.createElement("button");
     btn.className = "chip" + (state.selectedSyrups.has(s.id) ? " active" : "");
@@ -234,7 +262,7 @@ function renderSyrupChips() {
 
 function renderBaseOptions() {
   const sel = document.getElementById("baseCategory");
-  const categories = MENU.categories || [];
+  const categories = (MENU.categories || []).slice().sort(byOrder);
   sel.innerHTML = `<option value="all">All</option>`;
   categories.forEach(c => {
     const o = document.createElement("option");
@@ -278,16 +306,20 @@ function render() {
   document.getElementById("lotusLabel").textContent = state.lotusOnly ? "Only Lotus" : "Exclude Lotus";
   document.getElementById("favLabel").textContent = state.favOnly ? "Only Favorites" : "All Drinks";
   syncCountSlider();
+
   const all = getSourceCombos();
   const items = applyFilters(all);
+
   const listA = items.filter(x => x.base.category === "soda");
   const listB = items.filter(x => x.base.category === "chill");
   const listC = items.filter(x => ["fizz", "water"].includes(x.base.category));
+
   const cols = [
     { sec:"secA", list:listA, key:"A", list_el:"cola", foot:"footA", ct:"cta", prev:"aPrev", next:"aNext" },
     { sec:"secB", list:listB, key:"B", list_el:"colb", foot:"footB", ct:"ctb", prev:"bPrev", next:"bNext" },
     { sec:"secC", list:listC, key:"C", list_el:"colc", foot:"footC", ct:"ctc", prev:"cPrev", next:"cNext" }
   ];
+
   let visible = 0;
   for (const c of cols) {
     const sec = document.getElementById(c.sec);
@@ -296,9 +328,18 @@ function render() {
     } else {
       sec.style.display = "";
       visible++;
-      renderColumn({ listEl: document.getElementById(c.list_el), footEl: document.getElementById(c.foot), countEl: document.getElementById(c.ct), prevBtn: document.getElementById(c.prev), nextBtn: document.getElementById(c.next), items: c.list, pageKey: c.key });
+      renderColumn({
+        listEl: document.getElementById(c.list_el),
+        footEl: document.getElementById(c.foot),
+        countEl: document.getElementById(c.ct),
+        prevBtn: document.getElementById(c.prev),
+        nextBtn: document.getElementById(c.next),
+        items: c.list,
+        pageKey: c.key
+      });
     }
   }
+
   document.getElementById("grid").dataset.cols = visible <= 1 ? "1" : visible === 2 ? "2" : "3";
   renderSyrupChips();
 }
@@ -340,12 +381,48 @@ document.getElementById("resetAll").addEventListener("click", () => {
   render();
 });
 
-document.getElementById("baseCategory").addEventListener("change", e => { state.baseCategory = e.target.value; renderBaseFlavorOptions(); resetPages(); render(); });
-document.getElementById("baseFlavor").addEventListener("change", e => { state.baseFlavor = e.target.value; resetPages(); render(); });
-document.getElementById("lotusToggle").addEventListener("change", e => { state.lotusOnly = e.target.checked; resetPages(); render(); });
-document.getElementById("favToggle").addEventListener("change", e => { state.favOnly = e.target.checked; resetPages(); render(); });
+document.getElementById("baseCategory").addEventListener("change", e => {
+  state.baseCategory = e.target.value;
+  renderBaseFlavorOptions();
+
+  const matchingBases = state.baseCategory === "all"
+    ? BASES
+    : BASES.filter(b => b.category === state.baseCategory);
+
+  if (matchingBases.length === 1) {
+    state.baseFlavor = matchingBases[0].id;
+    document.getElementById("baseFlavor").value = matchingBases[0].id;
+  } else {
+    state.baseFlavor = "all";
+    document.getElementById("baseFlavor").value = "all";
+  }
+
+  resetPages();
+  render();
+});
+
+document.getElementById("baseFlavor").addEventListener("change", e => {
+  state.baseFlavor = e.target.value;
+  resetPages();
+  render();
+});
+document.getElementById("lotusToggle").addEventListener("change", e => {
+  state.lotusOnly = e.target.checked;
+  resetPages();
+  render();
+});
+document.getElementById("favToggle").addEventListener("change", e => {
+  state.favOnly = e.target.checked;
+  resetPages();
+  render();
+});
+
 document.querySelectorAll('input[name="syrupCount"]').forEach(radio => {
-  radio.addEventListener("change", e => { state.syrupCount = e.target.value; resetPages(); render(); });
+  radio.addEventListener("change", e => {
+    state.syrupCount = e.target.value;
+    resetPages();
+    render();
+  });
 });
 
 document.getElementById("syrupChips").addEventListener("click", e => {
@@ -369,6 +446,7 @@ document.addEventListener("click", e => {
   const item = btn.closest(".drink");
   if (!item) return;
   const id = item.dataset.id;
+
   if (action === "fav") {
     state.favorites.has(id) ? state.favorites.delete(id) : state.favorites.add(id);
     Store.saveSet(CFG.STORE_FAV, state.favorites);
@@ -384,8 +462,18 @@ document.addEventListener("click", e => {
   }
 });
 
-document.getElementById("resetFav").addEventListener("click", () => { state.favorites.clear(); Store.saveSet(CFG.STORE_FAV, state.favorites); render(); });
-document.getElementById("resetHide").addEventListener("click", () => { state.hidden.clear(); Store.saveSet(CFG.STORE_HIDE, state.hidden); state.lastHidden = null; resetPages(); render(); });
+document.getElementById("resetFav").addEventListener("click", () => {
+  state.favorites.clear();
+  Store.saveSet(CFG.STORE_FAV, state.favorites);
+  render();
+});
+document.getElementById("resetHide").addEventListener("click", () => {
+  state.hidden.clear();
+  Store.saveSet(CFG.STORE_HIDE, state.hidden);
+  state.lastHidden = null;
+  resetPages();
+  render();
+});
 
 async function init() {
   const menu = await loadMenu();
