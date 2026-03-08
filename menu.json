@@ -139,6 +139,15 @@
       "active": true
     },
     {
+  "id": "almond",
+  "label": "Almond",
+  "vibe": [
+    "Nutty",
+    "Toasted",
+    "Creamy"],
+      "active": true
+    },
+    {
       "id": "strawberry",
       "label": "Strawberry",
       "vibe": [
