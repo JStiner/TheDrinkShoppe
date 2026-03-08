@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": "soda",
-      "label": "NT Soda"
+      "label": "Soda"
     },
     {
       "id": "chill",
@@ -20,7 +20,7 @@
   "bases": [
     {
       "id": "nt_dr",
-      "label": "NT Dr Thirsti",
+      "label": "Dr Thirsti",
       "category": "soda",
       "emoji": "\ud83e\udd64",
       "alias": "Dr",
@@ -28,7 +28,7 @@
     },
     {
       "id": "nt_cola",
-      "label": "NT Cola",
+      "label": "Cola",
       "category": "soda",
       "emoji": "\ud83e\udd64",
       "alias": "Cola",
@@ -36,7 +36,7 @@
     },
     {
       "id": "nt_root",
-      "label": "NT Root Beer",
+      "label": "Root Beer",
       "category": "soda",
       "emoji": "\ud83c\udf66",
       "alias": "Root Beer",
@@ -44,7 +44,7 @@
     },
     {
       "id": "nt_orange",
-      "label": "NT Orange Soda",
+      "label": "Orange Soda",
       "category": "soda",
       "emoji": "\ud83c\udf4a",
       "alias": "Orange Soda",
@@ -52,7 +52,7 @@
     },
     {
       "id": "nt_lemonlime",
-      "label": "NT Lemon Lime",
+      "label": "Lemon Lime",
       "category": "soda",
       "emoji": "\ud83c\udf4b",
       "alias": "Lemon-Lime",
@@ -60,7 +60,7 @@
     },
     {
       "id": "chill_watermelon",
-      "label": "NT Fruit Chill Watermelon Lime",
+      "label": "Fruit Chill Watermelon Lime",
       "category": "chill",
       "emoji": "\ud83c\udf49",
       "alias": "Chill",
@@ -68,7 +68,7 @@
     },
     {
       "id": "chill_pineapple",
-      "label": "NT Fruit Chill Tropical Pineapple",
+      "label": "Fruit Chill Tropical Pineapple",
       "category": "chill",
       "emoji": "\ud83c\udf4d",
       "alias": "Chill",
@@ -76,7 +76,7 @@
     },
     {
       "id": "chill_lemonade",
-      "label": "NT Fruit Chill Lemonade",
+      "label": "Fruit Chill Lemonade",
       "category": "chill",
       "emoji": "\ud83c\udf4b",
       "alias": "Chill",
@@ -84,7 +84,7 @@
     },
     {
       "id": "chill_strawkiwi",
-      "label": "NT Fruit Chill Strawberry Kiwi",
+      "label": "Fruit Chill Strawberry Kiwi",
       "category": "chill",
       "emoji": "\ud83c\udf53",
       "alias": "Chill",
@@ -92,7 +92,7 @@
     },
     {
       "id": "sparkling",
-      "label": "NT Bubble Water",
+      "label": "Bubble Water",
       "category": "fizz",
       "emoji": "\u2728",
       "alias": "Fizz",
@@ -109,12 +109,12 @@
   ],
   "syrups": [
     {
-      "id": "vanilla",
-      "label": "Vanilla",
+      "id": "blueberry",
+      "label": "Blueberry",
       "vibe": [
-        "Velvet",
-        "Cream",
-        "Silk"
+        "Blue",
+        "Sweet",
+        "Bright"
       ],
       "active": true
     },
@@ -159,8 +159,8 @@
       "active": true
     },
     {
-      "id": "blood_orange",
-      "label": "Blood Orange",
+      "id": "orange",
+      "label": "Orange",
       "vibe": [
         "Citrus",
         "Blaze",
@@ -235,6 +235,16 @@
         "Velvet",
         "Split",
         "Dessert"
+      ],
+      "active": true
+    },
+     {
+      "id": "vanilla",
+      "label": "Vanilla",
+      "vibe": [
+        "Velvet",
+        "Cream",
+        "Silk"
       ],
       "active": true
     }
