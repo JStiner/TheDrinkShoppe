@@ -1,4 +1,3 @@
-
 const CFG = {
   PAGE_SIZE: 40,
   STORE_FAV: "drinkshoppe:favorites",
@@ -6,7 +5,7 @@ const CFG = {
   STORE_MENU: "drinkshoppe:menu:override"
 };
 
-const LOTUS = { name:"Lotus", pumpsPerAdd:1, caffeineMgPerPump:80, emoji:"⚡" };
+const LOTUS = { name:"White Lotus", pumpsPerAdd:1, caffeineMgPerPump:80, emoji:"⚡" };
 let MENU = null;
 let BASES = [];
 let SYRUPS = [];
@@ -31,9 +30,35 @@ const Store = {
   }
 };
 
+function loadFavoritesWithMigration() {
+  const keysToTry = [
+    "drinkshoppe:favorites",
+    "drinkshoppe:favorites:v7",
+    "drinkshoppe:favorites:v8",
+    "drinkshoppe:favorites:editable:v1",
+    "drinkshoppe:favorites:base44:v1"
+  ];
+
+  for (const key of keysToTry) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        localStorage.setItem(CFG.STORE_FAV, JSON.stringify(parsed));
+        return new Set(parsed);
+      }
+    } catch {}
+  }
+
+  return new Set();
+}
+
 (async () => {
   try {
-    if (navigator.storage && navigator.storage.persist) await navigator.storage.persist();
+    if (navigator.storage && navigator.storage.persist) {
+      await navigator.storage.persist();
+    }
   } catch {}
 })();
 
@@ -44,7 +69,7 @@ const state = {
   favOnly: false,
   selectedSyrups: new Set(),
   pages: { A: 0, B: 0, C: 0 },
-  favorites: Store.loadSet(CFG.STORE_FAV),
+  favorites: loadFavoritesWithMigration(),
   hidden: Store.loadSet(CFG.STORE_HIDE),
   lastHidden: null
 };
@@ -200,7 +225,8 @@ function renderBaseOptions() {
   sel.innerHTML = `<option value="all">All</option>`;
   categories.forEach(c => {
     const o = document.createElement("option");
-    o.value = c.id; o.textContent = c.label;
+    o.value = c.id;
+    o.textContent = c.label;
     sel.appendChild(o);
   });
   sel.value = state.baseCategory;
@@ -213,7 +239,8 @@ function renderBaseFlavorOptions() {
   const bases = state.baseCategory === "all" ? BASES : BASES.filter(b => b.category === state.baseCategory);
   bases.forEach(b => {
     const o = document.createElement("option");
-    o.value = b.id; o.textContent = b.label;
+    o.value = b.id;
+    o.textContent = b.label;
     sel.appendChild(o);
   });
   sel.value = [...sel.options].some(o => o.value === prev) ? prev : "all";
@@ -276,14 +303,11 @@ document.getElementById("toast-undo").addEventListener("click", () => {
   Store.saveSet(CFG.STORE_HIDE, state.hidden);
   state.lastHidden = null;
   document.getElementById("toast").classList.remove("show");
-  resetPages(); render();
+  resetPages();
+  render();
 });
 
 function resetPages() { state.pages = { A: 0, B: 0, C: 0 }; }
-
-document.getElementById("openAdmin").addEventListener("click", () => {
-  location.href = "admin.html";
-});
 
 document.getElementById("resetAll").addEventListener("click", () => {
   state.baseCategory = "all";
@@ -292,29 +316,34 @@ document.getElementById("resetAll").addEventListener("click", () => {
   state.favOnly = false;
   state.selectedSyrups.clear();
   resetPages();
-
   document.getElementById("baseCategory").value = "all";
   renderBaseFlavorOptions();
   document.getElementById("baseFlavor").value = "all";
   document.getElementById("lotusToggle").checked = false;
   document.getElementById("favToggle").checked = false;
-
   render();
 });
 
 document.getElementById("baseCategory").addEventListener("change", e => {
   state.baseCategory = e.target.value;
   renderBaseFlavorOptions();
-  resetPages(); render();
+  resetPages();
+  render();
 });
 document.getElementById("baseFlavor").addEventListener("change", e => {
-  state.baseFlavor = e.target.value; resetPages(); render();
+  state.baseFlavor = e.target.value;
+  resetPages();
+  render();
 });
 document.getElementById("lotusToggle").addEventListener("change", e => {
-  state.lotusOnly = e.target.checked; resetPages(); render();
+  state.lotusOnly = e.target.checked;
+  resetPages();
+  render();
 });
 document.getElementById("favToggle").addEventListener("change", e => {
-  state.favOnly = e.target.checked; resetPages(); render();
+  state.favOnly = e.target.checked;
+  resetPages();
+  render();
 });
 
 document.getElementById("syrupChips").addEventListener("click", e => {
@@ -322,7 +351,8 @@ document.getElementById("syrupChips").addEventListener("click", e => {
   if (!btn) return;
   const id = btn.dataset.syrupId;
   state.selectedSyrups.has(id) ? state.selectedSyrups.delete(id) : state.selectedSyrups.add(id);
-  resetPages(); render();
+  resetPages();
+  render();
 });
 
 [["aPrev","aNext","A"],["bPrev","bNext","B"],["cPrev","cNext","C"]].forEach(([prev, next, key]) => {
@@ -347,17 +377,23 @@ document.addEventListener("click", e => {
     state.hidden.add(id);
     state.lastHidden = id;
     Store.saveSet(CFG.STORE_HIDE, state.hidden);
-    resetPages(); render();
+    resetPages();
+    render();
     showToast("Drink hidden");
   }
 });
 
 document.getElementById("resetFav").addEventListener("click", () => {
-  state.favorites.clear(); Store.saveSet(CFG.STORE_FAV, state.favorites); render();
+  state.favorites.clear();
+  Store.saveSet(CFG.STORE_FAV, state.favorites);
+  render();
 });
 document.getElementById("resetHide").addEventListener("click", () => {
-  state.hidden.clear(); Store.saveSet(CFG.STORE_HIDE, state.hidden);
-  state.lastHidden = null; resetPages(); render();
+  state.hidden.clear();
+  Store.saveSet(CFG.STORE_HIDE, state.hidden);
+  state.lastHidden = null;
+  resetPages();
+  render();
 });
 
 async function init() {
