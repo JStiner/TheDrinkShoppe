@@ -17,27 +17,6 @@
       "label": "Water"
     }
   ],
-  "columns": {
-    "A": {
-      "title": "NT Sodas",
-      "categories": [
-        "soda"
-      ]
-    },
-    "B": {
-      "title": "NT Fruit Chill",
-      "categories": [
-        "chill"
-      ]
-    },
-    "C": {
-      "title": "Fizz & Water",
-      "categories": [
-        "fizz",
-        "water"
-      ]
-    }
-  },
   "bases": [
     {
       "id": "nt_dr",
@@ -62,9 +41,133 @@
       "emoji": "\ud83c\udf66",
       "alias": "Root Beer",
       "active": true
+    },
+    {
+      "id": "nt_orange",
+      "label": "NT Orange Soda",
+      "category": "soda",
+      "emoji": "\ud83c\udf4a",
+      "alias": "Orange Soda",
+      "active": true
+    },
+    {
+      "id": "nt_lemonlime",
+      "label": "NT Lemon Lime",
+      "category": "soda",
+      "emoji": "\ud83c\udf4b",
+      "alias": "Lemon-Lime",
+      "active": true
+    },
+    {
+      "id": "chill_watermelon",
+      "label": "NT Fruit Chill Watermelon Lime",
+      "category": "chill",
+      "emoji": "\ud83c\udf49",
+      "alias": "Chill",
+      "active": true
+    },
+    {
+      "id": "chill_pineapple",
+      "label": "NT Fruit Chill Tropical Pineapple",
+      "category": "chill",
+      "emoji": "\ud83c\udf4d",
+      "alias": "Chill",
+      "active": true
+    },
+    {
+      "id": "chill_lemonade",
+      "label": "NT Fruit Chill Lemonade",
+      "category": "chill",
+      "emoji": "\ud83c\udf4b",
+      "alias": "Chill",
+      "active": true
+    },
+    {
+      "id": "chill_strawkiwi",
+      "label": "NT Fruit Chill Strawberry Kiwi",
+      "category": "chill",
+      "emoji": "\ud83c\udf53",
+      "alias": "Chill",
+      "active": true
+    },
+    {
+      "id": "sparkling",
+      "label": "NT Bubble Water",
+      "category": "fizz",
+      "emoji": "\u2728",
+      "alias": "Fizz",
+      "active": true
+    },
+    {
+      "id": "water",
+      "label": "Water",
+      "category": "water",
+      "emoji": "\ud83d\udca7",
+      "alias": "Water",
+      "active": true
     }
   ],
   "syrups": [
+    {
+      "id": "vanilla",
+      "label": "Vanilla",
+      "vibe": [
+        "Velvet",
+        "Cream",
+        "Silk"
+      ],
+      "active": true
+    },
+    {
+      "id": "cherry",
+      "label": "Cherry",
+      "vibe": [
+        "Classic",
+        "Red",
+        "Pop"
+      ],
+      "active": true
+    },
+    {
+      "id": "peach",
+      "label": "Peach",
+      "vibe": [
+        "Sunset",
+        "Orchard",
+        "Golden"
+      ],
+      "active": true
+    },
+    {
+      "id": "strawberry",
+      "label": "Strawberry",
+      "vibe": [
+        "Berry",
+        "Sweet",
+        "Summer"
+      ],
+      "active": true
+    },
+    {
+      "id": "pomegranate",
+      "label": "Pomegranate",
+      "vibe": [
+        "Ruby",
+        "Royal",
+        "Crimson"
+      ],
+      "active": true
+    },
+    {
+      "id": "blood_orange",
+      "label": "Blood Orange",
+      "vibe": [
+        "Citrus",
+        "Blaze",
+        "Ember"
+      ],
+      "active": true
+    },
     {
       "id": "raspberry",
       "label": "Raspberry",
@@ -132,66 +235,6 @@
         "Velvet",
         "Split",
         "Dessert"
-      ],
-      "active": true
-    },
-    {
-      "id": "cherry",
-      "label": "Cherry",
-      "vibe": [
-        "Classic",
-        "Red",
-        "Pop"
-      ],
-      "active": true
-    },
-    {
-      "id": "peach",
-      "label": "Peach",
-      "vibe": [
-        "Sunset",
-        "Orchard",
-        "Golden"
-      ],
-      "active": true
-    },
-    {
-      "id": "strawberry",
-      "label": "Strawberry",
-      "vibe": [
-        "Berry",
-        "Sweet",
-        "Summer"
-      ],
-      "active": true
-    },
-    {
-      "id": "pomegranate",
-      "label": "Pomegranate",
-      "vibe": [
-        "Ruby",
-        "Royal",
-        "Crimson"
-      ],
-      "active": true
-    },
-    {
-      "id": "blood_orange",
-      "label": "Blood Orange",
-      "vibe": [
-        "Citrus",
-        "Blaze",
-        "Ember"
-      ],
-      "active": true
-    },
-    {
-      "id": "vanilla",
-      "label": "Vanilla",
-      "vibe": [
-        "Velvet",
-        "Cream",
-        "Silk"
       ],
       "active": true
     }
