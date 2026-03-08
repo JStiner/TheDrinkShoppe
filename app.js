@@ -175,17 +175,19 @@ function applyFilters(combos) {
     .filter(c => baseFlavor === "all" || c.base.id === baseFlavor)
     .filter(c => lotusOnly ? c.lotus : !c.lotus)
     .filter(c => {
-      const count = c.tertiary ? 3 : c.secondary ? 2 : 1;
-      return count === Number(syrupCount);
-    })
+  if (favOnly) return true;
+  const count = c.tertiary ? 3 : c.secondary ? 2 : 1;
+  return count === Number(syrupCount);
+})
     .filter(c => !hidden.has(drinkId(c)))
     .filter(c => !favOnly || favorites.has(drinkId(c)))
     .filter(c => {
-      if (selectedSyrups.size === 0) return true;
-      return selectedSyrups.has(c.primary.id)
-        || (c.secondary && selectedSyrups.has(c.secondary.id))
-        || (c.tertiary && selectedSyrups.has(c.tertiary.id));
-    })
+  if (favOnly) return true;
+  if (selectedSyrups.size === 0) return true;
+  return selectedSyrups.has(c.primary.id)
+    || (c.secondary && selectedSyrups.has(c.secondary.id))
+    || (c.tertiary && selectedSyrups.has(c.tertiary.id));
+})
     .map(c => {
       const id = drinkId(c);
       return { ...c, id, name: drinkName(c), recipe: drinkRecipe(c), isFav: favorites.has(id) };
