@@ -1,30 +1,199 @@
 {
-  "syrups": [
+  "categories": [
     {
-      "name": "Raspberry"
+      "id": "soda",
+      "label": "NT Soda"
     },
     {
-      "name": "Coconut"
+      "id": "chill",
+      "label": "Fruit Chill"
     },
     {
-      "name": "Blue Raspberry"
+      "id": "fizz",
+      "label": "Fizz"
     },
     {
-      "name": "Vanilla"
-    },
-    {
-      "name": "Peach"
+      "id": "water",
+      "label": "Water"
     }
   ],
+  "columns": {
+    "A": {
+      "title": "NT Sodas",
+      "categories": [
+        "soda"
+      ]
+    },
+    "B": {
+      "title": "NT Fruit Chill",
+      "categories": [
+        "chill"
+      ]
+    },
+    "C": {
+      "title": "Fizz & Water",
+      "categories": [
+        "fizz",
+        "water"
+      ]
+    }
+  },
   "bases": [
     {
-      "name": "NT Cola"
+      "id": "nt_dr",
+      "label": "NT Dr Thirsti",
+      "category": "soda",
+      "emoji": "\ud83e\udd64",
+      "alias": "Dr",
+      "active": true
     },
     {
-      "name": "NT Root Beer"
+      "id": "nt_cola",
+      "label": "NT Cola",
+      "category": "soda",
+      "emoji": "\ud83e\udd64",
+      "alias": "Cola",
+      "active": true
     },
     {
-      "name": "Sparkling Water"
+      "id": "nt_root",
+      "label": "NT Root Beer",
+      "category": "soda",
+      "emoji": "\ud83c\udf66",
+      "alias": "Root Beer",
+      "active": true
+    }
+  ],
+  "syrups": [
+    {
+      "id": "raspberry",
+      "label": "Raspberry",
+      "vibe": [
+        "Jam",
+        "Bright",
+        "Punch"
+      ],
+      "active": true
+    },
+    {
+      "id": "coconut",
+      "label": "Coconut",
+      "vibe": [
+        "Island",
+        "Creamy",
+        "Breeze"
+      ],
+      "active": true
+    },
+    {
+      "id": "blue_raspberry",
+      "label": "Blue Raspberry",
+      "vibe": [
+        "Neon",
+        "Frost",
+        "Electric"
+      ],
+      "active": true
+    },
+    {
+      "id": "red_raspberry",
+      "label": "Red Raspberry",
+      "vibe": [
+        "Scarlet",
+        "Bold",
+        "Berry"
+      ],
+      "active": true
+    },
+    {
+      "id": "blackberry",
+      "label": "Blackberry",
+      "vibe": [
+        "Midnight",
+        "Wild",
+        "Shadow"
+      ],
+      "active": true
+    },
+    {
+      "id": "brown_sugar_cinnamon",
+      "label": "Brown Sugar Cinnamon",
+      "vibe": [
+        "Toasted",
+        "Warm",
+        "Cozy"
+      ],
+      "active": true
+    },
+    {
+      "id": "banana_cream",
+      "label": "Banana Cream",
+      "vibe": [
+        "Velvet",
+        "Split",
+        "Dessert"
+      ],
+      "active": true
+    },
+    {
+      "id": "cherry",
+      "label": "Cherry",
+      "vibe": [
+        "Classic",
+        "Red",
+        "Pop"
+      ],
+      "active": true
+    },
+    {
+      "id": "peach",
+      "label": "Peach",
+      "vibe": [
+        "Sunset",
+        "Orchard",
+        "Golden"
+      ],
+      "active": true
+    },
+    {
+      "id": "strawberry",
+      "label": "Strawberry",
+      "vibe": [
+        "Berry",
+        "Sweet",
+        "Summer"
+      ],
+      "active": true
+    },
+    {
+      "id": "pomegranate",
+      "label": "Pomegranate",
+      "vibe": [
+        "Ruby",
+        "Royal",
+        "Crimson"
+      ],
+      "active": true
+    },
+    {
+      "id": "blood_orange",
+      "label": "Blood Orange",
+      "vibe": [
+        "Citrus",
+        "Blaze",
+        "Ember"
+      ],
+      "active": true
+    },
+    {
+      "id": "vanilla",
+      "label": "Vanilla",
+      "vibe": [
+        "Velvet",
+        "Cream",
+        "Silk"
+      ],
+      "active": true
     }
   ]
 }
