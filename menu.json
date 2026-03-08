@@ -1,0 +1,239 @@
+{
+  "categories": [
+    {
+      "id": "soda",
+      "label": "NT Soda"
+    },
+    {
+      "id": "chill",
+      "label": "Fruit Chill"
+    },
+    {
+      "id": "fizz",
+      "label": "Fizz"
+    },
+    {
+      "id": "water",
+      "label": "Water"
+    }
+  ],
+  "columns": {
+    "A": {
+      "title": "NT Sodas",
+      "categories": [
+        "soda"
+      ]
+    },
+    "B": {
+      "title": "NT Fruit Chill",
+      "categories": [
+        "chill"
+      ]
+    },
+    "C": {
+      "title": "Fizz & Water",
+      "categories": [
+        "fizz",
+        "water"
+      ]
+    }
+  },
+  "bases": [
+    {
+      "id": "nt_dr",
+      "label": "NT Dr Thirsti",
+      "category": "soda",
+      "emoji": "\ud83e\udd64",
+      "alias": "Dr"
+    },
+    {
+      "id": "nt_cola",
+      "label": "NT Cola",
+      "category": "soda",
+      "emoji": "\ud83e\udd64",
+      "alias": "Cola"
+    },
+    {
+      "id": "nt_root",
+      "label": "NT Root Beer",
+      "category": "soda",
+      "emoji": "\ud83c\udf66",
+      "alias": "Root Beer"
+    },
+    {
+      "id": "nt_orange",
+      "label": "NT Orange Soda",
+      "category": "soda",
+      "emoji": "\ud83c\udf4a",
+      "alias": "Orange Soda"
+    },
+    {
+      "id": "nt_lemonlime",
+      "label": "NT Lemon Lime",
+      "category": "soda",
+      "emoji": "\ud83c\udf4b",
+      "alias": "Lemon-Lime"
+    },
+    {
+      "id": "chill_watermelon",
+      "label": "NT Fruit Chill Watermelon Lime",
+      "category": "chill",
+      "emoji": "\ud83c\udf49",
+      "alias": "Chill"
+    },
+    {
+      "id": "chill_pineapple",
+      "label": "NT Fruit Chill Tropical Pineapple",
+      "category": "chill",
+      "emoji": "\ud83c\udf4d",
+      "alias": "Chill"
+    },
+    {
+      "id": "chill_lemonade",
+      "label": "NT Fruit Chill Lemonade",
+      "category": "chill",
+      "emoji": "\ud83c\udf4b",
+      "alias": "Chill"
+    },
+    {
+      "id": "chill_strawkiwi",
+      "label": "NT Fruit Chill Strawberry Kiwi",
+      "category": "chill",
+      "emoji": "\ud83c\udf53",
+      "alias": "Chill"
+    },
+    {
+      "id": "sparkling",
+      "label": "NT Bubble Water",
+      "category": "fizz",
+      "emoji": "\u2728",
+      "alias": "Fizz"
+    },
+    {
+      "id": "water",
+      "label": "Water",
+      "category": "water",
+      "emoji": "\ud83d\udca7",
+      "alias": "Water"
+    }
+  ],
+  "syrups": [
+    {
+      "id": "cherry",
+      "label": "Cherry",
+      "vibe": [
+        "Classic",
+        "Red",
+        "Pop"
+      ]
+    },
+    {
+      "id": "peach",
+      "label": "Peach",
+      "vibe": [
+        "Sunset",
+        "Orchard",
+        "Golden"
+      ]
+    },
+    {
+      "id": "strawberry",
+      "label": "Strawberry",
+      "vibe": [
+        "Berry",
+        "Sweet",
+        "Summer"
+      ]
+    },
+    {
+      "id": "pomegranate",
+      "label": "Pomegranate",
+      "vibe": [
+        "Ruby",
+        "Royal",
+        "Crimson"
+      ]
+    },
+    {
+      "id": "blood_orange",
+      "label": "Blood Orange",
+      "vibe": [
+        "Citrus",
+        "Blaze",
+        "Ember"
+      ]
+    },
+    {
+      "id": "raspberry",
+      "label": "Raspberry",
+      "vibe": [
+        "Jam",
+        "Bright",
+        "Punch"
+      ]
+    },
+    {
+      "id": "coconut",
+      "label": "Coconut",
+      "vibe": [
+        "Island",
+        "Creamy",
+        "Breeze"
+      ]
+    },
+    {
+      "id": "blue_raspberry",
+      "label": "Blue Raspberry",
+      "vibe": [
+        "Neon",
+        "Frost",
+        "Electric"
+      ]
+    },
+    {
+      "id": "red_raspberry",
+      "label": "Red Raspberry",
+      "vibe": [
+        "Scarlet",
+        "Bold",
+        "Berry"
+      ]
+    },
+    {
+      "id": "blackberry",
+      "label": "Blackberry",
+      "vibe": [
+        "Midnight",
+        "Wild",
+        "Shadow"
+      ]
+    },
+    {
+      "id": "brown_sugar_cinnamon",
+      "label": "Brown Sugar Cinnamon",
+      "vibe": [
+        "Toasted",
+        "Warm",
+        "Cozy"
+      ]
+    },
+    {
+      "id": "banana_cream",
+      "label": "Banana Cream",
+      "vibe": [
+        "Velvet",
+        "Split",
+        "Dessert"
+      ]
+    },
+    {
+      "id": "vanilla",
+      "label": "Vanilla",
+      "vibe": [
+        "Velvet",
+        "Cream",
+        "Silk"
+      ]
+    }
+  ]
+}

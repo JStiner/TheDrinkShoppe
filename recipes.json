@@ -1,0 +1,34 @@
+{
+  "featured": [
+    {
+      "base": "nt_cola",
+      "primary": "cherry",
+      "secondary": null,
+      "lotus": false
+    },
+    {
+      "base": "nt_root",
+      "primary": "vanilla",
+      "secondary": null,
+      "lotus": false
+    },
+    {
+      "base": "sparkling",
+      "primary": "pomegranate",
+      "secondary": null,
+      "lotus": true
+    },
+    {
+      "base": "chill_pineapple",
+      "primary": "coconut",
+      "secondary": null,
+      "lotus": false
+    },
+    {
+      "base": "nt_lemonlime",
+      "primary": "blue_raspberry",
+      "secondary": null,
+      "lotus": true
+    }
+  ]
+}
