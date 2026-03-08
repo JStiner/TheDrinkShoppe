@@ -6,7 +6,7 @@ const CFG = {
   STORE_MENU: "drinkshoppe:menu:override"
 };
 
-const LOTUS = { name:"White Lotus", pumpsPerAdd:1, caffeineMgPerPump:80, emoji:"⚡" };
+const LOTUS = { name:"Lotus", pumpsPerAdd:1, caffeineMgPerPump:80, emoji:"⚡" };
 let MENU = null;
 let BASES = [];
 let SYRUPS = [];
