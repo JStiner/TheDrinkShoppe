@@ -42,8 +42,8 @@ Drink names are generated using **vibe words + base name**.
 
 Example:
 
-    🥤 Tropical Sprite
-    🍹 Sunset + Island Red Bull
+    🥤 Tropical Fizz
+    🍹 Sunset + Island Lotus
     🍹 Cosmic + Electric + Sunset Lemonade ⚡
 
 ------------------------------------------------------------------------
