@@ -209,15 +209,13 @@ function drinkName({ base, primary, secondary, tertiary, lotus }) {
   const v2 = secondary ? pick(secondary.vibe, seed >>> 1) : null;
   const v3 = tertiary ? pick(tertiary.vibe, seed >>> 2) : null;
   const lead = (secondary || tertiary) ? "🍹" : "🥤";
-  const lotusVibe = lotus ? ` ${pick(lotus.vibe || ["Lotus"], seed >>> 3)}` : "";
-
   const words = [v1, v2, v3].filter(Boolean);
 
-  if (base.id === "dr_thirsti") {
-    return `${lead} Dr. ${words.join(" ")}${lotusVibe}`;
+  if (base.id === "nt_dr") {
+    return `${lead} Dr. ${words.join(" ")}`;
   }
 
-  return `${lead} ${words.join(" ")}${lotusVibe} ${base.alias}`;
+  return `${lead} ${words.join(" ")} ${base.alias}`.replace(/\s+/g, " ").trim();
 }
 
 function drinkRecipe({ base, primary, secondary, tertiary, lotus }) {
