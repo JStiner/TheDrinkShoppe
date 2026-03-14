@@ -172,19 +172,32 @@ function compareSelectedOrder(a, b) {
   return 0;
 }
 function drinkName({ base, primary, secondary, tertiary, lotus }) {
+
   const id = drinkId({ base, primary, secondary, tertiary, lotus });
   const seed = stableHash(id);
 
   const v1 = pick(primary.vibe, seed);
+  const v2 = secondary ? pick(secondary.vibe, seed >>> 1) : null;
+  const v3 = tertiary ? pick(tertiary.vibe, seed >>> 2) : null;
+
   const lead = (secondary || tertiary) ? "🍹" : "🥤";
   const ltag = lotus ? ` ${LOTUS.emoji}` : "";
 
-  if (!secondary) return `${lead} ${v1} ${base.alias}${ltag}`;
+  // special rule for Dr Thirsti
+  if (base.id === "dr_thirsti") {
 
-  const v2 = pick(secondary.vibe, seed >>> 1);
-  if (!tertiary) return `${lead} ${v1} + ${v2} ${base.alias}${ltag}`;
+    if (!v2) return `${lead} Dr. ${v1}${ltag}`;
 
-  const v3 = pick(tertiary.vibe, seed >>> 2);
+    if (!v3) return `${lead} Dr. ${v1} + ${v2}${ltag}`;
+
+    return `${lead} Dr. ${v1} + ${v2} + ${v3}${ltag}`;
+  }
+
+  // normal naming
+  if (!v2) return `${lead} ${v1} ${base.alias}${ltag}`;
+
+  if (!v3) return `${lead} ${v1} + ${v2} ${base.alias}${ltag}`;
+
   return `${lead} ${v1} + ${v2} + ${v3} ${base.alias}${ltag}`;
 }
 
