@@ -1,5 +1,4 @@
 
-
 <p align="center">
   <img src="Logo/brand-preview.png" alt="The Drink Shoppe Logo" width="500">
 </p>
@@ -14,11 +13,18 @@ A tablet-friendly drink generator for Ninja Thirsti using Torani syrups and Lotu
   <a href="https://jstiner.github.io/TheDrinkShoppe">Live Demo</a>
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Hosted-GitHub%20Pages-blue">
+  <img src="https://img.shields.io/badge/App-PWA-green">
+  <img src="https://img.shields.io/badge/Platform-Tablet%20Friendly-orange">
+</p>
+
+---
 
 A tablet-friendly drink menu for our **Ninja Thirsti kitchen bar**.
 
 This project generates drink combinations using selectable bases and syrups.  
-It is designed to run **offline on a tablet** and can be installed like an app using a PWA.
+It is designed to run **offline on a tablet** and can be installed like an app using a **Progressive Web App (PWA)**.
 
 Live site:
 
@@ -33,7 +39,7 @@ https://jstiner.github.io/TheDrinkShoppe
 • Hide drinks you don't like  
 • Syrup filtering  
 • Lotus drink filter  
-• Tablet‑optimized interface  
+• Tablet-optimized interface  
 • Offline capable  
 • Local Admin menu editor  
 
@@ -48,6 +54,49 @@ https://jstiner.github.io/TheDrinkShoppe
 5. Hide drinks you don't want to see
 
 Drinks will automatically generate based on your selections.
+
+---
+
+# Syrups Used
+
+The Drink Shoppe is designed around **Torani flavored syrups**.
+
+Torani syrups are widely available and come in both **regular and sugar-free varieties**, making them ideal for experimenting with a large range of drink combinations.
+
+They can typically be found at:
+
+- Amazon  
+- Walmart  
+- Target  
+- Restaurant supply stores  
+- Coffee shop suppliers  
+
+Because Torani has a very large flavor catalog, new flavors can easily be added to the drink generator by updating `menu.json` or using the **Admin menu editor**.
+
+Other syrup brands may work as well, but Torani was the primary reference used when designing the flavor tags and combinations.
+
+---
+
+# Lotus Energy Concentrates
+
+The Drink Shoppe also supports **Lotus Plant Power energy concentrates**, which can be added to drinks for a plant-based energy boost.
+
+Lotus concentrates are commonly used in coffee stands and specialty drink shops to create customizable energy drinks by combining the concentrate with flavored syrups and carbonated bases.
+
+You can view the available concentrates here:
+
+https://lotusplantpower.com/collections/lotus-energy-concentrates
+
+Common Lotus flavors include:
+
+• White Lotus – neutral flavor that mixes with almost anything  
+• Pink Lotus – tart cherry and raspberry profile  
+• Blue Lotus – blueberry and açaí profile  
+• Purple Lotus – elderberry and dark berry profile  
+• Red Lotus – cherry-forward energy base  
+• Gold Lotus – coffee fruit / cascara based blend  
+
+In **The Drink Shoppe**, Lotus options can be enabled or disabled through the **Admin menu**, allowing different drink combinations to be generated based on the selected Lotus flavor.
 
 ---
 
@@ -103,6 +152,18 @@ After the first load the menu will work **without internet.**
 
 ---
 
+# Screenshots
+
+Example drink builder interface running on a kitchen tablet.
+
+```
+docs/screenshot.png
+```
+
+(Add a screenshot later to improve repo visibility.)
+
+---
+
 # Project Goal
 
 This is a fun home project to build a **digital drink menu for our kitchen Drink Shoppe** so anyone in the house can quickly mix new Ninja Thirsti drinks.
@@ -115,3 +176,15 @@ This is a fun home project to build a **digital drink menu for our kitchen Drink
 • Drink photos  
 • Sync favorites across devices  
 • Voice ordering for kids 😄
+
+---
+
+# Keywords
+
+ninja thirsti drinks  
+ninja thirsti recipes  
+torani syrup drink ideas  
+lotus energy drink recipes  
+drink generator app  
+tablet drink menu  
+home soda bar  
