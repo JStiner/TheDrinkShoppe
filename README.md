@@ -144,6 +144,14 @@ Ninja Thirsti drinks.
 
 ------------------------------------------------------------------------
 
+# Syrups
+
+The Drink Shoppe is built around **Torani syrups**, which are widely available in both **regular and sugar-free** varieties.
+
+New syrup flavors can easily be added by editing `menu.json` or using the **Admin editor**.
+
+------------------------------------------------------------------------
+
 # Future Ideas
 
 • Random drink button\
