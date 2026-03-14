@@ -126,6 +126,7 @@ menu.json       Default menu configuration
 manifest.json   PWA install configuration
 sw.js           Offline service worker
 icons/          App icons
+Logo/           Logo Files
 ```
 
 ---
@@ -152,18 +153,6 @@ After the first load the menu will work **without internet.**
 
 ---
 
-# Screenshots
-
-Example drink builder interface running on a kitchen tablet.
-
-```
-docs/screenshot.png
-```
-
-(Add a screenshot later to improve repo visibility.)
-
----
-
 # Project Goal
 
 This is a fun home project to build a **digital drink menu for our kitchen Drink Shoppe** so anyone in the house can quickly mix new Ninja Thirsti drinks.
@@ -175,7 +164,6 @@ This is a fun home project to build a **digital drink menu for our kitchen Drink
 • Random drink button  
 • Drink photos  
 • Sync favorites across devices  
-• Voice ordering for kids 😄
 
 ---
 
