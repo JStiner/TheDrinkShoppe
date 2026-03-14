@@ -11,10 +11,6 @@
     {
       "id": "fizz",
       "label": "Fizz"
-    },
-    {
-      "id": "water",
-      "label": "Water"
     }
   ],
   "bases": [
@@ -22,7 +18,7 @@
       "id": "nt_dr",
       "label": "Dr Thirsti",
       "category": "soda",
-      "emoji": "\ud83e\udd64",
+      "emoji": "🥤",
       "alias": "Dr",
       "active": true
     },
@@ -30,7 +26,7 @@
       "id": "nt_cola",
       "label": "Cola",
       "category": "soda",
-      "emoji": "\ud83e\udd64",
+      "emoji": "🥤",
       "alias": "Cola",
       "active": true
     },
@@ -38,7 +34,7 @@
       "id": "nt_root",
       "label": "Root Beer",
       "category": "soda",
-      "emoji": "\ud83c\udf66",
+      "emoji": "🍺",
       "alias": "Root Beer",
       "active": true
     },
@@ -46,7 +42,7 @@
       "id": "nt_orange",
       "label": "Orange Soda",
       "category": "soda",
-      "emoji": "\ud83c\udf4a",
+      "emoji": "🍊",
       "alias": "Orange Soda",
       "active": true
     },
@@ -54,7 +50,7 @@
       "id": "nt_lemonlime",
       "label": "Lemon Lime",
       "category": "soda",
-      "emoji": "\ud83c\udf4b",
+      "emoji": "🍋",
       "alias": "Lemon-Lime",
       "active": true
     },
@@ -62,7 +58,7 @@
       "id": "chill_watermelon",
       "label": "Fruit Chill Watermelon Lime",
       "category": "chill",
-      "emoji": "\ud83c\udf49",
+      "emoji": "🍉",
       "alias": "Chill",
       "active": true
     },
@@ -70,7 +66,7 @@
       "id": "chill_pineapple",
       "label": "Fruit Chill Tropical Pineapple",
       "category": "chill",
-      "emoji": "\ud83c\udf4d",
+      "emoji": "🍍",
       "alias": "Chill",
       "active": true
     },
@@ -78,7 +74,7 @@
       "id": "chill_lemonade",
       "label": "Fruit Chill Lemonade",
       "category": "chill",
-      "emoji": "\ud83c\udf4b",
+      "emoji": "🍋",
       "alias": "Chill",
       "active": true
     },
@@ -86,7 +82,7 @@
       "id": "chill_strawkiwi",
       "label": "Fruit Chill Strawberry Kiwi",
       "category": "chill",
-      "emoji": "\ud83c\udf53",
+      "emoji": "🍓",
       "alias": "Chill",
       "active": true
     },
@@ -94,16 +90,8 @@
       "id": "sparkling",
       "label": "Bubble Water",
       "category": "fizz",
-      "emoji": "\u2728",
+      "emoji": "✨",
       "alias": "Fizz",
-      "active": true
-    },
-    {
-      "id": "water",
-      "label": "Water",
-      "category": "water",
-      "emoji": "\ud83d\udca7",
-      "alias": "Water",
       "active": true
     }
   ],
@@ -116,6 +104,11 @@
         "Sweet",
         "Bright"
       ],
+      "tags": [
+        "berry",
+        "blue",
+        "sweet"
+      ],
       "active": true
     },
     {
@@ -125,6 +118,11 @@
         "Classic",
         "Red",
         "Pop"
+      ],
+      "tags": [
+        "berry",
+        "red",
+        "cherry"
       ],
       "active": true
     },
@@ -136,15 +134,26 @@
         "Orchard",
         "Golden"
       ],
+      "tags": [
+        "stone-fruit",
+        "peach",
+        "sweet"
+      ],
       "active": true
     },
     {
-  "id": "almond",
-  "label": "Almond",
-  "vibe": [
-    "Nutty",
-    "Toasted",
-    "Creamy"],
+      "id": "almond",
+      "label": "Almond",
+      "vibe": [
+        "Nutty",
+        "Toasted",
+        "Creamy"
+      ],
+      "tags": [
+        "nutty",
+        "dessert",
+        "cream"
+      ],
       "active": true
     },
     {
@@ -154,6 +163,11 @@
         "Berry",
         "Sweet",
         "Summer"
+      ],
+      "tags": [
+        "berry",
+        "red",
+        "strawberry"
       ],
       "active": true
     },
@@ -165,6 +179,11 @@
         "Royal",
         "Crimson"
       ],
+      "tags": [
+        "berry",
+        "red",
+        "tart"
+      ],
       "active": true
     },
     {
@@ -174,6 +193,11 @@
         "Citrus",
         "Blaze",
         "Ember"
+      ],
+      "tags": [
+        "citrus",
+        "orange",
+        "bright"
       ],
       "active": true
     },
@@ -185,6 +209,11 @@
         "Bright",
         "Punch"
       ],
+      "tags": [
+        "berry",
+        "red",
+        "raspberry"
+      ],
       "active": true
     },
     {
@@ -194,6 +223,11 @@
         "Island",
         "Creamy",
         "Breeze"
+      ],
+      "tags": [
+        "coconut",
+        "tropical",
+        "cream"
       ],
       "active": true
     },
@@ -205,6 +239,12 @@
         "Frost",
         "Electric"
       ],
+      "tags": [
+        "berry",
+        "blue",
+        "candy",
+        "citrus"
+      ],
       "active": true
     },
     {
@@ -214,6 +254,11 @@
         "Scarlet",
         "Bold",
         "Berry"
+      ],
+      "tags": [
+        "berry",
+        "red",
+        "raspberry"
       ],
       "active": true
     },
@@ -225,6 +270,11 @@
         "Wild",
         "Shadow"
       ],
+      "tags": [
+        "berry",
+        "dark",
+        "blackberry"
+      ],
       "active": true
     },
     {
@@ -234,6 +284,11 @@
         "Toasted",
         "Warm",
         "Cozy"
+      ],
+      "tags": [
+        "spice",
+        "dessert",
+        "warm"
       ],
       "active": true
     },
@@ -245,15 +300,253 @@
         "Split",
         "Dessert"
       ],
+      "tags": [
+        "banana",
+        "cream",
+        "dessert"
+      ],
       "active": true
     },
-     {
+    {
       "id": "vanilla",
       "label": "Vanilla",
       "vibe": [
         "Velvet",
         "Cream",
         "Silk"
+      ],
+      "tags": [
+        "vanilla",
+        "cream",
+        "dessert"
+      ],
+      "active": true
+    }
+  ],
+  "lotus": [
+    {
+      "id": "white_lotus",
+      "label": "White Lotus",
+      "family": "white",
+      "color": "clear",
+      "flavorNotes": [
+        "neutral",
+        "clean"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "citrus",
+        "tropical",
+        "coconut",
+        "vanilla",
+        "cream",
+        "stone-fruit",
+        "banana"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Clean",
+        "Bright",
+        "Crisp"
+      ],
+      "active": true
+    },
+    {
+      "id": "pink_lotus",
+      "label": "Pink Lotus",
+      "family": "pink",
+      "color": "pink",
+      "flavorNotes": [
+        "raspberry",
+        "berry"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "coconut",
+        "vanilla",
+        "citrus",
+        "tropical"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Berry",
+        "Neon",
+        "Glow"
+      ],
+      "active": true
+    },
+    {
+      "id": "blue_lotus",
+      "label": "Blue Lotus",
+      "family": "blue",
+      "color": "blue",
+      "flavorNotes": [
+        "huckleberry",
+        "blue-fruit"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "blue",
+        "citrus",
+        "coconut",
+        "tropical"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Electric",
+        "Frost",
+        "Wave"
+      ],
+      "active": true
+    },
+    {
+      "id": "red_lotus",
+      "label": "Red Lotus",
+      "family": "red",
+      "color": "red",
+      "flavorNotes": [
+        "strawberry",
+        "berry"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "coconut",
+        "vanilla",
+        "citrus",
+        "tropical"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Crimson",
+        "Rush",
+        "Flare"
+      ],
+      "active": true
+    },
+    {
+      "id": "purple_lotus",
+      "label": "Purple Lotus",
+      "family": "purple",
+      "color": "purple",
+      "flavorNotes": [
+        "boysenberry",
+        "dark-berry"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "dark",
+        "citrus",
+        "coconut",
+        "tropical"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Royal",
+        "Night",
+        "Bloom"
+      ],
+      "active": true
+    },
+    {
+      "id": "gold_lotus",
+      "label": "Gold Lotus",
+      "family": "gold",
+      "color": "gold",
+      "flavorNotes": [
+        "cascara",
+        "coffee-fruit"
+      ],
+      "pairsWellWith": [
+        "stone-fruit",
+        "orange",
+        "vanilla",
+        "coconut",
+        "banana"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Golden",
+        "Solar",
+        "Glow"
+      ],
+      "active": true
+    },
+    {
+      "id": "sapphire_lotus_zs",
+      "label": "Sapphire Lotus Zero Sugar",
+      "family": "sapphire",
+      "color": "blue",
+      "flavorNotes": [
+        "elderberry",
+        "raspberry"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "blue",
+        "citrus",
+        "coconut",
+        "tropical"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Sapphire",
+        "Pulse",
+        "Ice"
+      ],
+      "active": true
+    },
+    {
+      "id": "ruby_red_cascara",
+      "label": "Ruby Red Cascara",
+      "family": "ruby",
+      "color": "red",
+      "flavorNotes": [
+        "cascara",
+        "berry"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "citrus",
+        "pomegranate",
+        "coconut"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Ruby",
+        "Volt",
+        "Velvet"
       ],
       "active": true
     }

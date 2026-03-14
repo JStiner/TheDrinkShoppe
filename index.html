@@ -42,10 +42,8 @@
     .sw input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
     .sw-track{position:absolute;inset:0;background:#dcdcdc;border:1px solid #fff;border-radius:999px;cursor:pointer;box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
     .sw-thumb{position:absolute;width:24px;height:24px;top:3px;left:3px;border-radius:50%;background:#fff;transition:transform .2s ease;pointer-events:none;box-shadow:0 3px 8px rgba(0,0,0,.45)}
-    .sw input:checked ~ .sw-track{background:rgba(58,240,162,.28);border-color:rgba(58,240,162,.75)}
-    .sw input:checked ~ .sw-thumb{transform:translateX(24px);background:var(--accent)}
     .sw.fav input:checked ~ .sw-track{background:rgba(255,205,58,.28);border-color:rgba(255,205,58,.85)}
-    .sw.fav input:checked ~ .sw-thumb{background:var(--warn)}
+    .sw.fav input:checked ~ .sw-thumb{transform:translateX(24px);background:var(--warn)}
     .syrup-panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-md);padding:10px 14px 12px;min-width:0;width:100%}
     .syrup-help{color:var(--muted);font-size:11px;letter-spacing:.03em;margin-top:4px}
     .syrup-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
@@ -97,14 +95,14 @@
     </div>
     <div class="hdr-sub">
       <span>⚡ Pick up to 3 syrups</span>
-      <span>★ Favorite drinks to pin them</span>
+      <span>🌿 Lotus only pairs with Chill and Fizz</span>
       <span>✕ Hide to remove from view</span>
     </div>
     <div class="controls">
       <div class="controls-left">
         <div class="field"><div class="field-label">Base</div><select id="baseCategory"></select></div>
         <div class="field"><div class="field-label">Flavor</div><select id="baseFlavor"></select></div>
-        <div class="field"><div class="field-label">Lotus</div><div class="toggle-row"><span class="toggle-val" id="lotusLabel">Exclude Lotus</span><label class="sw"><input id="lotusToggle" type="checkbox"/><span class="sw-track"></span><span class="sw-thumb"></span></label></div></div>
+        <div class="field"><div class="field-label">Lotus</div><select id="lotusSelect"></select></div>
         <div class="field"><div class="field-label">Favorites</div><div class="toggle-row"><span class="toggle-val" id="favLabel">All Drinks</span><label class="sw fav"><input id="favToggle" type="checkbox"/><span class="sw-track"></span><span class="sw-thumb"></span></label></div></div>
       </div>
       <div class="syrup-panel">
@@ -118,11 +116,11 @@
   <div class="grid" id="grid" data-cols="3">
     <section class="col" id="secA"><div class="col-head"><h2>Sodas</h2><div class="col-count" id="cta">—</div></div><div class="col-body" id="cola"></div><div class="col-foot" id="footA"><button class="pg-btn" id="aPrev">← Prev</button><button class="pg-btn" id="aNext">Next →</button></div></section>
     <section class="col" id="secB"><div class="col-head"><h2>Fruit Chill</h2><div class="col-count" id="ctb">—</div></div><div class="col-body" id="colb"></div><div class="col-foot" id="footB"><button class="pg-btn" id="bPrev">← Prev</button><button class="pg-btn" id="bNext">Next →</button></div></section>
-    <section class="col" id="secC"><div class="col-head"><h2>Fizz &amp; Water</h2><div class="col-count" id="ctc">—</div></div><div class="col-body" id="colc"></div><div class="col-foot" id="footC"><button class="pg-btn" id="cPrev">← Prev</button><button class="pg-btn" id="cNext">Next →</button></div></section>
+    <section class="col" id="secC"><div class="col-head"><h2>Fizz</h2><div class="col-count" id="ctc">—</div></div><div class="col-body" id="colc"></div><div class="col-foot" id="footC"><button class="pg-btn" id="cPrev">← Prev</button><button class="pg-btn" id="cNext">Next →</button></div></section>
   </div>
 
   <div class="foot">
-    <div><strong>NT</strong> = Ninja Thirsti &nbsp;|&nbsp; <strong>Standard build:</strong> Ice → Base → Syrup(s)</div>
+    <div><strong>NT</strong> = Ninja Thirsti &nbsp;|&nbsp; <strong>Standard build:</strong> Ice → Base → Syrup(s) → Lotus (optional)</div>
     <div><span class="lnk" id="resetFav">Reset Favorites</span>&nbsp;·&nbsp;<span class="lnk" id="resetHide">Reset Hidden</span></div>
   </div>
 </div>
