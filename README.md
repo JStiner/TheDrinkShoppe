@@ -1,5 +1,19 @@
 
-# The Drink Shoppe 🍹
+
+<p align="center">
+  <img src="Logo/brand-preview.png" alt="The Drink Shoppe Logo" width="500">
+</p>
+
+<h1 align="center">The Drink Shoppe 🍹</h1>
+
+<p align="center">
+A tablet-friendly drink generator for Ninja Thirsti using Torani syrups and Lotus energy concentrates.
+</p>
+
+<p align="center">
+  <a href="https://jstiner.github.io/TheDrinkShoppe">Live Demo</a>
+</p>
+
 
 A tablet-friendly drink menu for our **Ninja Thirsti kitchen bar**.
 
