@@ -233,9 +233,6 @@ function applyRecipes(recipes) {
     }
   });
 }
-    RECIPE_INDEX.set(recipeKey(r.baseId, r.syrupIds, !!r.lotusRequired), r);
-  });
-}
 
 function drinkId({ base, primary, secondary, tertiary, lotus }) {
   return `${base.id}|${primary.id}|${secondary ? secondary.id : ""}|${tertiary ? tertiary.id : ""}|${lotus ? lotus.id : "none"}`;
