@@ -17,7 +17,7 @@
       "name": "Peaches & Cream",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId":"nt_bubble_water",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "peach",
@@ -29,7 +29,7 @@
       "name": "Pixie Stick",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId":"nt_bubble_water",
+    "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "pomegranate",
@@ -42,7 +42,7 @@
       "name": "Blood Orange",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId":"nt_bubble_water",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "orange",
@@ -98,11 +98,11 @@
       ]
     },
     {
-      "id": "7brew-fizz-orange-sherbet",
+      "id": "7brew-fizz-orange-sherbert",
       "name": "Orange Sherbert",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId":"nt_bubble_water",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "orange",
@@ -165,7 +165,7 @@
       "name": "Snickerdoodle",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId":"nt_bubble_water",
+    "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "brown_sugar_cinnamon",
