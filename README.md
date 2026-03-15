@@ -1,5 +1,9 @@
 
-# 🥤 The Drink Shoppe
+<p align="center">
+  <img src="Logo/brand-preview.png" alt="The Drink Shoppe Logo" width="500">
+</p>
+
+<h1 align="center">The Drink Shoppe 🍹</h1>
 
 ![Status](https://img.shields.io/badge/project-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
