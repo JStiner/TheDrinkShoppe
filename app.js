@@ -483,13 +483,6 @@ function getDrinkIngredients(d) {
   return list;
 }
 
-  if (d.secondary) list.push({ label: d.secondary.label, id: d.secondary.id, amount: "1 pump" });
-  if (d.tertiary) list.push({ label: d.tertiary.label, id: d.tertiary.id, amount: "1 pump" });
-  if (d.lotus) list.push({ label: d.lotus.label, id: d.lotus.id, amount: "1 scoop" });
-
-  return list;
-}
-
 function openDrinkDetail(id) {
   const d = getDrinkById(id);
   if (!d) return;
