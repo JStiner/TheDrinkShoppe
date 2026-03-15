@@ -421,7 +421,107 @@ function savedDrinkToItem(sd) {
     sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : "MY DRINK"
   };
 }
+function ingredientEmoji(label, id = "") {
+  const key = `${id} ${label}`.toLowerCase();
 
+  if (key.includes("bubble") || key.includes("fizz")) return "🫧";
+  if (key.includes("lemonade")) return "🍋";
+  if (key.includes("cola")) return "🥤";
+  if (key.includes("root")) return "🍺";
+  if (key.includes("dr")) return "🥤";
+  if (key.includes("lotus")) return "⚡";
+
+  if (key.includes("strawberry")) return "🍓";
+  if (key.includes("raspberry")) return "🫐";
+  if (key.includes("blackberry")) return "🫐";
+  if (key.includes("blue_raspberry") || key.includes("blue raspberry")) return "🟦";
+  if (key.includes("orange")) return "🍊";
+  if (key.includes("peach")) return "🍑";
+  if (key.includes("coconut")) return "🥥";
+  if (key.includes("cherry")) return "🍒";
+  if (key.includes("almond")) return "🌰";
+  if (key.includes("vanilla")) return "🍦";
+  if (key.includes("pomegranate")) return "🍷";
+  if (key.includes("brown_sugar_cinnamon")) return "🧁";
+
+  return "🍹";
+}
+
+function detailLookupItems() {
+  const comboItems = applyFilters(getAllCombos());
+  const savedItems = (state.savedDrinks || []).map(savedDrinkToItem).filter(Boolean);
+  return [...savedItems, ...comboItems];
+}
+
+function getDrinkById(id) {
+  return detailLookupItems().find(d => d.id === id) || null;
+}
+
+function getDrinkIngredients(d) {
+  const list = [
+    { label: d.base.label, id: d.base.id, amount: "Base" },
+    { label: d.primary.label, id: d.primary.id, amount: "2 pumps" }
+  ];
+
+  if (d.secondary) list.push({ label: d.secondary.label, id: d.secondary.id, amount: "1 pump" });
+  if (d.tertiary) list.push({ label: d.tertiary.label, id: d.tertiary.id, amount: "1 pump" });
+  if (d.lotus) list.push({ label: d.lotus.label, id: d.lotus.id, amount: "1 scoop" });
+
+  return list;
+}
+
+function openDrinkDetail(id) {
+  const d = getDrinkById(id);
+  if (!d) return;
+
+  const detail = document.getElementById("drinkDetail");
+  const nameEl = document.getElementById("drinkDetailName");
+  const emojiEl = document.getElementById("drinkDetailEmoji");
+  const srcEl = document.getElementById("drinkDetailSource");
+  const ingredientsEl = document.getElementById("drinkDetailIngredients");
+  const recipeEl = document.getElementById("drinkDetailRecipe");
+  const favBtn = document.getElementById("drinkDetailFav");
+
+  nameEl.textContent = d.name;
+  emojiEl.textContent = d.base.emoji || "🥤";
+  srcEl.textContent = d.sourceTag || (d.isSavedDrink ? "My Drink" : "");
+  recipeEl.textContent = d.recipe;
+
+  ingredientsEl.innerHTML = "";
+  getDrinkIngredients(d).forEach(item => {
+    const row = document.createElement("div");
+    row.className = "drink-ingredient";
+    row.innerHTML = `
+      <div class="drink-ingredient-emoji">${ingredientEmoji(item.label, item.id)}</div>
+      <div>${item.label}</div>
+      <div style="margin-left:auto; opacity:.75;">${item.amount}</div>
+    `;
+    ingredientsEl.appendChild(row);
+  });
+
+  if (d.isSavedDrink) {
+    favBtn.classList.add("fav-on");
+    favBtn.textContent = "★";
+    favBtn.disabled = true;
+  } else {
+    const isFav = state.favorites.has(d.id);
+    favBtn.disabled = false;
+    favBtn.dataset.drinkId = d.id;
+    favBtn.classList.toggle("fav-on", isFav);
+    favBtn.textContent = isFav ? "★" : "☆";
+  }
+
+  detail.dataset.drinkId = d.id;
+  detail.classList.remove("hidden");
+  detail.setAttribute("aria-hidden", "false");
+}
+
+function closeDrinkDetail() {
+  const detail = document.getElementById("drinkDetail");
+  detail.classList.add("hidden");
+  detail.setAttribute("aria-hidden", "true");
+  delete detail.dataset.drinkId;
+}
 let _allCache = null;
 function getAllCombos() {
   if (_allCache) return _allCache;
@@ -573,7 +673,7 @@ function renderItem(d) {
 
   div.innerHTML = `
     <div class="drink-emoji">${d.base.emoji}</div>
-    <div class="drink-body">
+    <div class="drink-body" data-action="open-detail" data-drink-id="${d.id}">
       <div class="drink-name">${d.name}</div>
       <div class="drink-tags">
         <span class="dtag">${d.recipe}</span>
@@ -712,7 +812,7 @@ function saveCurrentDrink() {
     showToast("Choose a specific base first");
     return;
   }
-  const name = prompt("Name your drink");
+  const name = prompt("Name your drink!");
   if (!name || !name.trim()) return;
 
   const lotus = state.selectedLotus === "none" ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
@@ -839,6 +939,11 @@ document.getElementById("syrupChips").addEventListener("click", e => {
 });
 
 document.addEventListener("click", e => {
+const openTarget = e.target.closest('[data-action="open-detail"]');
+if (openTarget) {
+openDrinkDetail(openTarget.dataset.drinkId);
+  return;
+}
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
   const { action } = btn.dataset;
@@ -871,7 +976,26 @@ document.addEventListener("click", e => {
     showToast("Drink hidden");
   }
 });
+document.getElementById("drinkDetailBack").addEventListener("click", closeDrinkDetail);
 
+document.getElementById("drinkDetail").addEventListener("click", e => {
+  if (e.target.id === "drinkDetail") closeDrinkDetail();
+});
+
+document.getElementById("drinkDetailFav").addEventListener("click", e => {
+  const id = e.currentTarget.dataset.drinkId;
+  if (!id) return;
+
+  if (state.favorites.has(id)) {
+    state.favorites.delete(id);
+  } else {
+    state.favorites.add(id);
+  }
+
+  Store.saveSet(CFG.STORE_FAV, state.favorites);
+  render();
+  openDrinkDetail(id);
+});
 document.getElementById("toast-undo").addEventListener("click", () => {
   if (!state.lastHidden) return;
   state.hidden.delete(state.lastHidden);
