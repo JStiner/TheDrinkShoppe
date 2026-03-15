@@ -9,8 +9,6 @@
       "lotusRequired": false,
       "syrupIds": ["banana_cream","orange","brown_sugar_cinnamon"]
     },
-{
-  "recipes": [
     {
       "id": "7brew-fizz-sunrise",
       "name": "Sunrise",
