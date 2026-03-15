@@ -32,10 +32,10 @@
       "baseId": "sparkling",
       "lotusRequired": false,
       "syrupIds": [
-        "almond",
+        "pomegranate",
         "orange",
-        "pomegranate"
-      ]
+        "almond"
+     ]
     },
     {
       "id": "7brew-fizz-blood-orange",
