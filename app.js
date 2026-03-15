@@ -486,13 +486,15 @@ function applyFilters(combos) {
       return {
         ...c,
         id,
-        generatedName: drinkName(c),
-        name: matchedRecipe?.name || drinkName(c),
-        recipe: drinkRecipe(c),
-        isFav: favorites.has(id),
-        matchedRecipe,
-        sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : ""
-      };
+  generatedName: drinkName(c),
+  name: matchedRecipe?.name || drinkName(c),
+  recipe: drinkRecipe(c),
+  isFav: favorites.has(id),
+  matchedRecipe,
+  sourceTag: matchedRecipe
+    ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}`
+    : ""
+};
     });
 
   const seenRecipes = new Set();
