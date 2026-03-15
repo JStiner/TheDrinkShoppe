@@ -27,6 +27,42 @@
       "lotusRequired": false,
       "syrupIds": ["pomegranate","orange","almond"]
     },
+{
+  "id": "7brew-fizz-pink-mermaid",
+  "name": "Pink Mermaid",
+  "source": "7 Brew",
+  "collection": "Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["strawberry","coconut"]
+},
+{
+  "id": "7brew-fizz-stargazer",
+  "name": "Stargazer",
+  "source": "7 Brew",
+  "collection": "Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["blue_raspberry","raspberry"]
+},
+{
+  "id": "7brew-fizz-berry-blast",
+  "name": "Berry Blast",
+  "source": "7 Brew",
+  "collection": "Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["strawberry","raspberry"]
+},
+{
+  "id": "7brew-fizz-sunset-punch",
+  "name": "Sunset Punch",
+  "source": "7 Brew",
+  "collection": "Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["orange","strawberry"]
+},
     {
       "id": "7brew-fizz-blood-orange",
       "name": "Blood Orange",
@@ -145,6 +181,42 @@
       "lotusRequired": false,
       "syrupIds": ["raspberry","coconut"]
     },
+{
+  "id": "7brew-lemonade-razorberry",
+  "name": "Razorberry",
+  "source": "7 Brew",
+  "collection": "Lemonade",
+  "baseId": "fruit_chill_lemonade",
+  "lotusRequired": false,
+  "syrupIds": ["blackberry","strawberry","raspberry"]
+},
+{
+  "id": "7brew-lemonade-blood-orange",
+  "name": "Blood Orange",
+  "source": "7 Brew",
+  "collection": "Lemonade",
+  "baseId": "fruit_chill_lemonade",
+  "lotusRequired": false,
+  "syrupIds": ["orange","pomegranate"]
+},
+{
+  "id": "7brew-lemonade-ocean-breeze",
+  "name": "Ocean Breeze",
+  "source": "7 Brew",
+  "collection": "Lemonade",
+  "baseId": "fruit_chill_lemonade",
+  "lotusRequired": false,
+  "syrupIds": ["blue_raspberry","coconut"]
+},
+{
+  "id": "7brew-lemonade-midnight-rain",
+  "name": "Midnight Rain",
+  "source": "7 Brew",
+  "collection": "Lemonade",
+  "baseId": "fruit_chill_lemonade",
+  "lotusRequired": false,
+  "syrupIds": ["blue_raspberry","blackberry"]
+},
     {
       "id": "7brew-lemonade-georgia-peach",
       "name": "Georgia Peach",
@@ -235,6 +307,33 @@
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": ["blue_raspberry","blackberry"]
-    }
+    },
+{
+  "id": "7brew-energy-razorberry",
+  "name": "Razorberry",
+  "source": "7 Brew",
+  "collection": "Energy",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": true,
+  "syrupIds": ["blackberry","strawberry","raspberry"]
+},
+{
+  "id": "7brew-energy-bahama-mama",
+  "name": "Bahama Mama",
+  "source": "7 Brew",
+  "collection": "Energy",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": true,
+  "syrupIds": ["cherry","coconut"]
+},
+{
+  "id": "7brew-energy-orange-sherbet",
+  "name": "Orange Sherbet",
+  "source": "7 Brew",
+  "collection": "Energy",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": true,
+  "syrupIds": ["orange","strawberry","vanilla"]
+}
   ]
 }
