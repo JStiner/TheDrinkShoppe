@@ -147,10 +147,10 @@ function normalizeSyrupIds(ids = []) {
   return ids.filter(Boolean).slice().sort();
 }
 function recipeKey(baseId, syrupIds, lotusRequired) {
-  return `${baseId}|${lotusRequired ? 'lotus' : 'plain'}|${normalizeSyrupIds(syrupIds).join('|')}`;
+  return `${baseId}|${lotusRequired ? "lotus" : "plain"}|${normalizeSyrupIds(syrupIds).join("|")}`;
 }
 function applyRecipes(recipes) {
-  RECIPES = recipes.slice();
+  RECIPES = Array.isArray(recipes) ? recipes.slice() : [];
   RECIPE_INDEX = new Map();
   RECIPES.forEach(r => {
     if (!r?.baseId || !Array.isArray(r.syrupIds) || !r.syrupIds.length || !r.name) return;
@@ -163,13 +163,6 @@ function drinkId({ base, primary, secondary, tertiary, lotus }) {
 }
 function getDrinkSyrupIds(c) {
   return [c.primary?.id, c.secondary?.id, c.tertiary?.id].filter(Boolean);
-}
-function getDrinkTags(c) {
-  const tags = [];
-  [c.primary, c.secondary, c.tertiary].forEach(s => {
-    if (s?.tags?.length) tags.push(...s.tags);
-  });
-  return [...new Set(tags)];
 }
 function matchCount(c) {
   const chosen = new Set(state.selectedSyrups);
@@ -282,7 +275,7 @@ function migrateSavedDrinks() {
     changed = true;
     return {
       id: sd?.id || `saved_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-      name: sd?.name || 'Saved Drink',
+      name: sd?.name || "Saved Drink",
       syrupIds,
       baseId,
       lotusId
@@ -321,7 +314,7 @@ function savedDrinkToItem(sd) {
     recipe: drinkRecipe(combo),
     isFav: true,
     matchedRecipe,
-    sourceTag: matchedRecipe ? `${matchedRecipe.source || 'Recipe'}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ''}` : 'MY DRINK'
+    sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : "MY DRINK"
   };
 }
 
@@ -334,7 +327,6 @@ function ingredientEmoji(label, id = "") {
   if (key.includes("root")) return "🍺";
   if (key.includes("dr")) return "🥤";
   if (key.includes("lotus")) return "⚡";
-
   if (key.includes("strawberry")) return "🍓";
   if (key.includes("raspberry")) return "🫐";
   if (key.includes("blackberry")) return "🫐";
@@ -386,6 +378,10 @@ function openDrinkDetail(id) {
   const recipeEl = document.getElementById("drinkDetailRecipe");
   const favBtn = document.getElementById("drinkDetailFav");
 
+  if (!detail || !nameEl || !emojiEl || !srcEl || !ingredientsEl || !recipeEl || !favBtn) {
+    return;
+  }
+
   nameEl.textContent = d.name;
   emojiEl.textContent = d.base.emoji || "🥤";
   srcEl.textContent = d.sourceTag || (d.isSavedDrink ? "My Drink" : "");
@@ -423,6 +419,7 @@ function openDrinkDetail(id) {
 
 function closeDrinkDetail() {
   const detail = document.getElementById("drinkDetail");
+  if (!detail) return;
   detail.classList.add("hidden");
   detail.setAttribute("aria-hidden", "true");
   delete detail.dataset.drinkId;
@@ -504,7 +501,7 @@ function applyFilters(combos) {
         recipe: drinkRecipe(c),
         isFav: favorites.has(id),
         matchedRecipe,
-        sourceTag: matchedRecipe ? `${matchedRecipe.source || 'Recipe'}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ''}` : ''
+        sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : ""
       };
     });
 
@@ -520,36 +517,34 @@ function applyFilters(combos) {
     return true;
   });
 
-  return filtered
-    .sort((a, b) => {
+  return filtered.sort((a, b) => {
+    if (a.isFav && !b.isFav) return -1;
+    if (!a.isFav && b.isFav) return 1;
 
-      if (a.isFav && !b.isFav) return -1;
-      if (!a.isFav && b.isFav) return 1;
+    if (a.matchedRecipe && !b.matchedRecipe) return -1;
+    if (!a.matchedRecipe && b.matchedRecipe) return 1;
 
-      if (a.matchedRecipe && !b.matchedRecipe) return -1;
-      if (!a.matchedRecipe && b.matchedRecipe) return 1;
+    if (favOnly) return a.name.localeCompare(b.name);
 
-      if (favOnly) return a.name.localeCompare(b.name);
+    const ap = selectedPriorityRank(a);
+    const bp = selectedPriorityRank(b);
+    if (ap !== bp) return ap - bp;
 
-      const ap = selectedPriorityRank(a);
-      const bp = selectedPriorityRank(b);
-      if (ap !== bp) return ap - bp;
+    const am = matchCount(a);
+    const bm = matchCount(b);
+    if (am !== bm) return bm - am;
 
-      const am = matchCount(a);
-      const bm = matchCount(b);
-      if (am !== bm) return bm - am;
+    if (state.selectedLotus !== "none" && a.lotusScore !== b.lotusScore) return b.lotusScore - a.lotusScore;
 
-      if (state.selectedLotus !== "none" && a.lotusScore !== b.lotusScore) return b.lotusScore - a.lotusScore;
+    const ao = compareSelectedOrder(a, b);
+    if (ao !== 0) return ao;
 
-      const ao = compareSelectedOrder(a, b);
-      if (ao !== 0) return ao;
+    const ac = getDrinkSyrupIds(a).length;
+    const bc = getDrinkSyrupIds(b).length;
+    if (selectedSyrups.length > 0 && am > 0 && bm > 0 && ac !== bc) return ac - bc;
 
-      const ac = getDrinkSyrupIds(a).length;
-      const bc = getDrinkSyrupIds(b).length;
-      if (selectedSyrups.length > 0 && am > 0 && bm > 0 && ac !== bc) return ac - bc;
-
-      return a.name.localeCompare(b.name);
-    });
+    return a.name.localeCompare(b.name);
+  });
 }
 
 function renderItem(d) {
@@ -685,7 +680,9 @@ function renderLotusOptions() {
 
 function showToast(msg) {
   const el = document.getElementById("toast");
-  document.getElementById("toast-msg").textContent = msg;
+  const msgEl = document.getElementById("toast-msg");
+  if (!el || !msgEl) return;
+  msgEl.textContent = msg;
   el.classList.add("show");
   clearTimeout(showToast._t);
   showToast._t = setTimeout(() => el.classList.remove("show"), 3000);
@@ -700,7 +697,7 @@ function saveCurrentDrink() {
     showToast("Select syrups first");
     return;
   }
-  if (state.baseFlavor === 'all') {
+  if (state.baseFlavor === "all") {
     showToast("Choose a specific base first");
     return;
   }
@@ -712,7 +709,7 @@ function saveCurrentDrink() {
   const name = prompt("Name your drink");
   if (!name || !name.trim()) return;
 
-  const lotus = state.selectedLotus === 'none' ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
+  const lotus = state.selectedLotus === "none" ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
   state.savedDrinks.unshift({
     id: `saved_${Date.now()}`,
     name: name.trim(),
@@ -726,7 +723,8 @@ function saveCurrentDrink() {
 }
 
 function render() {
-  document.getElementById("favLabel").textContent = state.favOnly ? "Only Favorites" : "All Drinks";
+  const favLabel = document.getElementById("favLabel");
+  if (favLabel) favLabel.textContent = state.favOnly ? "Only Favorites" : "All Drinks";
 
   const items = applyFilters(getAllCombos());
   const listA = items.filter(x => x.base.category === "soda");
@@ -742,6 +740,7 @@ function render() {
   let visible = 0;
   for (const c of cols) {
     const sec = document.getElementById(c.sec);
+    if (!sec) continue;
     if (!c.list.length && !(c.includeSaved && state.savedDrinks.length)) {
       sec.style.display = "none";
     } else {
@@ -759,55 +758,74 @@ function render() {
       });
     }
   }
-  document.getElementById("grid").dataset.cols = visible <= 1 ? "1" : visible === 2 ? "2" : "3";
+  const grid = document.getElementById("grid");
+  if (grid) grid.dataset.cols = visible <= 1 ? "1" : visible === 2 ? "2" : "3";
   renderSyrupChips();
 }
 
-document.getElementById("saveDrinkBtn").addEventListener("click", saveCurrentDrink);
-document.getElementById("resetAll").addEventListener("click", () => {
+const saveDrinkBtn = document.getElementById("saveDrinkBtn");
+if (saveDrinkBtn) saveDrinkBtn.addEventListener("click", saveCurrentDrink);
+
+const resetAllBtn = document.getElementById("resetAll");
+if (resetAllBtn) resetAllBtn.addEventListener("click", () => {
   state.baseCategory = "all";
   state.baseFlavor = "all";
   state.selectedLotus = "none";
   state.favOnly = false;
   state.selectedSyrups = [];
   resetPages();
-  document.getElementById("baseCategory").value = "all";
+  const baseCategoryEl = document.getElementById("baseCategory");
+  const baseFlavorEl = document.getElementById("baseFlavor");
+  const lotusSelectEl = document.getElementById("lotusSelect");
+  const favToggleEl = document.getElementById("favToggle");
+  if (baseCategoryEl) baseCategoryEl.value = "all";
   renderBaseFlavorOptions();
-  document.getElementById("baseFlavor").value = "all";
-  document.getElementById("lotusSelect").value = "none";
-  document.getElementById("favToggle").checked = false;
+  if (baseFlavorEl) baseFlavorEl.value = "all";
+  if (lotusSelectEl) lotusSelectEl.value = "none";
+  if (favToggleEl) favToggleEl.checked = false;
   render();
 });
-document.getElementById("baseCategory").addEventListener("change", e => {
+
+const baseCategoryEl = document.getElementById("baseCategory");
+if (baseCategoryEl) baseCategoryEl.addEventListener("change", e => {
   state.baseCategory = e.target.value;
   renderBaseFlavorOptions();
   const matchingBases = state.baseCategory === "all" ? BASES : BASES.filter(b => b.category === state.baseCategory);
+  const baseFlavorEl = document.getElementById("baseFlavor");
   if (matchingBases.length === 1) {
     state.baseFlavor = matchingBases[0].id;
-    document.getElementById("baseFlavor").value = matchingBases[0].id;
+    if (baseFlavorEl) baseFlavorEl.value = matchingBases[0].id;
   } else {
     state.baseFlavor = "all";
-    document.getElementById("baseFlavor").value = "all";
+    if (baseFlavorEl) baseFlavorEl.value = "all";
   }
   resetPages();
   render();
 });
-document.getElementById("baseFlavor").addEventListener("change", e => {
+
+const baseFlavorEl2 = document.getElementById("baseFlavor");
+if (baseFlavorEl2) baseFlavorEl2.addEventListener("change", e => {
   state.baseFlavor = e.target.value;
   resetPages();
   render();
 });
-document.getElementById("lotusSelect").addEventListener("change", e => {
+
+const lotusSelectEl2 = document.getElementById("lotusSelect");
+if (lotusSelectEl2) lotusSelectEl2.addEventListener("change", e => {
   state.selectedLotus = e.target.value;
   resetPages();
   render();
 });
-document.getElementById("favToggle").addEventListener("change", e => {
+
+const favToggleEl2 = document.getElementById("favToggle");
+if (favToggleEl2) favToggleEl2.addEventListener("change", e => {
   state.favOnly = e.target.checked;
   resetPages();
   render();
 });
-document.getElementById("syrupChips").addEventListener("click", e => {
+
+const syrupChipsEl = document.getElementById("syrupChips");
+if (syrupChipsEl) syrupChipsEl.addEventListener("click", e => {
   const btn = e.target.closest("[data-syrup-id]");
   if (!btn) return;
   const id = btn.dataset.syrupId;
@@ -825,9 +843,11 @@ document.getElementById("syrupChips").addEventListener("click", e => {
   render();
 });
 
-[["aPrev","aNext","A"],["bPrev","bNext","B"],["cPrev","cNext","C"]].forEach(([prev, next, key]) => {
-  document.getElementById(prev).addEventListener("click", () => { state.pages[key]--; render(); });
-  document.getElementById(next).addEventListener("click", () => { state.pages[key]++; render(); });
+[["aPrev", "aNext", "A"], ["bPrev", "bNext", "B"], ["cPrev", "cNext", "C"]].forEach(([prev, next, key]) => {
+  const prevEl = document.getElementById(prev);
+  const nextEl = document.getElementById(next);
+  if (prevEl) prevEl.addEventListener("click", () => { state.pages[key]--; render(); });
+  if (nextEl) nextEl.addEventListener("click", () => { state.pages[key]++; render(); });
 });
 
 document.addEventListener("click", e => {
@@ -859,6 +879,7 @@ document.addEventListener("click", e => {
     Store.saveSet(CFG.STORE_FAV, state.favorites);
     render();
   }
+
   if (action === "hide") {
     state.hidden.add(id);
     state.lastHidden = id;
@@ -869,43 +890,58 @@ document.addEventListener("click", e => {
   }
 });
 
-document.getElementById("drinkDetailBack").addEventListener("click", closeDrinkDetail);
+const detailBackEl = document.getElementById("drinkDetailBack");
+const detailEl = document.getElementById("drinkDetail");
+const detailFavEl = document.getElementById("drinkDetailFav");
 
-document.getElementById("drinkDetail").addEventListener("click", e => {
-  if (e.target.id === "drinkDetail") closeDrinkDetail();
-});
+if (detailBackEl) {
+  detailBackEl.addEventListener("click", closeDrinkDetail);
+}
 
-document.getElementById("drinkDetailFav").addEventListener("click", e => {
-  const id = e.currentTarget.dataset.drinkId;
-  if (!id) return;
+if (detailEl) {
+  detailEl.addEventListener("click", e => {
+    if (e.target.id === "drinkDetail") closeDrinkDetail();
+  });
+}
 
-  if (state.favorites.has(id)) {
-    state.favorites.delete(id);
-  } else {
-    state.favorites.add(id);
-  }
+if (detailFavEl) {
+  detailFavEl.addEventListener("click", e => {
+    const id = e.currentTarget.dataset.drinkId;
+    if (!id) return;
 
-  Store.saveSet(CFG.STORE_FAV, state.favorites);
-  render();
-  openDrinkDetail(id);
-});
+    if (state.favorites.has(id)) {
+      state.favorites.delete(id);
+    } else {
+      state.favorites.add(id);
+    }
 
-document.getElementById("toast-undo").addEventListener("click", () => {
+    Store.saveSet(CFG.STORE_FAV, state.favorites);
+    render();
+    openDrinkDetail(id);
+  });
+}
+
+const toastUndoEl = document.getElementById("toast-undo");
+if (toastUndoEl) toastUndoEl.addEventListener("click", () => {
   if (!state.lastHidden) return;
   state.hidden.delete(state.lastHidden);
   Store.saveSet(CFG.STORE_HIDE, state.hidden);
   state.lastHidden = null;
-  document.getElementById("toast").classList.remove("show");
+  const toastEl = document.getElementById("toast");
+  if (toastEl) toastEl.classList.remove("show");
   resetPages();
   render();
 });
 
-document.getElementById("resetFav").addEventListener("click", () => {
+const resetFavEl = document.getElementById("resetFav");
+if (resetFavEl) resetFavEl.addEventListener("click", () => {
   state.favorites.clear();
   Store.saveSet(CFG.STORE_FAV, state.favorites);
   render();
 });
-document.getElementById("resetHide").addEventListener("click", () => {
+
+const resetHideEl = document.getElementById("resetHide");
+if (resetHideEl) resetHideEl.addEventListener("click", () => {
   state.hidden.clear();
   Store.saveSet(CFG.STORE_HIDE, state.hidden);
   state.lastHidden = null;
