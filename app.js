@@ -393,6 +393,16 @@ function applyFilters(combos) {
       };
     })
     .sort((a, b) => {
+
+  // 1 — favorites first
+  if (a.isFav && !b.isFav) return -1;
+  if (!a.isFav && b.isFav) return 1;
+
+  // 2 — recipe drinks next
+  if (a.matchedRecipe && !b.matchedRecipe) return -1;
+  if (!a.matchedRecipe && b.matchedRecipe) return 1;
+
+  if (favOnly) return a.name.localeCompare(b.name);
       if (favOnly) return a.name.localeCompare(b.name);
       const ap = selectedPriorityRank(a);
       const bp = selectedPriorityRank(b);
