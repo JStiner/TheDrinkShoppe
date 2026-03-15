@@ -5,7 +5,7 @@
       "name": "Sunrise",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "peach",
@@ -17,7 +17,7 @@
       "name": "Peaches & Cream",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+      "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "peach",
@@ -29,7 +29,7 @@
       "name": "Pixie Stick",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+      "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "pomegranate",
@@ -42,7 +42,7 @@
       "name": "Blood Orange",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+      "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "orange",
@@ -54,7 +54,7 @@
       "name": "Gummy Bear",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "orange",
@@ -66,7 +66,7 @@
       "name": "Holiday Punch",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "pomegranate",
@@ -78,7 +78,7 @@
       "name": "Midnight Rain",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+    "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "blue_raspberry",
@@ -90,7 +90,7 @@
       "name": "Ocean Breeze",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "blue_raspberry",
@@ -102,7 +102,7 @@
       "name": "Orange Sherbert",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+      "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "orange",
@@ -115,7 +115,7 @@
       "name": "Amaretto",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "blackberry",
@@ -128,7 +128,7 @@
       "name": "Bahama Mama",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "cherry",
@@ -140,7 +140,7 @@
       "name": "Cherry Blossom",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+    "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "peach",
@@ -152,7 +152,7 @@
       "name": "Razorberry",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "blackberry",
@@ -165,7 +165,7 @@
       "name": "Snickerdoodle",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+      "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "brown_sugar_cinnamon",
@@ -177,7 +177,7 @@
       "name": "Tiger's Blood",
       "source": "7 Brew",
       "collection": "Fizz",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": false,
       "syrupIds": [
         "coconut",
@@ -189,7 +189,7 @@
       "name": "Cocoberry",
       "source": "7 Brew",
       "collection": "Lemonade",
-      "baseId": "chill_lemonade",
+      "baseId": "fruit_chill_lemonade",
       "lotusRequired": false,
       "syrupIds": [
         "raspberry",
@@ -201,7 +201,7 @@
       "name": "Georgia Peach",
       "source": "7 Brew",
       "collection": "Lemonade",
-      "baseId": "chill_lemonade",
+      "baseId": "fruit_chill_lemonade",
       "lotusRequired": false,
       "syrupIds": [
         "peach",
@@ -213,7 +213,7 @@
       "name": "Cherry Blossom",
       "source": "7 Brew",
       "collection": "Lemonade",
-      "baseId": "chill_lemonade",
+      "baseId": "fruit_chill_lemonade",
       "lotusRequired": false,
       "syrupIds": [
         "peach",
@@ -225,7 +225,7 @@
       "name": "Brewberry",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "blue_raspberry",
@@ -237,7 +237,7 @@
       "name": "Ocean Breeze",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "blue_raspberry",
@@ -249,7 +249,7 @@
       "name": "Sunrise",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "peach",
@@ -261,7 +261,7 @@
       "name": "Firecracker",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "orange",
@@ -274,7 +274,7 @@
       "name": "Dragon's Blood",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+   "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "cherry",
@@ -286,7 +286,7 @@
       "name": "Blood Orange",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "orange",
@@ -298,7 +298,7 @@
       "name": "Boo Raspberry",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "strawberry",
@@ -311,7 +311,7 @@
       "name": "Midnight Rain",
       "source": "7 Brew",
       "collection": "Energy",
-      "baseId": "sparkling",
+     "baseId":"nt_bubble_water",
       "lotusRequired": true,
       "syrupIds": [
         "blue_raspberry",
