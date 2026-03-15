@@ -81,6 +81,125 @@
     .foot strong{color:rgba(255,255,255,.65)}
     .lnk{color:rgba(255,255,255,.55);text-decoration:underline;cursor:pointer}
     @media (max-width:1100px){.controls{grid-template-columns:1fr}.grid{grid-template-columns:1fr !important}.controls-left{grid-template-columns:1fr}}
+.drink-detail.hidden {
+  display: none;
+}
+
+.drink-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8, 12, 16, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.drink-detail-card {
+  width: min(720px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #121923;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.drink-detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.detail-back-btn,
+.detail-fav-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.detail-back-btn {
+  background: #243041;
+  color: #fff;
+}
+
+.detail-fav-btn {
+  background: #243041;
+  color: #fff;
+  min-width: 52px;
+}
+
+.detail-fav-btn.fav-on {
+  background: #f5c84c;
+  color: #1a1a1a;
+}
+
+.drink-detail-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.drink-detail-emoji {
+  font-size: 52px;
+  line-height: 1;
+}
+
+.drink-detail-name {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.drink-detail-source {
+  margin-top: 6px;
+  color: #b8c2cf;
+  font-size: 14px;
+}
+
+.drink-detail-section {
+  margin-top: 18px;
+}
+
+.drink-detail-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+
+.drink-detail-ingredients {
+  display: grid;
+  gap: 10px;
+}
+
+.drink-ingredient {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.drink-ingredient-emoji {
+  width: 28px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.drink-detail-recipe {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 12px 14px;
+  line-height: 1.5;
+  color: #dce4ee;
+}
   </style>
 </head>
 <body>
