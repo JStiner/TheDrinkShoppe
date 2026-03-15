@@ -621,6 +621,7 @@ function renderColumn({ listEl, footEl, countEl, prevBtn, nextBtn, items, pageKe
 
 function renderSyrupChips() {
   const el = document.getElementById("syrupChips");
+  if (!el) return;
   el.innerHTML = "";
   const selectedIds = new Set(state.selectedSyrups);
   const selected = state.selectedSyrups.map(id => SYRUPS.find(s => s.id === id)).filter(Boolean);
@@ -638,6 +639,7 @@ function renderSyrupChips() {
 
 function renderBaseOptions() {
   const sel = document.getElementById("baseCategory");
+  if (!sel) return;
   const categories = (MENU.categories || []).slice().sort(byOrder);
   sel.innerHTML = `<option value="all">All</option>`;
   categories.forEach(c => {
@@ -651,6 +653,7 @@ function renderBaseOptions() {
 
 function renderBaseFlavorOptions() {
   const sel = document.getElementById("baseFlavor");
+  if (!sel) return;
   const prev = state.baseFlavor;
   sel.innerHTML = `<option value="all">All</option>`;
   const bases = state.baseCategory === "all" ? BASES : BASES.filter(b => b.category === state.baseCategory);
@@ -666,6 +669,7 @@ function renderBaseFlavorOptions() {
 
 function renderLotusOptions() {
   const sel = document.getElementById("lotusSelect");
+  if (!sel) return;
   const prev = state.selectedLotus;
   sel.innerHTML = `<option value="none">No Lotus</option>`;
   LOTUS_OPTIONS.forEach(l => {
@@ -857,6 +861,35 @@ document.addEventListener("click", e => {
     return;
   }
 
+  const backBtn = e.target.closest("#drinkDetailBack");
+  if (backBtn) {
+    closeDrinkDetail();
+    return;
+  }
+
+  const favBtn = e.target.closest("#drinkDetailFav");
+  if (favBtn) {
+    const id = favBtn.dataset.drinkId;
+    if (!id) return;
+
+    if (state.favorites.has(id)) {
+      state.favorites.delete(id);
+    } else {
+      state.favorites.add(id);
+    }
+
+    Store.saveSet(CFG.STORE_FAV, state.favorites);
+    render();
+    openDrinkDetail(id);
+    return;
+  }
+
+  const overlay = e.target.closest("#drinkDetail");
+  if (overlay && e.target.id === "drinkDetail") {
+    closeDrinkDetail();
+    return;
+  }
+
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
   const { action } = btn.dataset;
@@ -889,37 +922,6 @@ document.addEventListener("click", e => {
     showToast("Drink hidden");
   }
 });
-
-const detailBackEl = document.getElementById("drinkDetailBack");
-const detailEl = document.getElementById("drinkDetail");
-const detailFavEl = document.getElementById("drinkDetailFav");
-
-if (detailBackEl) {
-  detailBackEl.addEventListener("click", closeDrinkDetail);
-}
-
-if (detailEl) {
-  detailEl.addEventListener("click", e => {
-    if (e.target.id === "drinkDetail") closeDrinkDetail();
-  });
-}
-
-if (detailFavEl) {
-  detailFavEl.addEventListener("click", e => {
-    const id = e.currentTarget.dataset.drinkId;
-    if (!id) return;
-
-    if (state.favorites.has(id)) {
-      state.favorites.delete(id);
-    } else {
-      state.favorites.add(id);
-    }
-
-    Store.saveSet(CFG.STORE_FAV, state.favorites);
-    render();
-    openDrinkDetail(id);
-  });
-}
 
 const toastUndoEl = document.getElementById("toast-undo");
 if (toastUndoEl) toastUndoEl.addEventListener("click", () => {
