@@ -143,18 +143,94 @@ function applyMenu(menu) {
   LOTUS_OPTIONS = (menu.lotus || []).filter(x => x.active !== false).slice().sort(byOrder);
 }
 
+function normalizeToken(value) {
+  return String(value || "").trim().toLowerCase().replace(/\s+/g, "_");
+}
+
 function normalizeSyrupIds(ids = []) {
-  return ids.filter(Boolean).slice().sort();
+  return ids.filter(Boolean).map(normalizeToken).sort();
 }
-function recipeKey(baseId, syrupIds, lotusRequired) {
-  return `${baseId}|${lotusRequired ? "lotus" : "plain"}|${normalizeSyrupIds(syrupIds).join("|")}`;
+
+function recipeKey(baseToken, syrupIds, lotusRequired) {
+  return `${normalizeToken(baseToken)}|${lotusRequired ? "lotus" : "plain"}|${normalizeSyrupIds(syrupIds).join("|")}`;
 }
+
+function getRecipeBaseTokens(baseId) {
+  const token = normalizeToken(baseId);
+  const tokens = new Set([token]);
+
+  if (["sparkling", "bubble_water", "nt_bubble_water", "fizz"].includes(token)) {
+    tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
+  }
+
+  if (["chill_lemonade", "fruit_chill_lemonade", "lemonade", "chill"].includes(token)) {
+    tokens.add("chill_lemonade");
+    tokens.add("fruit_chill_lemonade");
+    tokens.add("lemonade");
+    tokens.add("chill");
+  }
+
+  if (["energy", "lotus"].includes(token)) {
+    tokens.add("energy");
+    tokens.add("lotus");
+    tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
+  }
+
+  return [...tokens];
+}
+
+function getComboBaseTokens(c) {
+  const tokens = new Set();
+
+  const baseId = normalizeToken(c?.base?.id);
+  const category = normalizeToken(c?.base?.category);
+
+  if (baseId) tokens.add(baseId);
+  if (category) tokens.add(category);
+
+  if (["nt_bubble_water", "bubble_water", "sparkling", "fizz"].includes(baseId) || category === "fizz") {
+    tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
+  }
+
+  if (["fruit_chill_lemonade", "chill_lemonade", "lemonade"].includes(baseId) || category === "chill") {
+    tokens.add("fruit_chill_lemonade");
+    tokens.add("chill_lemonade");
+    tokens.add("lemonade");
+    tokens.add("chill");
+  }
+
+  if (c?.lotus) {
+    tokens.add("energy");
+    tokens.add("lotus");
+    tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
+  }
+
+  return [...tokens];
+}
+
 function applyRecipes(recipes) {
   RECIPES = Array.isArray(recipes) ? recipes.slice() : [];
   RECIPE_INDEX = new Map();
+
   RECIPES.forEach(r => {
     if (!r?.baseId || !Array.isArray(r.syrupIds) || !r.syrupIds.length || !r.name) return;
-    RECIPE_INDEX.set(recipeKey(r.baseId, r.syrupIds, !!r.lotusRequired), r);
+
+    const baseTokens = getRecipeBaseTokens(r.baseId);
+    for (const token of baseTokens) {
+      RECIPE_INDEX.set(recipeKey(token, r.syrupIds, !!r.lotusRequired), r);
+    }
   });
 }
 
@@ -246,8 +322,16 @@ function drinkRecipe({ base, primary, secondary, tertiary, lotus }) {
 }
 
 function matchRecipeForCombo(c) {
-  const key = recipeKey(c.base.id, getDrinkSyrupIds(c), !!c.lotus);
-  return RECIPE_INDEX.get(key) || null;
+  const syrupIds = getDrinkSyrupIds(c);
+  const baseTokens = getComboBaseTokens(c);
+
+  for (const token of baseTokens) {
+    const key = recipeKey(token, syrupIds, !!c.lotus);
+    const match = RECIPE_INDEX.get(key);
+    if (match) return match;
+  }
+
+  return null;
 }
 
 function labelMap(items) {
