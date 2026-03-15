@@ -106,7 +106,7 @@
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
-      "syrupIds": ["peach","cherry"]
+      "syrupIds": ["cherry","peach"]
     },
     {
       "id": "7brew-fizz-razorberry",
@@ -133,7 +133,7 @@
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
-      "syrupIds": ["coconut","strawberry"]
+      "syrupIds": ["strawberry","coconut"]
     },
 
     {
