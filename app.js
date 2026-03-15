@@ -400,7 +400,7 @@ function buildCombo(baseId, syrupIds, lotusId = null) {
 function savedDrinkToItem(sd) {
   const combo = buildCombo(sd.baseId, sd.syrupIds, sd.lotusId || null);
   if (!combo) return null;
-  const matchedRecipe = matchRecipeForCombo(combo,matchedRecipe);
+  const matchedRecipe = matchRecipeForCombo(combo);
   return {
     ...combo,
     id: `saved:${sd.id}`,
