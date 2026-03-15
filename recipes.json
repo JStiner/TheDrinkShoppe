@@ -2,6 +2,17 @@
   "recipes": [
     {
       "id": "7brew-fizz-sunrise",
+      "name": "Orange You Glad It's Got Banana Too",
+      "source": "House",
+      "collection": "Fizz",
+      "baseId": "nt_bubble_water",
+      "lotusRequired": false,
+      "syrupIds": ["banana_cream","orange","brown_sugar_cinnamon"]
+    },
+{
+  "recipes": [
+    {
+      "id": "7brew-fizz-sunrise",
       "name": "Sunrise",
       "source": "Inspired by 7 Brew",
       "collection": "Fizz",
