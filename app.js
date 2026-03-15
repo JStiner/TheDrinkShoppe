@@ -673,7 +673,7 @@ function renderItem(d) {
 
   div.innerHTML = `
     <div class="drink-emoji">${d.base.emoji}</div>
-    <div class="drink-body">
+    <div class="drink-body" data-action="open-detail" data-drink-id="${d.id}">
       <div class="drink-name">${d.name}</div>
       <div class="drink-tags">
         <span class="dtag">${d.recipe}</span>
@@ -812,7 +812,7 @@ function saveCurrentDrink() {
     showToast("Choose a specific base first");
     return;
   }
-  const name = prompt("Name your drink");
+  const name = prompt("Name your drink!");
   if (!name || !name.trim()) return;
 
   const lotus = state.selectedLotus === "none" ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
