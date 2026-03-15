@@ -127,5 +127,31 @@
 
 <div id="toast"><span id="toast-msg">Drink hidden</span><button id="toast-undo">Undo</button></div>
 <script src="app.js"></script>
+<div id="drinkDetail" class="drink-detail hidden" aria-hidden="true">
+  <div class="drink-detail-card">
+    <div class="drink-detail-top">
+      <button id="drinkDetailBack" class="detail-back-btn" type="button">← Back</button>
+      <button id="drinkDetailFav" class="detail-fav-btn" type="button" title="Favorite">☆</button>
+    </div>
+
+    <div class="drink-detail-header">
+      <div id="drinkDetailEmoji" class="drink-detail-emoji">🥤</div>
+      <div>
+        <h2 id="drinkDetailName" class="drink-detail-name">Drink Name</h2>
+        <div id="drinkDetailSource" class="drink-detail-source"></div>
+      </div>
+    </div>
+
+    <div class="drink-detail-section">
+      <h3>Ingredients</h3>
+      <div id="drinkDetailIngredients" class="drink-detail-ingredients"></div>
+    </div>
+
+    <div class="drink-detail-section">
+      <h3>Build</h3>
+      <div id="drinkDetailRecipe" class="drink-detail-recipe"></div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
