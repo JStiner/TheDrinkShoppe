@@ -939,6 +939,11 @@ document.getElementById("syrupChips").addEventListener("click", e => {
 });
 
 document.addEventListener("click", e => {
+const openTarget = e.target.closest('[data-action="open-detail"]');
+if (openTarget) {
+openDrinkDetail(openTarget.dataset.drinkId);
+  return;
+}
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
   const { action } = btn.dataset;
@@ -971,7 +976,26 @@ document.addEventListener("click", e => {
     showToast("Drink hidden");
   }
 });
+document.getElementById("drinkDetailBack").addEventListener("click", closeDrinkDetail);
 
+document.getElementById("drinkDetail").addEventListener("click", e => {
+  if (e.target.id === "drinkDetail") closeDrinkDetail();
+});
+
+document.getElementById("drinkDetailFav").addEventListener("click", e => {
+  const id = e.currentTarget.dataset.drinkId;
+  if (!id) return;
+
+  if (state.favorites.has(id)) {
+    state.favorites.delete(id);
+  } else {
+    state.favorites.add(id);
+  }
+
+  Store.saveSet(CFG.STORE_FAV, state.favorites);
+  render();
+  openDrinkDetail(id);
+});
 document.getElementById("toast-undo").addEventListener("click", () => {
   if (!state.lastHidden) return;
   state.hidden.delete(state.lastHidden);
