@@ -451,10 +451,37 @@ function getDrinkById(id) {
 }
 
 function getDrinkIngredients(d) {
+  let syrups = [d.primary, d.secondary, d.tertiary].filter(Boolean);
+
+  if (d.matchedRecipe?.syrupIds?.length) {
+    const byId = new Map(syrups.map(s => [s.id, s]));
+    syrups = d.matchedRecipe.syrupIds
+      .map(id => byId.get(id))
+      .filter(Boolean);
+  }
+
   const list = [
-    { label: d.base.label, id: d.base.id, amount: "Base" },
-    { label: d.primary.label, id: d.primary.id, amount: "2 pumps" }
+    { label: d.base.label, id: d.base.id, amount: "Base" }
   ];
+
+  syrups.forEach((s, idx) => {
+    list.push({
+      label: s.label,
+      id: s.id,
+      amount: idx === 0 ? "2 pumps" : "1 pump"
+    });
+  });
+
+  if (d.lotus) {
+    list.push({
+      label: d.lotus.label,
+      id: d.lotus.id,
+      amount: "1 pump"
+    });
+  }
+
+  return list;
+}
 
   if (d.secondary) list.push({ label: d.secondary.label, id: d.secondary.id, amount: "1 pump" });
   if (d.tertiary) list.push({ label: d.tertiary.label, id: d.tertiary.id, amount: "1 pump" });
