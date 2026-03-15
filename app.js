@@ -313,11 +313,24 @@ function drinkName({ base, primary, secondary, tertiary }) {
   return `${lead} ${words.join(" ")} ${base.alias}`.replace(/\s+/g, " ").trim();
 }
 
-function drinkRecipe({ base, primary, secondary, tertiary, lotus }) {
-  const parts = [base.label, `${primary.label} (2)`];
-  if (secondary) parts.push(`${secondary.label} (1)`);
-  if (tertiary) parts.push(`${tertiary.label} (1)`);
+function drinkRecipe({ base, primary, secondary, tertiary, lotus }, matchedRecipe = null) {
+  let syrups = [primary, secondary, tertiary].filter(Boolean);
+
+  if (matchedRecipe?.syrupIds?.length) {
+    const byId = new Map(syrups.map(s => [s.id, s]));
+    syrups = matchedRecipe.syrupIds
+      .map(id => byId.get(id))
+      .filter(Boolean);
+  }
+
+  const parts = [base.label];
+
+  syrups.forEach((s, idx) => {
+    parts.push(`${s.label} (${idx === 0 ? 2 : 1})`);
+  });
+
   if (lotus) parts.push(`${lotus.label} (1)`);
+
   return parts.join(" + ");
 }
 
@@ -395,7 +408,7 @@ function savedDrinkToItem(sd) {
     isSavedDrink: true,
     name: sd.name || matchedRecipe?.name || drinkName(combo),
     generatedName: drinkName(combo),
-    recipe: drinkRecipe(combo),
+    recipe: drinkRecipe(combo,matchedRecipe),
     isFav: true,
     matchedRecipe,
     sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : "MY DRINK"
@@ -582,7 +595,7 @@ function applyFilters(combos) {
         id,
         generatedName: drinkName(c),
         name: matchedRecipe?.name || drinkName(c),
-        recipe: drinkRecipe(c),
+        recipe: drinkRecipe(c,matchedRecipe),
         isFav: favorites.has(id),
         matchedRecipe,
         sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : ""
