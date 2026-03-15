@@ -147,7 +147,7 @@ function normalizeSyrupIds(ids = []) {
   return ids.filter(Boolean).slice().sort();
 }
 function recipeKey(baseId, syrupIds, lotusRequired) {
-  return `${baseId}|${lotusRequired ? 'lotus' : 'plain'}|${normalizeSyrupIds(syrupIds).join('|')}`;
+  return `${baseId}|${lotusRequired ? "lotus" : "plain"}|${normalizeSyrupIds(syrupIds).join("|")}`;
 }
 function applyRecipes(recipes) {
   RECIPES = recipes.slice();
@@ -282,7 +282,7 @@ function migrateSavedDrinks() {
     changed = true;
     return {
       id: sd?.id || `saved_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-      name: sd?.name || 'Saved Drink',
+      name: sd?.name || "Saved Drink",
       syrupIds,
       baseId,
       lotusId
@@ -321,7 +321,7 @@ function savedDrinkToItem(sd) {
     recipe: drinkRecipe(combo),
     isFav: true,
     matchedRecipe,
-    sourceTag: matchedRecipe ? `${matchedRecipe.source || 'Recipe'}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ''}` : 'MY DRINK'
+    sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : "MY DRINK"
   };
 }
 
@@ -329,44 +329,62 @@ let _allCache = null;
 function getAllCombos() {
   if (_allCache) return _allCache;
   const result = [];
+
   for (const base of BASES) {
-    for (const s1 of SYRUPS) {
+    for (let i = 0; i < SYRUPS.length; i++) {
+      const s1 = SYRUPS[i];
+
       result.push({ base, primary: s1, secondary: null, tertiary: null, lotus: null, lotusScore: 0 });
+
       if (base.category !== "soda") {
         for (const lotus of LOTUS_OPTIONS) {
           const score = lotusScore(base, [s1], lotus);
-          if (score > 0) result.push({ base, primary: s1, secondary: null, tertiary: null, lotus, lotusScore: score });
+          if (score > 0) {
+            result.push({ base, primary: s1, secondary: null, tertiary: null, lotus, lotusScore: score });
+          }
         }
       }
-      for (const s2 of SYRUPS) {
-        if (s1.id === s2.id) continue;
+
+      for (let j = i + 1; j < SYRUPS.length; j++) {
+        const s2 = SYRUPS[j];
+
         result.push({ base, primary: s1, secondary: s2, tertiary: null, lotus: null, lotusScore: 0 });
+
         if (base.category !== "soda") {
           for (const lotus of LOTUS_OPTIONS) {
             const score = lotusScore(base, [s1, s2], lotus);
-            if (score > 0) result.push({ base, primary: s1, secondary: s2, tertiary: null, lotus, lotusScore: score });
+            if (score > 0) {
+              result.push({ base, primary: s1, secondary: s2, tertiary: null, lotus, lotusScore: score });
+            }
           }
         }
-        for (const s3 of SYRUPS) {
-          if (s1.id === s3.id || s2.id === s3.id) continue;
+
+        for (let k = j + 1; k < SYRUPS.length; k++) {
+          const s3 = SYRUPS[k];
+
           result.push({ base, primary: s1, secondary: s2, tertiary: s3, lotus: null, lotusScore: 0 });
+
           if (base.category !== "soda") {
             for (const lotus of LOTUS_OPTIONS) {
               const score = lotusScore(base, [s1, s2, s3], lotus);
-              if (score > 0) result.push({ base, primary: s1, secondary: s2, tertiary: s3, lotus, lotusScore: score });
+              if (score > 0) {
+                result.push({ base, primary: s1, secondary: s2, tertiary: s3, lotus, lotusScore: score });
+              }
             }
           }
         }
       }
     }
   }
+
   _allCache = result;
   return _allCache;
 }
 
 function applyFilters(combos) {
   const { baseCategory, baseFlavor, selectedLotus, favOnly, hidden, favorites, selectedSyrups } = state;
-  return combos
+
+  const mapped = combos
     .filter(c => baseCategory === "all" || c.base.category === baseCategory)
     .filter(c => baseFlavor === "all" || c.base.id === baseFlavor)
     .filter(c => selectedLotus === "none" ? !c.lotus : c.lotus?.id === selectedLotus)
@@ -389,21 +407,34 @@ function applyFilters(combos) {
         recipe: drinkRecipe(c),
         isFav: favorites.has(id),
         matchedRecipe,
-        sourceTag: matchedRecipe ? `${matchedRecipe.source || 'Recipe'}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ''}` : ''
+        sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : ""
       };
-    })
+    });
+
+  const seenRecipes = new Set();
+
+  const filtered = mapped.filter(c => {
+    if (!c.matchedRecipe) return true;
+
+    const key = c.matchedRecipe.id;
+    if (seenRecipes.has(key)) return false;
+
+    seenRecipes.add(key);
+    return true;
+  });
+
+  return filtered
     .sort((a, b) => {
+      // 1 — user favorites first
+      if (a.isFav && !b.isFav) return -1;
+      if (!a.isFav && b.isFav) return 1;
 
-  // 1 — favorites first
-  if (a.isFav && !b.isFav) return -1;
-  if (!a.isFav && b.isFav) return 1;
+      // 2 — official recipe drinks next
+      if (a.matchedRecipe && !b.matchedRecipe) return -1;
+      if (!a.matchedRecipe && b.matchedRecipe) return 1;
 
-  // 2 — recipe drinks next
-  if (a.matchedRecipe && !b.matchedRecipe) return -1;
-  if (!a.matchedRecipe && b.matchedRecipe) return 1;
-
-  if (favOnly) return a.name.localeCompare(b.name);
       if (favOnly) return a.name.localeCompare(b.name);
+
       const ap = selectedPriorityRank(a);
       const bp = selectedPriorityRank(b);
       if (ap !== bp) return ap - bp;
@@ -573,7 +604,7 @@ function saveCurrentDrink() {
     showToast("Select syrups first");
     return;
   }
-  if (state.baseFlavor === 'all') {
+  if (state.baseFlavor === "all") {
     showToast("Choose a specific base first");
     return;
   }
@@ -585,7 +616,7 @@ function saveCurrentDrink() {
   const name = prompt("Name your drink");
   if (!name || !name.trim()) return;
 
-  const lotus = state.selectedLotus === 'none' ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
+  const lotus = state.selectedLotus === "none" ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
   state.savedDrinks.unshift({
     id: `saved_${Date.now()}`,
     name: name.trim(),
@@ -651,6 +682,7 @@ document.getElementById("resetAll").addEventListener("click", () => {
   document.getElementById("favToggle").checked = false;
   render();
 });
+
 document.getElementById("baseCategory").addEventListener("change", e => {
   state.baseCategory = e.target.value;
   renderBaseFlavorOptions();
@@ -665,21 +697,25 @@ document.getElementById("baseCategory").addEventListener("change", e => {
   resetPages();
   render();
 });
+
 document.getElementById("baseFlavor").addEventListener("change", e => {
   state.baseFlavor = e.target.value;
   resetPages();
   render();
 });
+
 document.getElementById("lotusSelect").addEventListener("change", e => {
   state.selectedLotus = e.target.value;
   resetPages();
   render();
 });
+
 document.getElementById("favToggle").addEventListener("change", e => {
   state.favOnly = e.target.checked;
   resetPages();
   render();
 });
+
 document.getElementById("syrupChips").addEventListener("click", e => {
   const btn = e.target.closest("[data-syrup-id]");
   if (!btn) return;
@@ -698,7 +734,7 @@ document.getElementById("syrupChips").addEventListener("click", e => {
   render();
 });
 
-[["aPrev","aNext","A"],["bPrev","bNext","B"],["cPrev","cNext","C"]].forEach(([prev, next, key]) => {
+[["aPrev", "aNext", "A"], ["bPrev", "bNext", "B"], ["cPrev", "cNext", "C"]].forEach(([prev, next, key]) => {
   document.getElementById(prev).addEventListener("click", () => { state.pages[key]--; render(); });
   document.getElementById(next).addEventListener("click", () => { state.pages[key]++; render(); });
 });
@@ -726,6 +762,7 @@ document.addEventListener("click", e => {
     Store.saveSet(CFG.STORE_FAV, state.favorites);
     render();
   }
+
   if (action === "hide") {
     state.hidden.add(id);
     state.lastHidden = id;
@@ -751,6 +788,7 @@ document.getElementById("resetFav").addEventListener("click", () => {
   Store.saveSet(CFG.STORE_FAV, state.favorites);
   render();
 });
+
 document.getElementById("resetHide").addEventListener("click", () => {
   state.hidden.clear();
   Store.saveSet(CFG.STORE_HIDE, state.hidden);
