@@ -3,7 +3,7 @@
     {
       "id": "7brew-fizz-sunrise",
       "name": "Sunrise",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -12,7 +12,7 @@
     {
       "id": "7brew-fizz-peaches-cream",
       "name": "Peaches & Cream",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -21,7 +21,7 @@
     {
       "id": "7brew-fizz-pixie-stick",
       "name": "Pixie Stick",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -30,7 +30,7 @@
 {
   "id": "7brew-fizz-pink-mermaid",
   "name": "Pink Mermaid",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Fizz",
   "baseId": "nt_bubble_water",
   "lotusRequired": false,
@@ -39,7 +39,7 @@
 {
   "id": "7brew-fizz-stargazer",
   "name": "Stargazer",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Fizz",
   "baseId": "nt_bubble_water",
   "lotusRequired": false,
@@ -48,7 +48,7 @@
 {
   "id": "7brew-fizz-berry-blast",
   "name": "Berry Blast",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Fizz",
   "baseId": "nt_bubble_water",
   "lotusRequired": false,
@@ -57,7 +57,7 @@
 {
   "id": "7brew-fizz-sunset-punch",
   "name": "Sunset Punch",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Fizz",
   "baseId": "nt_bubble_water",
   "lotusRequired": false,
@@ -66,7 +66,7 @@
     {
       "id": "7brew-fizz-blood-orange",
       "name": "Blood Orange",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -75,7 +75,7 @@
     {
       "id": "7brew-fizz-gummy-bear",
       "name": "Gummy Bear",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -84,7 +84,7 @@
     {
       "id": "7brew-fizz-holiday-punch",
       "name": "Holiday Punch",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -93,7 +93,7 @@
     {
       "id": "7brew-fizz-midnight-rain",
       "name": "Midnight Rain",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -102,7 +102,7 @@
     {
       "id": "7brew-fizz-ocean-breeze",
       "name": "Ocean Breeze",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -111,7 +111,7 @@
     {
       "id": "7brew-fizz-orange-sherbet",
       "name": "Orange Sherbet",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -120,7 +120,7 @@
     {
       "id": "7brew-fizz-amaretto",
       "name": "Amaretto",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -129,7 +129,7 @@
     {
       "id": "7brew-fizz-bahama-mama",
       "name": "Bahama Mama",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -138,7 +138,7 @@
     {
       "id": "7brew-fizz-cherry-blossom",
       "name": "Cherry Blossom",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -147,7 +147,7 @@
     {
       "id": "7brew-fizz-razorberry",
       "name": "Razorberry",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -156,7 +156,7 @@
     {
       "id": "7brew-fizz-snickerdoodle",
       "name": "Snickerdoodle",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -165,7 +165,7 @@
     {
       "id": "7brew-fizz-tigers-blood",
       "name": "Tiger's Blood",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Fizz",
       "baseId": "nt_bubble_water",
       "lotusRequired": false,
@@ -393,7 +393,7 @@
     {
       "id": "7brew-lemonade-cocoberry",
       "name": "Cocoberry",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Lemonade",
       "baseId": "fruit_chill_lemonade",
       "lotusRequired": false,
@@ -402,7 +402,7 @@
 {
   "id": "7brew-lemonade-razorberry",
   "name": "Razorberry",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Lemonade",
   "baseId": "fruit_chill_lemonade",
   "lotusRequired": false,
@@ -411,7 +411,7 @@
 {
   "id": "7brew-lemonade-blood-orange",
   "name": "Blood Orange",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Lemonade",
   "baseId": "fruit_chill_lemonade",
   "lotusRequired": false,
@@ -420,7 +420,7 @@
 {
   "id": "7brew-lemonade-ocean-breeze",
   "name": "Ocean Breeze",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Lemonade",
   "baseId": "fruit_chill_lemonade",
   "lotusRequired": false,
@@ -429,7 +429,7 @@
 {
   "id": "7brew-lemonade-midnight-rain",
   "name": "Midnight Rain",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Lemonade",
   "baseId": "fruit_chill_lemonade",
   "lotusRequired": false,
@@ -438,7 +438,7 @@
     {
       "id": "7brew-lemonade-georgia-peach",
       "name": "Georgia Peach",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Lemonade",
       "baseId": "fruit_chill_lemonade",
       "lotusRequired": false,
@@ -447,7 +447,7 @@
     {
       "id": "7brew-lemonade-cherry-blossom",
       "name": "Cherry Blossom",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Lemonade",
       "baseId": "fruit_chill_lemonade",
       "lotusRequired": false,
@@ -457,7 +457,7 @@
     {
       "id": "7brew-energy-brewberry",
       "name": "Brewberry",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -466,7 +466,7 @@
     {
       "id": "7brew-energy-ocean-breeze",
       "name": "Ocean Breeze",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -475,7 +475,7 @@
     {
       "id": "7brew-energy-sunrise",
       "name": "Sunrise",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -484,7 +484,7 @@
     {
       "id": "7brew-energy-firecracker",
       "name": "Firecracker",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -493,7 +493,7 @@
     {
       "id": "7brew-energy-dragons-blood",
       "name": "Dragon's Blood",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -502,7 +502,7 @@
     {
       "id": "7brew-energy-blood-orange",
       "name": "Blood Orange",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -511,7 +511,7 @@
     {
       "id": "7brew-energy-boo-raspberry",
       "name": "Boo Raspberry",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -520,7 +520,7 @@
     {
       "id": "7brew-energy-midnight-rain",
       "name": "Midnight Rain",
-      "source": "7 Brew",
+      "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "nt_bubble_water",
       "lotusRequired": true,
@@ -529,7 +529,7 @@
 {
   "id": "7brew-energy-razorberry",
   "name": "Razorberry",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Energy",
   "baseId": "nt_bubble_water",
   "lotusRequired": true,
@@ -538,7 +538,7 @@
 {
   "id": "7brew-energy-bahama-mama",
   "name": "Bahama Mama",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Energy",
   "baseId": "nt_bubble_water",
   "lotusRequired": true,
@@ -547,7 +547,7 @@
 {
   "id": "7brew-energy-orange-sherbet",
   "name": "Orange Sherbet",
-  "source": "7 Brew",
+  "source": "Inspired by 7 Brew",
   "collection": "Energy",
   "baseId": "nt_bubble_water",
   "lotusRequired": true,
