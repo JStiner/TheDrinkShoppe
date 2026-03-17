@@ -96,6 +96,51 @@
     }
   ],
   "syrups": [
+{
+  "id": "grape",
+  "label": "Grape",
+  "vibe": [
+    "Bold",
+    "Juicy",
+    "Purple"
+  ],
+  "tags": [
+    "grape",
+    "purple",
+    "fruit"
+  ],
+  "active": true
+},
+{
+  "id": "watermelon",
+  "label": "Watermelon",
+  "vibe": [
+    "Summer",
+    "Juicy",
+    "Fresh"
+  ],
+  "tags": [
+    "watermelon",
+    "melon",
+    "fruit"
+  ],
+  "active": true
+},
+{
+  "id": "white_peach",
+  "label": "White Peach",
+  "vibe": [
+    "Soft",
+    "Sweet",
+    "Orchard"
+  ],
+  "tags": [
+    "peach",
+    "white peach",
+    "fruit"
+  ],
+  "active": true
+},
     {
       "id": "strawberry",
       "label": "Strawberry",
