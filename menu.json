@@ -248,6 +248,36 @@
       "active": true
     },
     {
+  "id": "green_apple",
+  "label": "Green Apple",
+  "vibe": [
+    "Crisp",
+    "Tart",
+    "Fresh"
+  ],
+  "tags": [
+    "apple",
+    "green",
+    "tart"
+  ],
+  "active": true
+},
+{
+  "id": "lavender",
+  "label": "Lavender",
+  "vibe": [
+    "Floral",
+    "Calm",
+    "Garden"
+  ],
+  "tags": [
+    "floral",
+    "purple",
+    "lavender"
+  ],
+  "active": true
+},
+   {
       "id": "red_raspberry",
       "label": "Red Raspberry",
       "vibe": [
