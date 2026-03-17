@@ -11,7 +11,7 @@
     },
 {
   "id": "house-fizz-joker",
-  "name": "Joker",
+  "name": "The Joker",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
   "baseId": "sparkling",
@@ -21,7 +21,7 @@
 
 {
   "id": "house-fizz-batman",
-  "name": "Batman",
+  "name": "I Am Batman",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
   "baseId": "sparkling",
