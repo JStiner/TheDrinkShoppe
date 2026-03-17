@@ -14,7 +14,7 @@
   "name": "Joker",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["grape","green_apple","blue_raspberry"]
 },
@@ -24,7 +24,7 @@
   "name": "Batman",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["blackberry","cherry","vanilla"]
 },
@@ -33,7 +33,7 @@
   "name": "Watermelon Wave",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["watermelon","strawberry"]
 },
@@ -42,7 +42,7 @@
   "name": "Orchard Breeze",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["white_peach","orange"]
 },
@@ -51,7 +51,7 @@
   "name": "Purple Lightning",
   "source": "Drink Shoppe",
   "collection": "House Energy",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": true,
   "syrupIds": ["grape","blue_raspberry"]
 },
@@ -69,7 +69,7 @@
   "name": "Peach Dream",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["white_peach","vanilla"]
 },
@@ -78,7 +78,7 @@
   "name": "Gotham Night",
   "source": "Drink Shoppe",
   "collection": "House Energy",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": true,
   "syrupIds": ["blackberry","blue_raspberry"]
 },
@@ -87,7 +87,7 @@
   "name": "Harley Punch",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
-  "baseId": "nt_bubble_water",
+  "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["strawberry","pomegranate"]
 },
