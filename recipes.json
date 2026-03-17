@@ -816,6 +816,286 @@
   "baseId": "nt_root_beer",
   "lotusRequired": false,
   "syrupIds": ["raspberry","vanilla"]
-}
+},
+  {
+    "id": "torani-blue-note-raspberry-soda",
+    "name": "Blue Note Raspberry Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry", "blueberry"]
+  },
+  {
+    "id": "torani-galaxy-soda",
+    "name": "Galaxy Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["blueberry", "raspberry"]
+  },
+  {
+    "id": "torani-root-beer-dirty-soda",
+    "name": "Root Beer Dirty Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_root_beer",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla", "orange"]
+  },
+  {
+    "id": "torani-orange-creamsicle-dirty-soda",
+    "name": "Orange Creamsicle Dirty Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_orange_soda",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
+  {
+    "id": "torani-cherries-n-cream-dirty-soda",
+    "name": "Cherries n Cream Dirty Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_lemon_lime",
+    "lotusRequired": false,
+    "syrupIds": ["cherry", "vanilla"]
+  },
+  {
+    "id": "torani-lemon-lime-pineapple-dirty-soda",
+    "name": "Lemon Lime Pineapple Dirty Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_lemon_lime",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "coconut"]
+  },
+  {
+    "id": "torani-galaxy-lemonade",
+    "name": "Galaxy Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["blueberry", "raspberry"]
+  },
+  {
+    "id": "torani-blue-sky-lemonade",
+    "name": "Blue Sky Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["blueberry"]
+  },
+  {
+    "id": "torani-sparkling-blueberry-lemonade",
+    "name": "Sparkling Blueberry Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["blueberry"]
+  },
+  {
+    "id": "torani-red-raspberry-lemonade",
+    "name": "Red Raspberry Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["red_raspberry"]
+  },
+  {
+    "id": "torani-light-orange-lemonade",
+    "name": "Light Orange Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["orange"]
+  },
+
+  {
+    "id": "torani-coconut-strawberry-soda",
+    "name": "Coconut Strawberry Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["coconut", "strawberry"]
+  },
+  {
+    "id": "torani-strawberry-coconut-dirty-soda",
+    "name": "Strawberry Coconut Dirty Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["strawberry", "coconut"]
+  },
+  {
+    "id": "torani-orange-vanilla-fizz",
+    "name": "Orange Vanilla Fizz",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["orange", "vanilla"]
+  },
+  {
+    "id": "torani-raspberry-blueberry-fizz",
+    "name": "Raspberry Blueberry Fizz",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry", "blueberry"]
+  },
+  {
+    "id": "torani-cherry-vanilla-cola",
+    "name": "Cherry Vanilla Cola",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["cherry", "vanilla"]
+  },
+  {
+    "id": "torani-coconut-lime-cola",
+    "name": "Coconut Lime Cola",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["coconut", "orange"]
+  },
+  {
+    "id": "torani-vanilla-root-beer-float",
+    "name": "Vanilla Root Beer Float",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_root_beer",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
+  {
+    "id": "torani-orange-root-beer-float",
+    "name": "Orange Root Beer Float",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_root_beer",
+    "lotusRequired": false,
+    "syrupIds": ["orange", "vanilla"]
+  },
+  {
+    "id": "torani-peach-pineapple-soda",
+    "name": "Peach Pineapple Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "orange"]
+  },
+  {
+    "id": "torani-blueberry-orange-lemonade",
+    "name": "Blueberry Orange Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["blueberry", "orange"]
+  },
+  {
+    "id": "torani-raspberry-orange-lemonade",
+    "name": "Raspberry Orange Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry", "orange"]
+  },
+  {
+    "id": "torani-coconut-blueberry-lemonade",
+    "name": "Coconut Blueberry Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["coconut", "blueberry"]
+  },
+  {
+    "id": "torani-vanilla-lemon-lime-soda",
+    "name": "Vanilla Lemon Lime Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_lemon_lime",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
+  {
+    "id": "torani-cherry-lemon-lime-soda",
+    "name": "Cherry Lemon Lime Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_lemon_lime",
+    "lotusRequired": false,
+    "syrupIds": ["cherry", "vanilla"]
+  },
+  {
+    "id": "torani-blueberry-bubble-water",
+    "name": "Blueberry Bubble Water",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["blueberry"]
+  },
+  {
+    "id": "torani-raspberry-bubble-water",
+    "name": "Raspberry Bubble Water",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry"]
+  },
+  {
+    "id": "torani-orange-bubble-water",
+    "name": "Orange Bubble Water",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["orange"]
+  },
+  {
+    "id": "torani-red-raspberry-bubble-water",
+    "name": "Red Raspberry Bubble Water",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_bubble_water",
+    "lotusRequired": false,
+    "syrupIds": ["red_raspberry"]
+  },
+  {
+    "id": "torani-vanilla-orange-cola",
+    "name": "Vanilla Orange Cola",
+    "source": "Adapted from Torani",
+    "collection": "Torani Dirty Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla", "orange"]
+  },
+  {
+    "id": "torani-coconut-raspberry-lemonade",
+    "name": "Coconut Raspberry Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "fruit_chill_lemonade",
+    "lotusRequired": false,
+    "syrupIds": ["coconut", "raspberry"]
+  }
   ]
 }
