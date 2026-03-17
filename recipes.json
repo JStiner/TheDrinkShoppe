@@ -722,7 +722,7 @@
 
     {
       "id": "house-soda-dr-black-cherry",
-      "name": "Black Cherry Dr.",
+      "name": "Dr. Black Cherry",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -731,7 +731,7 @@
     },
     {
       "id": "house-soda-dr-berry-cream",
-      "name": "Berry Cream Dr.",
+      "name": "Dr. Berry Cream",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -740,7 +740,7 @@
     },
     {
       "id": "house-soda-dr-cherry-almond",
-      "name": "Cherry Almond Dr.",
+      "name": "Dr. Cherry Almond",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -749,7 +749,7 @@
     },
     {
       "id": "house-soda-dr-cherry-vanilla",
-      "name": "Cherry Vanilla Dr.",
+      "name": "Dr. Cherry Vanilla",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -758,7 +758,7 @@
     },
     {
       "id": "house-soda-dr-coconut-cream",
-      "name": "Coconut Cream Dr.",
+      "name": "Dr. Coconut Cream",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -767,7 +767,7 @@
     },
     {
       "id": "house-soda-dr-midnight",
-      "name": "Midnight Dr.",
+      "name": "Dr. Midnight",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -776,7 +776,7 @@
     },
     {
       "id": "house-soda-dr-orange-cream",
-      "name": "Orange Cream Dr.",
+      "name": "Dr. Orange Cream",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -785,7 +785,7 @@
     },
     {
       "id": "house-soda-dr-peach-cream",
-      "name": "Peach Cream Dr.",
+      "name": "Dr. Peach Cream",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -794,7 +794,7 @@
     },
     {
       "id": "house-soda-dr-razorberry",
-      "name": "Razorberry Dr.",
+      "name": "Dr. Razorberry",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
@@ -803,7 +803,7 @@
     },
     {
       "id": "house-soda-dr-sunset",
-      "name": "Sunset Dr.",
+      "name": "Dr. Sunset",
       "source": "Drink Shoppe",
       "collection": "House Soda",
       "baseId": "nt_dr",
