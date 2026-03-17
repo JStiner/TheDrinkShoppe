@@ -9,7 +9,88 @@
       "lotusRequired": false,
       "syrupIds": ["banana_cream", "orange", "brown_sugar_cinnamon"]
     },
+{
+  "id": "house-fizz-joker",
+  "name": "Joker",
+  "source": "Drink Shoppe",
+  "collection": "House Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["grape","green_apple","blue_raspberry"]
+},
 
+{
+  "id": "house-fizz-batman",
+  "name": "Batman",
+  "source": "Drink Shoppe",
+  "collection": "House Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["blackberry","cherry","vanilla"]
+},
+{
+  "id": "house-fizz-watermelon-wave",
+  "name": "Watermelon Wave",
+  "source": "Drink Shoppe",
+  "collection": "House Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["watermelon","strawberry"]
+},
+{
+  "id": "house-fizz-orchard-breeze",
+  "name": "Orchard Breeze",
+  "source": "Drink Shoppe",
+  "collection": "House Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["white_peach","orange"]
+},
+{
+  "id": "house-energy-purple-lightning",
+  "name": "Purple Lightning",
+  "source": "Drink Shoppe",
+  "collection": "House Energy",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": true,
+  "syrupIds": ["grape","blue_raspberry"]
+},
+{
+  "id": "house-lemonade-summer-meltdown",
+  "name": "Summer Meltdown",
+  "source": "Drink Shoppe",
+  "collection": "House Lemonade",
+  "baseId": "fruit_chill_lemonade",
+  "lotusRequired": false,
+  "syrupIds": ["watermelon","strawberry"]
+},
+{
+  "id": "house-fizz-peach-dream",
+  "name": "Peach Dream",
+  "source": "Drink Shoppe",
+  "collection": "House Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["white_peach","vanilla"]
+},
+{
+  "id": "house-energy-gotham-night",
+  "name": "Gotham Night",
+  "source": "Drink Shoppe",
+  "collection": "House Energy",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": true,
+  "syrupIds": ["blackberry","blue_raspberry"]
+},
+{
+  "id": "house-fizz-harley-punch",
+  "name": "Harley Punch",
+  "source": "Drink Shoppe",
+  "collection": "House Fizz",
+  "baseId": "nt_bubble_water",
+  "lotusRequired": false,
+  "syrupIds": ["strawberry","pomegranate"]
+},
     {
       "id": "7brew-fizz-amaretto",
       "name": "Amaretto",
