@@ -55,22 +55,6 @@
       "active": true
     },
     {
-      "id": "chill_watermelon",
-      "label": "Fruit Chill Watermelon Lime",
-      "category": "chill",
-      "emoji": "🍉",
-      "alias": "Chill",
-      "active": true
-    },
-    {
-      "id": "chill_pineapple",
-      "label": "Fruit Chill Tropical Pineapple",
-      "category": "chill",
-      "emoji": "🍍",
-      "alias": "Chill",
-      "active": true
-    },
-    {
       "id": "chill_lemonade",
       "label": "Fruit Chill Lemonade",
       "category": "chill",
@@ -87,6 +71,22 @@
       "active": true
     },
     {
+      "id": "chill_watermelon",
+      "label": "Fruit Chill Watermelon Lime",
+      "category": "chill",
+      "emoji": "🍉",
+      "alias": "Chill",
+      "active": true
+    },
+    {
+      "id": "chill_pineapple",
+      "label": "Fruit Chill Tropical Pineapple",
+      "category": "chill",
+      "emoji": "🍍",
+      "alias": "Chill",
+      "active": true
+    },
+    {
       "id": "sparkling",
       "label": "Bubble Water",
       "category": "fizz",
@@ -96,66 +96,51 @@
     }
   ],
   "syrups": [
-    {
-      "id": "blueberry",
-      "label": "Blueberry",
-      "vibe": [
-        "Blue",
-        "Sweet",
-        "Bright"
-      ],
-      "tags": [
-        "berry",
-        "blue",
-        "sweet"
-      ],
-      "active": true
-    },
-    {
-      "id": "cherry",
-      "label": "Cherry",
-      "vibe": [
-        "Classic",
-        "Red",
-        "Pop"
-      ],
-      "tags": [
-        "berry",
-        "red",
-        "cherry"
-      ],
-      "active": true
-    },
-    {
-      "id": "peach",
-      "label": "Peach",
-      "vibe": [
-        "Sunset",
-        "Orchard",
-        "Golden"
-      ],
-      "tags": [
-        "stone-fruit",
-        "peach",
-        "sweet"
-      ],
-      "active": true
-    },
-    {
-      "id": "almond",
-      "label": "Almond",
-      "vibe": [
-        "Nutty",
-        "Toasted",
-        "Creamy"
-      ],
-      "tags": [
-        "nutty",
-        "dessert",
-        "cream"
-      ],
-      "active": true
-    },
+{
+  "id": "grape",
+  "label": "Grape",
+  "vibe": [
+    "Bold",
+    "Juicy",
+    "Purple"
+  ],
+  "tags": [
+    "grape",
+    "purple",
+    "fruit"
+  ],
+  "active": true
+},
+{
+  "id": "watermelon",
+  "label": "Watermelon",
+  "vibe": [
+    "Summer",
+    "Juicy",
+    "Fresh"
+  ],
+  "tags": [
+    "watermelon",
+    "melon",
+    "fruit"
+  ],
+  "active": true
+},
+{
+  "id": "white_peach",
+  "label": "White Peach",
+  "vibe": [
+    "Soft",
+    "Sweet",
+    "Orchard"
+  ],
+  "tags": [
+    "peach",
+    "white peach",
+    "fruit"
+  ],
+  "active": true
+},
     {
       "id": "strawberry",
       "label": "Strawberry",
@@ -168,36 +153,6 @@
         "berry",
         "red",
         "strawberry"
-      ],
-      "active": true
-    },
-    {
-      "id": "pomegranate",
-      "label": "Pomegranate",
-      "vibe": [
-        "Ruby",
-        "Royal",
-        "Crimson"
-      ],
-      "tags": [
-        "berry",
-        "red",
-        "tart"
-      ],
-      "active": true
-    },
-    {
-      "id": "orange",
-      "label": "Orange",
-      "vibe": [
-        "Citrus",
-        "Blaze",
-        "Ember"
-      ],
-      "tags": [
-        "citrus",
-        "orange",
-        "bright"
       ],
       "active": true
     },
@@ -217,17 +172,17 @@
       "active": true
     },
     {
-      "id": "coconut",
-      "label": "Coconut",
+      "id": "red_raspberry",
+      "label": "Red Raspberry",
       "vibe": [
-        "Island",
-        "Creamy",
-        "Breeze"
+        "Scarlet",
+        "Bold",
+        "Berry"
       ],
       "tags": [
-        "coconut",
-        "tropical",
-        "cream"
+        "berry",
+        "red",
+        "raspberry"
       ],
       "active": true
     },
@@ -248,17 +203,17 @@
       "active": true
     },
     {
-      "id": "red_raspberry",
-      "label": "Red Raspberry",
+      "id": "blueberry",
+      "label": "Blueberry",
       "vibe": [
-        "Scarlet",
-        "Bold",
-        "Berry"
+        "Blue",
+        "Sweet",
+        "Bright"
       ],
       "tags": [
         "berry",
-        "red",
-        "raspberry"
+        "blue",
+        "sweet"
       ],
       "active": true
     },
@@ -278,17 +233,107 @@
       "active": true
     },
     {
-      "id": "brown_sugar_cinnamon",
-      "label": "Brown Sugar Cinnamon",
+      "id": "cherry",
+      "label": "Cherry",
       "vibe": [
-        "Toasted",
-        "Warm",
-        "Cozy"
+        "Classic",
+        "Red",
+        "Pop"
       ],
       "tags": [
-        "spice",
-        "dessert",
-        "warm"
+        "berry",
+        "red",
+        "cherry"
+      ],
+      "active": true
+    },
+    {
+      "id": "pomegranate",
+      "label": "Pomegranate",
+      "vibe": [
+        "Ruby",
+        "Royal",
+        "Crimson"
+      ],
+      "tags": [
+        "berry",
+        "red",
+        "tart"
+      ],
+      "active": true
+    },
+    {
+      "id": "peach",
+      "label": "Peach",
+      "vibe": [
+        "Sunset",
+        "Orchard",
+        "Golden"
+      ],
+      "tags": [
+        "stone-fruit",
+        "peach",
+        "sweet"
+      ],
+      "active": true
+    },
+    {
+      "id": "green_apple",
+      "label": "Green Apple",
+      "vibe": [
+        "Crisp",
+        "Tart",
+        "Fresh"
+      ],
+      "tags": [
+        "apple",
+        "green",
+        "tart"
+      ],
+      "active": true
+    },
+    {
+      "id": "orange",
+      "label": "Orange",
+      "vibe": [
+        "Citrus",
+        "Blaze",
+        "Ember"
+      ],
+      "tags": [
+        "citrus",
+        "orange",
+        "bright"
+      ],
+      "active": true
+    },
+    {
+      "id": "coconut",
+      "label": "Coconut",
+      "vibe": [
+        "Island",
+        "Creamy",
+        "Breeze"
+      ],
+      "tags": [
+        "coconut",
+        "tropical",
+        "cream"
+      ],
+      "active": true
+    },
+    {
+      "id": "lavender",
+      "label": "Lavender",
+      "vibe": [
+        "Floral",
+        "Calm",
+        "Garden"
+      ],
+      "tags": [
+        "floral",
+        "purple",
+        "lavender"
       ],
       "active": true
     },
@@ -319,6 +364,36 @@
         "vanilla",
         "cream",
         "dessert"
+      ],
+      "active": true
+    },
+    {
+      "id": "almond",
+      "label": "Almond",
+      "vibe": [
+        "Nutty",
+        "Toasted",
+        "Creamy"
+      ],
+      "tags": [
+        "nutty",
+        "dessert",
+        "cream"
+      ],
+      "active": true
+    },
+    {
+      "id": "brown_sugar_cinnamon",
+      "label": "Brown Sugar Cinnamon",
+      "vibe": [
+        "Toasted",
+        "Warm",
+        "Cozy"
+      ],
+      "tags": [
+        "spice",
+        "dessert",
+        "warm"
       ],
       "active": true
     }
@@ -384,34 +459,6 @@
       "active": true
     },
     {
-      "id": "blue_lotus",
-      "label": "Blue Lotus",
-      "family": "blue",
-      "color": "blue",
-      "flavorNotes": [
-        "huckleberry",
-        "blue-fruit"
-      ],
-      "pairsWellWith": [
-        "berry",
-        "blue",
-        "citrus",
-        "coconut",
-        "tropical"
-      ],
-      "avoidWith": [
-        "cola",
-        "rootbeer",
-        "spice"
-      ],
-      "vibe": [
-        "Electric",
-        "Frost",
-        "Wave"
-      ],
-      "active": true
-    },
-    {
       "id": "red_lotus",
       "label": "Red Lotus",
       "family": "red",
@@ -436,6 +483,34 @@
         "Crimson",
         "Rush",
         "Flare"
+      ],
+      "active": true
+    },
+    {
+      "id": "blue_lotus",
+      "label": "Blue Lotus",
+      "family": "blue",
+      "color": "blue",
+      "flavorNotes": [
+        "huckleberry",
+        "blue-fruit"
+      ],
+      "pairsWellWith": [
+        "berry",
+        "blue",
+        "citrus",
+        "coconut",
+        "tropical"
+      ],
+      "avoidWith": [
+        "cola",
+        "rootbeer",
+        "spice"
+      ],
+      "vibe": [
+        "Electric",
+        "Frost",
+        "Wave"
       ],
       "active": true
     },
