@@ -125,12 +125,24 @@ async function loadMenu() {
 }
 
 async function loadRecipes() {
+  const files = [
+    "recipes_house.json",
+    "recipes_7brew.json",
+    "recipes_torani.json"
+  ];
+
   try {
-    const res = await fetch("recipes.json", { cache: "no-store" });
-    const data = await res.json();
-    if (Array.isArray(data)) return data;
-    if (Array.isArray(data.recipes)) return data.recipes;
-    return [];
+    const results = await Promise.all(
+      files.map(async file => {
+        const res = await fetch(file, { cache: "no-store" });
+        const data = await res.json();
+        if (Array.isArray(data)) return data;
+        if (Array.isArray(data.recipes)) return data.recipes;
+        return [];
+      })
+    );
+
+    return results.flat();
   } catch {
     return [];
   }
@@ -143,18 +155,84 @@ function applyMenu(menu) {
   LOTUS_OPTIONS = (menu.lotus || []).filter(x => x.active !== false).slice().sort(byOrder);
 }
 
+function normalizeToken(value) {
+  return String(value || "").trim().toLowerCase().replace(/\s+/g, "_");
+}
+
 function normalizeSyrupIds(ids = []) {
-  return ids.filter(Boolean).slice().sort();
+  return ids.filter(Boolean).map(normalizeToken).sort();
 }
-function recipeKey(baseId, syrupIds, lotusRequired) {
-  return `${baseId}|${lotusRequired ? 'lotus' : 'plain'}|${normalizeSyrupIds(syrupIds).join('|')}`;
+
+function recipeKey(baseToken, syrupIds, lotusRequired) {
+  return `${normalizeToken(baseToken)}|${lotusRequired ? "lotus" : "plain"}|${normalizeSyrupIds(syrupIds).join("|")}`;
 }
+
+function getRecipeBaseTokens(baseId) {
+  const token = normalizeToken(baseId);
+  const tokens = new Set([token]);
+
+  if (["fizz", "sparkling"].includes(token)) {
+    tokens.add("fizz");
+    tokens.add("sparkling");
+  }
+
+  if (["chill", "chill_lemonade"].includes(token)) {
+    tokens.add("chill");
+    tokens.add("chill_lemonade");
+  }
+
+  return [...tokens];
+}
+
+function getComboBaseTokens(c) {
+  const tokens = new Set();
+
+  const baseId = normalizeToken(c?.base?.id);
+  const category = normalizeToken(c?.base?.category);
+
+  if (baseId) tokens.add(baseId);
+  if (category) tokens.add(category);
+
+  if (baseId === "sparkling" || category === "fizz") {
+    tokens.add("fizz");
+    tokens.add("sparkling");
+  }
+
+  if (baseId === "chill_lemonade" || category === "chill") {
+    tokens.add("chill");
+    tokens.add("chill_lemonade");
+  }
+
+  return [...tokens];
+}
+
+function recipePriority(recipe) {
+  const source = String(recipe?.source || "");
+  const id = normalizeToken(recipe?.id);
+  const name = normalizeToken(recipe?.name);
+
+  if (id.includes("orange_you_glad") || name.includes("orange_you_glad")) return 1;
+  if (["joker", "batman", "gotham", "harley"].some(k => id.includes(k) || name.includes(k))) return 1;
+  if (source.includes("7 Brew")) return 2;
+  if (source.includes("Torani")) return 3;
+  return 4;
+}
+
 function applyRecipes(recipes) {
-  RECIPES = recipes.slice();
+  RECIPES = Array.isArray(recipes) ? recipes.slice() : [];
   RECIPE_INDEX = new Map();
+
   RECIPES.forEach(r => {
     if (!r?.baseId || !Array.isArray(r.syrupIds) || !r.syrupIds.length || !r.name) return;
-    RECIPE_INDEX.set(recipeKey(r.baseId, r.syrupIds, !!r.lotusRequired), r);
+
+    const baseTokens = getRecipeBaseTokens(r.baseId);
+    for (const token of baseTokens) {
+      const key = recipeKey(token, r.syrupIds, !!r.lotusRequired);
+      const existing = RECIPE_INDEX.get(key);
+      if (!existing || recipePriority(r) < recipePriority(existing)) {
+        RECIPE_INDEX.set(key, r);
+      }
+    }
   });
 }
 
@@ -163,13 +241,6 @@ function drinkId({ base, primary, secondary, tertiary, lotus }) {
 }
 function getDrinkSyrupIds(c) {
   return [c.primary?.id, c.secondary?.id, c.tertiary?.id].filter(Boolean);
-}
-function getDrinkTags(c) {
-  const tags = [];
-  [c.primary, c.secondary, c.tertiary].forEach(s => {
-    if (s?.tags?.length) tags.push(...s.tags);
-  });
-  return [...new Set(tags)];
 }
 function matchCount(c) {
   const chosen = new Set(state.selectedSyrups);
@@ -244,17 +315,38 @@ function drinkName({ base, primary, secondary, tertiary }) {
   return `${lead} ${words.join(" ")} ${base.alias}`.replace(/\s+/g, " ").trim();
 }
 
-function drinkRecipe({ base, primary, secondary, tertiary, lotus }) {
-  const parts = [base.label, `${primary.label} (2)`];
-  if (secondary) parts.push(`${secondary.label} (1)`);
-  if (tertiary) parts.push(`${tertiary.label} (1)`);
+function drinkRecipe({ base, primary, secondary, tertiary, lotus }, matchedRecipe = null) {
+  let syrups = [primary, secondary, tertiary].filter(Boolean);
+
+  if (matchedRecipe?.syrupIds?.length) {
+    const byId = new Map(syrups.map(s => [s.id, s]));
+    syrups = matchedRecipe.syrupIds
+      .map(id => byId.get(id))
+      .filter(Boolean);
+  }
+
+  const parts = [base.label];
+
+  syrups.forEach((s, idx) => {
+    parts.push(`${s.label} (${idx === 0 ? 2 : 1})`);
+  });
+
   if (lotus) parts.push(`${lotus.label} (1)`);
+
   return parts.join(" + ");
 }
 
 function matchRecipeForCombo(c) {
-  const key = recipeKey(c.base.id, getDrinkSyrupIds(c), !!c.lotus);
-  return RECIPE_INDEX.get(key) || null;
+  const syrupIds = getDrinkSyrupIds(c);
+  const baseTokens = getComboBaseTokens(c);
+
+  for (const token of baseTokens) {
+    const key = recipeKey(token, syrupIds, !!c.lotus);
+    const match = RECIPE_INDEX.get(key);
+    if (match) return match;
+  }
+
+  return null;
 }
 
 function labelMap(items) {
@@ -282,7 +374,7 @@ function migrateSavedDrinks() {
     changed = true;
     return {
       id: sd?.id || `saved_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-      name: sd?.name || 'Saved Drink',
+      name: sd?.name || "Saved Drink",
       syrupIds,
       baseId,
       lotusId
@@ -318,38 +410,175 @@ function savedDrinkToItem(sd) {
     isSavedDrink: true,
     name: sd.name || matchedRecipe?.name || drinkName(combo),
     generatedName: drinkName(combo),
-    recipe: drinkRecipe(combo),
+    recipe: drinkRecipe(combo,matchedRecipe),
     isFav: true,
     matchedRecipe,
-    sourceTag: matchedRecipe ? `${matchedRecipe.source || 'Recipe'}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ''}` : 'MY DRINK'
+    sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : "MY DRINK"
   };
+}
+
+function ingredientEmoji(label, id = "") {
+  const key = `${id} ${label}`.toLowerCase();
+
+  if (key.includes("bubble") || key.includes("fizz")) return "🫧";
+  if (key.includes("lemonade")) return "🍋";
+  if (key.includes("cola")) return "🥤";
+  if (key.includes("root")) return "🍺";
+  if (key.includes("dr")) return "🥤";
+  if (key.includes("lotus")) return "⚡";
+  if (key.includes("strawberry")) return "🍓";
+  if (key.includes("raspberry")) return "🫐";
+  if (key.includes("blackberry")) return "🫐";
+  if (key.includes("blue_raspberry") || key.includes("blue raspberry")) return "🟦";
+  if (key.includes("orange")) return "🍊";
+  if (key.includes("peach")) return "🍑";
+  if (key.includes("coconut")) return "🥥";
+  if (key.includes("cherry")) return "🍒";
+  if (key.includes("almond")) return "🌰";
+  if (key.includes("vanilla")) return "🍦";
+  if (key.includes("pomegranate")) return "🍷";
+  if (key.includes("brown_sugar_cinnamon")) return "🧁";
+
+  return "🍹";
+}
+
+function detailLookupItems() {
+  const comboItems = applyFilters(getAllCombos());
+  const savedItems = (state.savedDrinks || []).map(savedDrinkToItem).filter(Boolean);
+  return [...savedItems, ...comboItems];
+}
+
+function getDrinkById(id) {
+  return detailLookupItems().find(d => d.id === id) || null;
+}
+
+function getDrinkIngredients(d) {
+  let syrups = [d.primary, d.secondary, d.tertiary].filter(Boolean);
+
+  if (d.matchedRecipe?.syrupIds?.length) {
+    const byId = new Map(syrups.map(s => [s.id, s]));
+    syrups = d.matchedRecipe.syrupIds
+      .map(id => byId.get(id))
+      .filter(Boolean);
+  }
+
+  const list = [
+    { label: d.base.label, id: d.base.id, amount: "Base" }
+  ];
+
+  syrups.forEach((s, idx) => {
+    list.push({
+      label: s.label,
+      id: s.id,
+      amount: idx === 0 ? "2 pumps" : "1 pump"
+    });
+  });
+
+  if (d.lotus) {
+    list.push({
+      label: d.lotus.label,
+      id: d.lotus.id,
+      amount: "1 pump"
+    });
+  }
+
+  return list;
+}
+
+function openDrinkDetail(id) {
+  const d = getDrinkById(id);
+  if (!d) return;
+
+  const detail = document.getElementById("drinkDetail");
+  const nameEl = document.getElementById("drinkDetailName");
+  const emojiEl = document.getElementById("drinkDetailEmoji");
+  const srcEl = document.getElementById("drinkDetailSource");
+  const ingredientsEl = document.getElementById("drinkDetailIngredients");
+  const recipeEl = document.getElementById("drinkDetailRecipe");
+  const favBtn = document.getElementById("drinkDetailFav");
+
+  if (!detail || !nameEl || !emojiEl || !srcEl || !ingredientsEl || !recipeEl || !favBtn) {
+    return;
+  }
+
+  nameEl.textContent = d.name;
+  emojiEl.textContent = d.base.emoji || "🥤";
+  srcEl.textContent = d.sourceTag || (d.isSavedDrink ? "My Drink" : "");
+  recipeEl.textContent = d.recipe;
+
+  ingredientsEl.innerHTML = "";
+  getDrinkIngredients(d).forEach(item => {
+    const row = document.createElement("div");
+    row.className = "drink-ingredient";
+    row.innerHTML = `
+      <div class="drink-ingredient-emoji">${ingredientEmoji(item.label, item.id)}</div>
+      <div>${item.label}</div>
+      <div style="margin-left:auto; opacity:.75;">${item.amount}</div>
+    `;
+    ingredientsEl.appendChild(row);
+  });
+
+  if (d.isSavedDrink) {
+    favBtn.classList.add("fav-on");
+    favBtn.textContent = "★";
+    favBtn.disabled = true;
+    delete favBtn.dataset.drinkId;
+  } else {
+    const isFav = state.favorites.has(d.id);
+    favBtn.disabled = false;
+    favBtn.dataset.drinkId = d.id;
+    favBtn.classList.toggle("fav-on", isFav);
+    favBtn.textContent = isFav ? "★" : "☆";
+  }
+
+  detail.dataset.drinkId = d.id;
+  detail.classList.remove("hidden");
+  detail.setAttribute("aria-hidden", "false");
+}
+
+function closeDrinkDetail() {
+  const detail = document.getElementById("drinkDetail");
+  if (!detail) return;
+  detail.classList.add("hidden");
+  detail.setAttribute("aria-hidden", "true");
+  delete detail.dataset.drinkId;
 }
 
 let _allCache = null;
 function getAllCombos() {
   if (_allCache) return _allCache;
   const result = [];
+
   for (const base of BASES) {
-    for (const s1 of SYRUPS) {
+    for (let i = 0; i < SYRUPS.length; i++) {
+      const s1 = SYRUPS[i];
+
       result.push({ base, primary: s1, secondary: null, tertiary: null, lotus: null, lotusScore: 0 });
+
       if (base.category !== "soda") {
         for (const lotus of LOTUS_OPTIONS) {
           const score = lotusScore(base, [s1], lotus);
           if (score > 0) result.push({ base, primary: s1, secondary: null, tertiary: null, lotus, lotusScore: score });
         }
       }
-      for (const s2 of SYRUPS) {
-        if (s1.id === s2.id) continue;
+
+      for (let j = i + 1; j < SYRUPS.length; j++) {
+        const s2 = SYRUPS[j];
+
         result.push({ base, primary: s1, secondary: s2, tertiary: null, lotus: null, lotusScore: 0 });
+
         if (base.category !== "soda") {
           for (const lotus of LOTUS_OPTIONS) {
             const score = lotusScore(base, [s1, s2], lotus);
             if (score > 0) result.push({ base, primary: s1, secondary: s2, tertiary: null, lotus, lotusScore: score });
           }
         }
-        for (const s3 of SYRUPS) {
-          if (s1.id === s3.id || s2.id === s3.id) continue;
+
+        for (let k = j + 1; k < SYRUPS.length; k++) {
+          const s3 = SYRUPS[k];
+
           result.push({ base, primary: s1, secondary: s2, tertiary: s3, lotus: null, lotusScore: 0 });
+
           if (base.category !== "soda") {
             for (const lotus of LOTUS_OPTIONS) {
               const score = lotusScore(base, [s1, s2, s3], lotus);
@@ -360,13 +589,15 @@ function getAllCombos() {
       }
     }
   }
+
   _allCache = result;
   return _allCache;
 }
 
 function applyFilters(combos) {
   const { baseCategory, baseFlavor, selectedLotus, favOnly, hidden, favorites, selectedSyrups } = state;
-  return combos
+
+  const mapped = combos
     .filter(c => baseCategory === "all" || c.base.category === baseCategory)
     .filter(c => baseFlavor === "all" || c.base.id === baseFlavor)
     .filter(c => selectedLotus === "none" ? !c.lotus : c.lotus?.id === selectedLotus)
@@ -386,33 +617,53 @@ function applyFilters(combos) {
         id,
         generatedName: drinkName(c),
         name: matchedRecipe?.name || drinkName(c),
-        recipe: drinkRecipe(c),
+        recipe: drinkRecipe(c,matchedRecipe),
         isFav: favorites.has(id),
         matchedRecipe,
-        sourceTag: matchedRecipe ? `${matchedRecipe.source || 'Recipe'}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ''}` : ''
+        sourceTag: matchedRecipe ? `${matchedRecipe.source || "Recipe"}${matchedRecipe.collection ? ` · ${matchedRecipe.collection}` : ""}` : ""
       };
-    })
-    .sort((a, b) => {
-      if (favOnly) return a.name.localeCompare(b.name);
-      const ap = selectedPriorityRank(a);
-      const bp = selectedPriorityRank(b);
-      if (ap !== bp) return ap - bp;
-
-      const am = matchCount(a);
-      const bm = matchCount(b);
-      if (am !== bm) return bm - am;
-
-      if (state.selectedLotus !== "none" && a.lotusScore !== b.lotusScore) return b.lotusScore - a.lotusScore;
-
-      const ao = compareSelectedOrder(a, b);
-      if (ao !== 0) return ao;
-
-      const ac = getDrinkSyrupIds(a).length;
-      const bc = getDrinkSyrupIds(b).length;
-      if (selectedSyrups.length > 0 && am > 0 && bm > 0 && ac !== bc) return ac - bc;
-
-      return a.name.localeCompare(b.name);
     });
+
+  const seenRecipes = new Set();
+
+  const filtered = mapped.filter(c => {
+    if (!c.matchedRecipe) return true;
+
+    const key = c.matchedRecipe.id;
+    if (seenRecipes.has(key)) return false;
+
+    seenRecipes.add(key);
+    return true;
+  });
+
+  return filtered.sort((a, b) => {
+    if (a.isFav && !b.isFav) return -1;
+    if (!a.isFav && b.isFav) return 1;
+
+    if (a.matchedRecipe && !b.matchedRecipe) return -1;
+    if (!a.matchedRecipe && b.matchedRecipe) return 1;
+
+    if (favOnly) return a.name.localeCompare(b.name);
+
+    const ap = selectedPriorityRank(a);
+    const bp = selectedPriorityRank(b);
+    if (ap !== bp) return ap - bp;
+
+    const am = matchCount(a);
+    const bm = matchCount(b);
+    if (am !== bm) return bm - am;
+
+    if (state.selectedLotus !== "none" && a.lotusScore !== b.lotusScore) return b.lotusScore - a.lotusScore;
+
+    const ao = compareSelectedOrder(a, b);
+    if (ao !== 0) return ao;
+
+    const ac = getDrinkSyrupIds(a).length;
+    const bc = getDrinkSyrupIds(b).length;
+    if (selectedSyrups.length > 0 && am > 0 && bm > 0 && ac !== bc) return ac - bc;
+
+    return a.name.localeCompare(b.name);
+  });
 }
 
 function renderItem(d) {
@@ -433,7 +684,7 @@ function renderItem(d) {
 
   div.innerHTML = `
     <div class="drink-emoji">${d.base.emoji}</div>
-    <div class="drink-body">
+    <div class="drink-body" data-action="open-detail" data-drink-id="${d.id}">
       <div class="drink-name">${d.name}</div>
       <div class="drink-tags">
         <span class="dtag">${d.recipe}</span>
@@ -489,6 +740,7 @@ function renderColumn({ listEl, footEl, countEl, prevBtn, nextBtn, items, pageKe
 
 function renderSyrupChips() {
   const el = document.getElementById("syrupChips");
+  if (!el) return;
   el.innerHTML = "";
   const selectedIds = new Set(state.selectedSyrups);
   const selected = state.selectedSyrups.map(id => SYRUPS.find(s => s.id === id)).filter(Boolean);
@@ -506,6 +758,7 @@ function renderSyrupChips() {
 
 function renderBaseOptions() {
   const sel = document.getElementById("baseCategory");
+  if (!sel) return;
   const categories = (MENU.categories || []).slice().sort(byOrder);
   sel.innerHTML = `<option value="all">All</option>`;
   categories.forEach(c => {
@@ -519,6 +772,7 @@ function renderBaseOptions() {
 
 function renderBaseFlavorOptions() {
   const sel = document.getElementById("baseFlavor");
+  if (!sel) return;
   const prev = state.baseFlavor;
   sel.innerHTML = `<option value="all">All</option>`;
   const bases = state.baseCategory === "all" ? BASES : BASES.filter(b => b.category === state.baseCategory);
@@ -534,6 +788,7 @@ function renderBaseFlavorOptions() {
 
 function renderLotusOptions() {
   const sel = document.getElementById("lotusSelect");
+  if (!sel) return;
   const prev = state.selectedLotus;
   sel.innerHTML = `<option value="none">No Lotus</option>`;
   LOTUS_OPTIONS.forEach(l => {
@@ -548,7 +803,9 @@ function renderLotusOptions() {
 
 function showToast(msg) {
   const el = document.getElementById("toast");
-  document.getElementById("toast-msg").textContent = msg;
+  const msgEl = document.getElementById("toast-msg");
+  if (!el || !msgEl) return;
+  msgEl.textContent = msg;
   el.classList.add("show");
   clearTimeout(showToast._t);
   showToast._t = setTimeout(() => el.classList.remove("show"), 3000);
@@ -563,7 +820,7 @@ function saveCurrentDrink() {
     showToast("Select syrups first");
     return;
   }
-  if (state.baseFlavor === 'all') {
+  if (state.baseFlavor === "all") {
     showToast("Choose a specific base first");
     return;
   }
@@ -575,7 +832,7 @@ function saveCurrentDrink() {
   const name = prompt("Name your drink");
   if (!name || !name.trim()) return;
 
-  const lotus = state.selectedLotus === 'none' ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
+  const lotus = state.selectedLotus === "none" ? null : LOTUS_OPTIONS.find(l => l.id === state.selectedLotus) || null;
   state.savedDrinks.unshift({
     id: `saved_${Date.now()}`,
     name: name.trim(),
@@ -589,7 +846,8 @@ function saveCurrentDrink() {
 }
 
 function render() {
-  document.getElementById("favLabel").textContent = state.favOnly ? "Only Favorites" : "All Drinks";
+  const favLabel = document.getElementById("favLabel");
+  if (favLabel) favLabel.textContent = state.favOnly ? "Only Favorites" : "All Drinks";
 
   const items = applyFilters(getAllCombos());
   const listA = items.filter(x => x.base.category === "soda");
@@ -605,6 +863,7 @@ function render() {
   let visible = 0;
   for (const c of cols) {
     const sec = document.getElementById(c.sec);
+    if (!sec) continue;
     if (!c.list.length && !(c.includeSaved && state.savedDrinks.length)) {
       sec.style.display = "none";
     } else {
@@ -622,55 +881,74 @@ function render() {
       });
     }
   }
-  document.getElementById("grid").dataset.cols = visible <= 1 ? "1" : visible === 2 ? "2" : "3";
+  const grid = document.getElementById("grid");
+  if (grid) grid.dataset.cols = visible <= 1 ? "1" : visible === 2 ? "2" : "3";
   renderSyrupChips();
 }
 
-document.getElementById("saveDrinkBtn").addEventListener("click", saveCurrentDrink);
-document.getElementById("resetAll").addEventListener("click", () => {
+const saveDrinkBtn = document.getElementById("saveDrinkBtn");
+if (saveDrinkBtn) saveDrinkBtn.addEventListener("click", saveCurrentDrink);
+
+const resetAllBtn = document.getElementById("resetAll");
+if (resetAllBtn) resetAllBtn.addEventListener("click", () => {
   state.baseCategory = "all";
   state.baseFlavor = "all";
   state.selectedLotus = "none";
   state.favOnly = false;
   state.selectedSyrups = [];
   resetPages();
-  document.getElementById("baseCategory").value = "all";
+  const baseCategoryEl = document.getElementById("baseCategory");
+  const baseFlavorEl = document.getElementById("baseFlavor");
+  const lotusSelectEl = document.getElementById("lotusSelect");
+  const favToggleEl = document.getElementById("favToggle");
+  if (baseCategoryEl) baseCategoryEl.value = "all";
   renderBaseFlavorOptions();
-  document.getElementById("baseFlavor").value = "all";
-  document.getElementById("lotusSelect").value = "none";
-  document.getElementById("favToggle").checked = false;
+  if (baseFlavorEl) baseFlavorEl.value = "all";
+  if (lotusSelectEl) lotusSelectEl.value = "none";
+  if (favToggleEl) favToggleEl.checked = false;
   render();
 });
-document.getElementById("baseCategory").addEventListener("change", e => {
+
+const baseCategoryEl = document.getElementById("baseCategory");
+if (baseCategoryEl) baseCategoryEl.addEventListener("change", e => {
   state.baseCategory = e.target.value;
   renderBaseFlavorOptions();
   const matchingBases = state.baseCategory === "all" ? BASES : BASES.filter(b => b.category === state.baseCategory);
+  const baseFlavorEl = document.getElementById("baseFlavor");
   if (matchingBases.length === 1) {
     state.baseFlavor = matchingBases[0].id;
-    document.getElementById("baseFlavor").value = matchingBases[0].id;
+    if (baseFlavorEl) baseFlavorEl.value = matchingBases[0].id;
   } else {
     state.baseFlavor = "all";
-    document.getElementById("baseFlavor").value = "all";
+    if (baseFlavorEl) baseFlavorEl.value = "all";
   }
   resetPages();
   render();
 });
-document.getElementById("baseFlavor").addEventListener("change", e => {
+
+const baseFlavorEl2 = document.getElementById("baseFlavor");
+if (baseFlavorEl2) baseFlavorEl2.addEventListener("change", e => {
   state.baseFlavor = e.target.value;
   resetPages();
   render();
 });
-document.getElementById("lotusSelect").addEventListener("change", e => {
+
+const lotusSelectEl2 = document.getElementById("lotusSelect");
+if (lotusSelectEl2) lotusSelectEl2.addEventListener("change", e => {
   state.selectedLotus = e.target.value;
   resetPages();
   render();
 });
-document.getElementById("favToggle").addEventListener("change", e => {
+
+const favToggleEl2 = document.getElementById("favToggle");
+if (favToggleEl2) favToggleEl2.addEventListener("change", e => {
   state.favOnly = e.target.checked;
   resetPages();
   render();
 });
-document.getElementById("syrupChips").addEventListener("click", e => {
+
+const syrupChipsEl = document.getElementById("syrupChips");
+if (syrupChipsEl) syrupChipsEl.addEventListener("click", e => {
   const btn = e.target.closest("[data-syrup-id]");
   if (!btn) return;
   const id = btn.dataset.syrupId;
@@ -688,12 +966,49 @@ document.getElementById("syrupChips").addEventListener("click", e => {
   render();
 });
 
-[["aPrev","aNext","A"],["bPrev","bNext","B"],["cPrev","cNext","C"]].forEach(([prev, next, key]) => {
-  document.getElementById(prev).addEventListener("click", () => { state.pages[key]--; render(); });
-  document.getElementById(next).addEventListener("click", () => { state.pages[key]++; render(); });
+[["aPrev", "aNext", "A"], ["bPrev", "bNext", "B"], ["cPrev", "cNext", "C"]].forEach(([prev, next, key]) => {
+  const prevEl = document.getElementById(prev);
+  const nextEl = document.getElementById(next);
+  if (prevEl) prevEl.addEventListener("click", () => { state.pages[key]--; render(); });
+  if (nextEl) nextEl.addEventListener("click", () => { state.pages[key]++; render(); });
 });
 
 document.addEventListener("click", e => {
+  const openTarget = e.target.closest('[data-action="open-detail"]');
+  if (openTarget) {
+    openDrinkDetail(openTarget.dataset.drinkId);
+    return;
+  }
+
+  const backBtn = e.target.closest("#drinkDetailBack");
+  if (backBtn) {
+    closeDrinkDetail();
+    return;
+  }
+
+  const favBtn = e.target.closest("#drinkDetailFav");
+  if (favBtn) {
+    const id = favBtn.dataset.drinkId;
+    if (!id) return;
+
+    if (state.favorites.has(id)) {
+      state.favorites.delete(id);
+    } else {
+      state.favorites.add(id);
+    }
+
+    Store.saveSet(CFG.STORE_FAV, state.favorites);
+    render();
+    openDrinkDetail(id);
+    return;
+  }
+
+  const overlay = e.target.closest("#drinkDetail");
+  if (overlay && e.target.id === "drinkDetail") {
+    closeDrinkDetail();
+    return;
+  }
+
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
   const { action } = btn.dataset;
@@ -716,6 +1031,7 @@ document.addEventListener("click", e => {
     Store.saveSet(CFG.STORE_FAV, state.favorites);
     render();
   }
+
   if (action === "hide") {
     state.hidden.add(id);
     state.lastHidden = id;
@@ -726,22 +1042,27 @@ document.addEventListener("click", e => {
   }
 });
 
-document.getElementById("toast-undo").addEventListener("click", () => {
+const toastUndoEl = document.getElementById("toast-undo");
+if (toastUndoEl) toastUndoEl.addEventListener("click", () => {
   if (!state.lastHidden) return;
   state.hidden.delete(state.lastHidden);
   Store.saveSet(CFG.STORE_HIDE, state.hidden);
   state.lastHidden = null;
-  document.getElementById("toast").classList.remove("show");
+  const toastEl = document.getElementById("toast");
+  if (toastEl) toastEl.classList.remove("show");
   resetPages();
   render();
 });
 
-document.getElementById("resetFav").addEventListener("click", () => {
+const resetFavEl = document.getElementById("resetFav");
+if (resetFavEl) resetFavEl.addEventListener("click", () => {
   state.favorites.clear();
   Store.saveSet(CFG.STORE_FAV, state.favorites);
   render();
 });
-document.getElementById("resetHide").addEventListener("click", () => {
+
+const resetHideEl = document.getElementById("resetHide");
+if (resetHideEl) resetHideEl.addEventListener("click", () => {
   state.hidden.clear();
   Store.saveSet(CFG.STORE_HIDE, state.hidden);
   state.lastHidden = null;
