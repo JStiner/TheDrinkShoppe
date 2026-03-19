@@ -5,8 +5,6 @@
 
 <h1 align="center">The Drink Shoppe 🍹</h1>
 
-https://jstiner.github.io/TheDrinkShoppe/
-
 ![Status](https://img.shields.io/badge/project-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Built With](https://img.shields.io/badge/built%20with-HTML%20%7C%20JS-orange)
