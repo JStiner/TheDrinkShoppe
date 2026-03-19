@@ -257,14 +257,26 @@ function compareSelectedOrder(a, b) {
 function drinkName({ base, primary, secondary, tertiary, lotus }) {
   const id = drinkId({ base, primary, secondary, tertiary, lotus });
   const seed = stableHash(id);
-  const v1 = pick(primary.vibe, seed);
+
   const lead = (secondary || tertiary) ? "🍹" : "🥤";
   const ltag = lotus ? ` ${LOTUS.emoji}` : "";
-  if (!secondary) return `${lead} ${v1} ${primary.label} ${base.alias}${ltag}`;
+
+  // pick vibe words only (no syrup labels)
+  const v1 = pick(primary.vibe, seed);
+
+  if (!secondary) {
+    return `${lead} ${v1} ${base.alias}${ltag}`;
+  }
+
   const v2 = pick(secondary.vibe, seed >>> 1);
-  if (!tertiary) return `${lead} ${v1} ${primary.label} + ${v2} ${secondary.label} ${base.alias}${ltag}`;
+
+  if (!tertiary) {
+    return `${lead} ${v1} ${v2} ${base.alias}${ltag}`;
+  }
+
   const v3 = pick(tertiary.vibe, seed >>> 2);
-  return `${lead} ${v1} ${primary.label} + ${v2} ${secondary.label} + ${v3} ${tertiary.label} ${base.alias}${ltag}`;
+
+  return `${lead} ${v1} ${v2} ${v3} ${base.alias}${ltag}`;
 }
 
 function drinkRecipe({ base, primary, secondary, tertiary, lotus }) {
