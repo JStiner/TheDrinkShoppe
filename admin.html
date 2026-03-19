@@ -15,7 +15,7 @@
     .tabs{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}.tab{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#cfe0ff;border-radius:20px;padding:16px 22px;cursor:pointer;font-size:28px;font-weight:800}
     .tab.active{border-color:rgba(91,200,255,.55);background:rgba(91,200,255,.12);color:#8cd2ff}
     .add{background:rgba(58,240,162,.07);border:1px solid rgba(58,240,162,.28);border-radius:24px;padding:18px;margin-bottom:18px}
-    .grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:12px;align-items:end}.grid.syrup{grid-template-columns:1.2fr 1.6fr 1.4fr auto}.grid.lotus{grid-template-columns:1.3fr .8fr 1.1fr 1.6fr 1.2fr auto}
+    .grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:12px;align-items:end}.grid.syrup{grid-template-columns:1.3fr 2fr auto}
     label{display:block;font-size:12px;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:6px}
     input,select{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:14px 14px;color:#fff;font-size:18px;outline:none}
     .list{display:flex;flex-direction:column;gap:14px}.item{display:grid;grid-template-columns:1fr auto auto auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:16px}
@@ -24,20 +24,19 @@
     .sw{position:relative;width:56px;height:32px}.sw input{display:none}.sw-track{position:absolute;inset:0;background:#dcdcdc;border:1px solid #fff;border-radius:999px}.sw-thumb{position:absolute;width:26px;height:26px;left:3px;top:3px;border-radius:50%;background:#fff;transition:transform .2s}
     .sw input:checked ~ .sw-track{background:rgba(58,240,162,.28);border-color:rgba(58,240,162,.75)} .sw input:checked ~ .sw-thumb{transform:translateX(24px);background:var(--accent)}
     .panel{display:none}.panel.active{display:block}.help{margin-top:10px;color:var(--muted);font-size:14px}
-    @media (max-width:900px){.grid,.grid.syrup,.grid.lotus{grid-template-columns:1fr}.item{grid-template-columns:1fr auto auto auto}}
+    @media (max-width:900px){.grid,.grid.syrup{grid-template-columns:1fr}.item{grid-template-columns:1fr auto auto auto}}
   </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
-    <div><div class="title">Admin Settings</div><div class="sub">Manage bases, syrups, tags, and Lotus pairings</div></div>
+    <div><div class="title">Admin Settings</div><div class="sub">Manage bases, syrups & flavors</div></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="backBtn">← Back</button><button class="btn red" id="resetDefaultsBtn">Reset to defaults</button></div>
   </div>
 
   <div class="tabs">
     <button class="tab active" data-tab="syrups">🍯 Syrups</button>
     <button class="tab" data-tab="bases">🥤 Bases</button>
-    <button class="tab" data-tab="lotus">⚡ Lotus</button>
   </div>
 
   <section class="panel active" id="panel-syrups">
@@ -45,10 +44,9 @@
       <div class="grid syrup">
         <div><label>Syrup name</label><input id="addSyrupLabel" placeholder="New syrup name"></div>
         <div><label>Vibe words</label><input id="addSyrupVibes" placeholder="Bright, Sweet, Tropical"></div>
-        <div><label>Tags</label><input id="addSyrupTags" placeholder="berry, citrus, tropical"></div>
         <button class="btn green" id="addSyrupBtn">+ Add</button>
       </div>
-      <div class="help">Vibe words drive drink names. Tags drive Lotus pairing.</div>
+      <div class="help">Vibe words are comma-separated and drive generated drink names.</div>
     </div>
     <div class="list" id="syrupsList"></div>
   </section>
@@ -65,21 +63,6 @@
       <div class="help">Alias is the short word used in drink names.</div>
     </div>
     <div class="list" id="basesList"></div>
-  </section>
-
-  <section class="panel" id="panel-lotus">
-    <div class="add">
-      <div class="grid lotus">
-        <div><label>Lotus name</label><input id="addLotusLabel" placeholder="Pink Lotus"></div>
-        <div><label>Family</label><input id="addLotusFamily" placeholder="pink"></div>
-        <div><label>Color</label><input id="addLotusColor" placeholder="pink"></div>
-        <div><label>Pairs well with</label><input id="addLotusPairs" placeholder="berry, citrus, tropical"></div>
-        <div><label>Vibe words</label><input id="addLotusVibes" placeholder="Glow, Neon, Bright"></div>
-        <button class="btn green" id="addLotusBtn">+ Add</button>
-      </div>
-      <div class="help">Lotus options are only used with Chill and Fizz bases. Pairing tags should match syrup tags.</div>
-    </div>
-    <div class="list" id="lotusList"></div>
   </section>
 </div>
 <script src="admin.js"></script>
