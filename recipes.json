@@ -1,34 +1,573 @@
 {
-  "featured": [
+  "recipes": [
     {
-      "base": "nt_cola",
-      "primary": "cherry",
-      "secondary": null,
-      "lotus": false
+      "id": "house-fizz-orange-you-glad-its-got-banana-too",
+      "name": "Orange You Glad It's Got Banana Too",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "banana_cream",
+        "orange",
+        "brown_sugar_cinnamon"
+      ]
     },
     {
-      "base": "nt_root",
-      "primary": "vanilla",
-      "secondary": null,
-      "lotus": false
+      "id": "house-fizz-joker",
+      "name": "The Joker",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "grape",
+        "green_apple",
+        "blue_raspberry"
+      ]
     },
     {
-      "base": "sparkling",
-      "primary": "pomegranate",
-      "secondary": null,
-      "lotus": true
+      "id": "house-fizz-batman",
+      "name": "I Am Batman",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "cherry",
+        "vanilla"
+      ]
     },
     {
-      "base": "chill_pineapple",
-      "primary": "coconut",
-      "secondary": null,
-      "lotus": false
+      "id": "house-fizz-watermelon-wave",
+      "name": "Watermelon Wave",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "watermelon",
+        "strawberry"
+      ]
     },
     {
-      "base": "nt_lemonlime",
-      "primary": "blue_raspberry",
-      "secondary": null,
-      "lotus": true
+      "id": "house-fizz-orchard-breeze",
+      "name": "Orchard Breeze",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "white_peach",
+        "orange"
+      ]
+    },
+    {
+      "id": "house-energy-purple-lightning",
+      "name": "Purple Lightning",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "grape",
+        "blue_raspberry"
+      ]
+    },
+    {
+      "id": "house-lemonade-summer-meltdown",
+      "name": "Summer Meltdown",
+      "source": "Drink Shoppe",
+      "collection": "House Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrupIds": [
+        "watermelon",
+        "strawberry"
+      ]
+    },
+    {
+      "id": "house-fizz-peach-dream",
+      "name": "Peach Dream",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "white_peach",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-energy-gotham-night",
+      "name": "Gotham Night",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "blackberry",
+        "blue_raspberry"
+      ]
+    },
+    {
+      "id": "house-fizz-harley-punch",
+      "name": "Harley Punch",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "strawberry",
+        "pomegranate"
+      ]
+    },
+    {
+      "id": "house-energy-afterglow",
+      "name": "Afterglow",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "orange",
+        "strawberry",
+        "raspberry"
+      ]
+    },
+    {
+      "id": "house-energy-island-current",
+      "name": "Island Current",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "coconut",
+        "peach"
+      ]
+    },
+    {
+      "id": "house-energy-ruby-storm",
+      "name": "Ruby Storm",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "raspberry",
+        "pomegranate"
+      ]
+    },
+    {
+      "id": "house-energy-solar-flare",
+      "name": "Solar Flare",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "orange",
+        "peach"
+      ]
+    },
+    {
+      "id": "house-energy-voltage",
+      "name": "Voltage",
+      "source": "Drink Shoppe",
+      "collection": "House Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrupIds": [
+        "blue_raspberry",
+        "orange"
+      ]
+    },
+    {
+      "id": "house-fizz-candy-cloud",
+      "name": "Candy Cloud",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "strawberry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-fizz-cherry-cream",
+      "name": "Cherry Cream",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-fizz-coconut-sunset",
+      "name": "Coconut Sunset",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "coconut",
+        "orange"
+      ]
+    },
+    {
+      "id": "house-fizz-purple-haze",
+      "name": "Purple Haze",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blue_raspberry",
+        "blackberry"
+      ]
+    },
+    {
+      "id": "house-fizz-ruby-cream",
+      "name": "Ruby Cream",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "raspberry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-fizz-summer-spark",
+      "name": "Summer Spark",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "orange",
+        "peach"
+      ]
+    },
+    {
+      "id": "house-lemonade-berry-bloom",
+      "name": "Berry Bloom",
+      "source": "Drink Shoppe",
+      "collection": "House Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "raspberry"
+      ]
+    },
+    {
+      "id": "house-lemonade-blue-lagoon",
+      "name": "Blue Lagoon",
+      "source": "Drink Shoppe",
+      "collection": "House Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blue_raspberry",
+        "coconut"
+      ]
+    },
+    {
+      "id": "house-lemonade-tropical-breeze",
+      "name": "Tropical Breeze",
+      "source": "Drink Shoppe",
+      "collection": "House Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrupIds": [
+        "coconut",
+        "peach"
+      ]
+    },
+    {
+      "id": "house-soda-cola-black-cherry",
+      "name": "Black Cherry Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "cherry"
+      ]
+    },
+    {
+      "id": "house-soda-cola-cherry-almond",
+      "name": "Cherry Almond Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "almond"
+      ]
+    },
+    {
+      "id": "house-soda-cola-cherry-coconut",
+      "name": "Cherry Coconut Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "coconut"
+      ]
+    },
+    {
+      "id": "house-soda-cola-golden-cherry",
+      "name": "Golden Cherry Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "orange",
+        "cherry"
+      ]
+    },
+    {
+      "id": "house-soda-cola-peach-vanilla",
+      "name": "Peach Vanilla Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "peach",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-cola-royal-cherry",
+      "name": "Royal Cherry Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "raspberry"
+      ]
+    },
+    {
+      "id": "house-soda-cola-ruby-cream",
+      "name": "Ruby Cream Cola",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrupIds": [
+        "raspberry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-dr-black-cherry",
+      "name": "Dr. Black Cherry",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "cherry"
+      ]
+    },
+    {
+      "id": "house-soda-dr-berry-cream",
+      "name": "Dr. Berry Cream",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "strawberry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-dr-cherry-almond",
+      "name": "Dr. Cherry Almond",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "almond"
+      ]
+    },
+    {
+      "id": "house-soda-dr-cherry-vanilla",
+      "name": "Dr. Cherry Vanilla",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-dr-coconut-cream",
+      "name": "Dr. Coconut Cream",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "coconut",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-dr-midnight",
+      "name": "Dr. Midnight",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "blue_raspberry"
+      ]
+    },
+    {
+      "id": "house-soda-dr-orange-cream",
+      "name": "Dr. Orange Cream",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "orange",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-dr-peach-cream",
+      "name": "Dr. Peach Cream",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "peach",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-dr-razorberry",
+      "name": "Dr. Razorberry",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "strawberry",
+        "raspberry"
+      ]
+    },
+    {
+      "id": "house-soda-dr-sunset",
+      "name": "Dr. Sunset",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_dr",
+      "lotusRequired": false,
+      "syrupIds": [
+        "orange",
+        "cherry"
+      ]
+    },
+    {
+      "id": "house-soda-rootbeer-black-cherry",
+      "name": "Black Cherry Root Beer",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_root",
+      "lotusRequired": false,
+      "syrupIds": [
+        "blackberry",
+        "cherry"
+      ]
+    },
+    {
+      "id": "house-soda-rootbeer-berry-cream",
+      "name": "Berry Cream Root Beer",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_root",
+      "lotusRequired": false,
+      "syrupIds": [
+        "strawberry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-rootbeer-cherry-vanilla",
+      "name": "Cherry Vanilla Root Beer",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_root",
+      "lotusRequired": false,
+      "syrupIds": [
+        "cherry",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-rootbeer-coconut-cream",
+      "name": "Coconut Cream Root Beer",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_root",
+      "lotusRequired": false,
+      "syrupIds": [
+        "coconut",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-rootbeer-peach-cream",
+      "name": "Peach Cream Root Beer",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_root",
+      "lotusRequired": false,
+      "syrupIds": [
+        "peach",
+        "vanilla"
+      ]
+    },
+    {
+      "id": "house-soda-rootbeer-ruby-float",
+      "name": "Ruby Float Root Beer",
+      "source": "Drink Shoppe",
+      "collection": "House Soda",
+      "baseId": "nt_root",
+      "lotusRequired": false,
+      "syrupIds": [
+        "raspberry",
+        "vanilla"
+      ]
     }
   ]
 }
