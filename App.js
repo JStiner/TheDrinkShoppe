@@ -125,24 +125,12 @@ async function loadMenu() {
 }
 
 async function loadRecipes() {
-  const files = [
-    "recipes_house.json",
-    "recipes_7brew.json",
-    "recipes_torani.json"
-  ];
-
   try {
-    const results = await Promise.all(
-      files.map(async file => {
-        const res = await fetch(file, { cache: "no-store" });
-        const data = await res.json();
-        if (Array.isArray(data)) return data;
-        if (Array.isArray(data.recipes)) return data.recipes;
-        return [];
-      })
-    );
-
-    return results.flat();
+    const res = await fetch("recipes.json", { cache: "no-store" });
+    const data = await res.json();
+    if (Array.isArray(data)) return data;
+    if (Array.isArray(data.recipes)) return data.recipes;
+    return [];
   } catch {
     return [];
   }
@@ -171,14 +159,27 @@ function getRecipeBaseTokens(baseId) {
   const token = normalizeToken(baseId);
   const tokens = new Set([token]);
 
-  if (["fizz", "sparkling"].includes(token)) {
-    tokens.add("fizz");
+  if (["sparkling", "bubble_water", "nt_bubble_water", "fizz"].includes(token)) {
     tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
   }
 
-  if (["chill", "chill_lemonade"].includes(token)) {
-    tokens.add("chill");
+  if (["chill_lemonade", "fruit_chill_lemonade", "lemonade", "chill"].includes(token)) {
     tokens.add("chill_lemonade");
+    tokens.add("fruit_chill_lemonade");
+    tokens.add("lemonade");
+    tokens.add("chill");
+  }
+
+  if (["energy", "lotus"].includes(token)) {
+    tokens.add("energy");
+    tokens.add("lotus");
+    tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
   }
 
   return [...tokens];
@@ -193,29 +194,30 @@ function getComboBaseTokens(c) {
   if (baseId) tokens.add(baseId);
   if (category) tokens.add(category);
 
-  if (baseId === "sparkling" || category === "fizz") {
-    tokens.add("fizz");
+  if (["nt_bubble_water", "bubble_water", "sparkling", "fizz"].includes(baseId) || category === "fizz") {
     tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
   }
 
-  if (baseId === "chill_lemonade" || category === "chill") {
-    tokens.add("chill");
+  if (["fruit_chill_lemonade", "chill_lemonade", "lemonade"].includes(baseId) || category === "chill") {
+    tokens.add("fruit_chill_lemonade");
     tokens.add("chill_lemonade");
+    tokens.add("lemonade");
+    tokens.add("chill");
+  }
+
+  if (c?.lotus) {
+    tokens.add("energy");
+    tokens.add("lotus");
+    tokens.add("sparkling");
+    tokens.add("bubble_water");
+    tokens.add("nt_bubble_water");
+    tokens.add("fizz");
   }
 
   return [...tokens];
-}
-
-function recipePriority(recipe) {
-  const source = String(recipe?.source || "");
-  const id = normalizeToken(recipe?.id);
-  const name = normalizeToken(recipe?.name);
-
-  if (id.includes("orange_you_glad") || name.includes("orange_you_glad")) return 1;
-  if (["joker", "batman", "gotham", "harley"].some(k => id.includes(k) || name.includes(k))) return 1;
-  if (source.includes("7 Brew")) return 2;
-  if (source.includes("Torani")) return 3;
-  return 4;
 }
 
 function applyRecipes(recipes) {
@@ -227,11 +229,7 @@ function applyRecipes(recipes) {
 
     const baseTokens = getRecipeBaseTokens(r.baseId);
     for (const token of baseTokens) {
-      const key = recipeKey(token, r.syrupIds, !!r.lotusRequired);
-      const existing = RECIPE_INDEX.get(key);
-      if (!existing || recipePriority(r) < recipePriority(existing)) {
-        RECIPE_INDEX.set(key, r);
-      }
+      RECIPE_INDEX.set(recipeKey(token, r.syrupIds, !!r.lotusRequired), r);
     }
   });
 }
