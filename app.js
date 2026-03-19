@@ -11,6 +11,8 @@ const LOTUS = { name: "White Lotus", pumpsPerAdd: 1, caffeineMgPerPump: 80, emoj
 let BASES = [];
 let SYRUPS = [];
 let MENU = null;
+let RECIPES = [];
+let RECIPE_INDEX = new Map();
 
 const Store = {
   loadSet(key) {
@@ -117,6 +119,86 @@ async function loadMenu() {
   return fileMenu;
 }
 
+async function loadRecipes() {
+  const files = [
+    "recipes_house.json",
+    "recipes_7brew.json",
+    "recipes_torani.json"
+  ];
+
+  const results = await Promise.all(
+    files.map(async file => {
+      try {
+        const res = await fetch(file, { cache: "no-store" });
+        const data = await res.json();
+        if (Array.isArray(data)) return data;
+        if (Array.isArray(data.recipes)) return data.recipes;
+        return [];
+      } catch {
+        return [];
+      }
+    })
+  );
+
+  return results.flat();
+}
+
+function normalizeRecipeBaseId(baseId) {
+  const id = String(baseId || "").trim().toLowerCase();
+
+  if (["sparkling", "nt_bubble_water", "bubble_water", "fizz"].includes(id)) return "fizz";
+  if (["chill_lemonade", "fruit_chill_lemonade", "chill"].includes(id)) return "chill";
+
+  return id;
+}
+
+function normalizeSyrupIds(ids = []) {
+  return ids.filter(Boolean).slice().sort();
+}
+
+function recipeKey(baseId, syrupIds, lotusRequired) {
+  return `${normalizeRecipeBaseId(baseId)}|${lotusRequired ? "lotus" : "plain"}|${normalizeSyrupIds(syrupIds).join("|")}`;
+}
+
+function recipePriority(recipe) {
+  const name = String(recipe?.name || "").toLowerCase();
+  const source = String(recipe?.source || "").toLowerCase();
+
+  if (name === "orange you glad it's got banana too") return 400;
+  if (["the joker", "i am batman", "gotham night", "harley punch"].includes(name)) return 390;
+  if (source.includes("7 brew")) return 300;
+  if (source.includes("torani")) return 200;
+  if (source.includes("drink shoppe")) return 100;
+
+  return 0;
+}
+
+function applyRecipes(recipes) {
+  RECIPES = Array.isArray(recipes) ? recipes.slice() : [];
+  RECIPE_INDEX = new Map();
+
+  for (const recipe of RECIPES) {
+    if (!recipe?.baseId || !Array.isArray(recipe.syrupIds) || !recipe.syrupIds.length) continue;
+
+    const key = recipeKey(recipe.baseId, recipe.syrupIds, !!recipe.lotusRequired);
+    const existing = RECIPE_INDEX.get(key);
+
+    if (!existing || recipePriority(recipe) > recipePriority(existing)) {
+      RECIPE_INDEX.set(key, recipe);
+    }
+  }
+}
+
+function comboBaseId(c) {
+  if (c.base?.category === "fizz") return "fizz";
+  if (c.base?.category === "chill") return "chill";
+  return c.base?.id || "";
+}
+
+function matchRecipeForCombo(c) {
+  const key = recipeKey(comboBaseId(c), getDrinkSyrupIds(c), !!c.lotus);
+  return RECIPE_INDEX.get(key) || null;
+}
 function applyMenu(menu) {
   MENU = menu;
   BASES = (menu.bases || []).filter(x => x.active !== false).slice().sort(byOrder);
@@ -232,9 +314,18 @@ function applyFilters(combos) {
       return selectedSyrups.some(s => ids.includes(s));
     })
     .map(c => {
-      const id = drinkId(c);
-      return { ...c, id, name: drinkName(c), recipe: drinkRecipe(c), isFav: favorites.has(id) };
-    })
+  const id = drinkId(c);
+  const matchedRecipe = matchRecipeForCombo(c);
+
+  return {
+    ...c,
+    id,
+    name: matchedRecipe?.name || drinkName(c),
+    recipe: drinkRecipe(c),
+    isFav: favorites.has(id),
+    matchedRecipe
+  };
+})
     .sort((a, b) => {
       if (favOnly) return a.name.localeCompare(b.name);
       const ap = selectedPriorityRank(a);
@@ -582,8 +673,14 @@ document.getElementById("resetHide").addEventListener("click", () => {
 });
 
 async function init() {
-  const menu = await loadMenu();
+  const [menu, recipes] = await Promise.all([
+    loadMenu(),
+    loadRecipes()
+  ]);
+
   applyMenu(menu);
+  applyRecipes(recipes);
+
   renderBaseOptions();
   renderBaseFlavorOptions();
   render();
