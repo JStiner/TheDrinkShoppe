@@ -4,7 +4,7 @@
       "id": "house-fizz-orange-you-glad-its-got-banana-too",
       "name": "Orange You Glad It's Got Banana Too",
       "source": "Drink Shoppe",
-      "collection": "House Fizz",
+      "collection": "House Signature",
       "baseId": "sparkling",
       "lotusRequired": false,
       "syrupIds": ["banana_cream", "orange", "brown_sugar_cinnamon"]
@@ -21,13 +21,40 @@
 
 {
   "id": "house-fizz-batman",
-  "name": "I Am Batman",
+  "name": "I'm Batman",
   "source": "Drink Shoppe",
   "collection": "House Fizz",
   "baseId": "sparkling",
   "lotusRequired": false,
   "syrupIds": ["blackberry","cherry","vanilla"]
 },
+{
+      "id": "house-tropical-energy",
+      "name": "Tropical Energy",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "sparkling",
+      "lotusRequired": false,
+      "syrupIds": ["coconut", "orange", "peach"]
+    },
+    {
+      "id": "house-signature-the-dachshund",
+      "name": "The Dachshund",
+      "source": "Drink Shoppe",
+      "collection": "House Signature",
+      "baseId": "sparkling",
+      "lotusRequired": false,
+      "syrupIds": ["vanilla", "almond"]
+    },
+   {
+      "id": "house-signature-the-murphy",
+      "name": "The Murphy",
+      "source": "Drink Shoppe",
+      "collection": "House Signature",
+      "baseId": "sparkling",
+      "lotusRequired": false,
+      "syrupIds": ["blackberry","vanilla", "brown_sugar_cinnamon"]
+    },
 {
   "id": "house-fizz-watermelon-wave",
   "name": "Watermelon Wave",
