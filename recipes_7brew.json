@@ -14,6 +14,31 @@
       ]
     },
     {
+      "id": "7brew-fizz-fruit-rollup",
+      "name": "Fruit Rollup",
+      "source": "Inspired by 7 Brew",
+      "collection": "Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "strawberry",
+        "lavender"
+      ]
+    },
+    {
+      "id": "7brew-fizz-fruit-rollup-deluxe",
+      "name": "Fruit Rollup Deluxe",
+      "source": "Inspired by 7 Brew",
+      "collection": "Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "strawberry",
+        "lavender",
+        "vanilla"
+      ]
+    },
+    {
       "id": "7brew-fizz-bahama-mama",
       "name": "Bahama Mama",
       "source": "Inspired by 7 Brew",
