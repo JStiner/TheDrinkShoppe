@@ -14,6 +14,18 @@
       ]
     },
     {
+      "id": "house-fizz-razzle-dazzle",
+      "name": "The Razzle Dazzle",
+      "source": "Drink Shoppe",
+      "collection": "House Signature",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "green_apple",
+        "blue_raspberry"
+      ]
+    },
+    {
       "id": "house-fizz-joker",
       "name": "The Joker",
       "source": "Drink Shoppe",
