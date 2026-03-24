@@ -684,12 +684,12 @@ function renderItem(d) {
     <div class="drink-emoji">${d.base.emoji}</div>
     <div class="drink-body" data-action="open-detail" data-drink-id="${d.id}">
       <div class="drink-name">${d.name}</div>
+      <div class="drink-build">${d.recipe}</div>
       <div class="drink-tags">
-        <span class="dtag">${d.recipe}</span>
         <span class="dtag">${d.base.category.toUpperCase()}</span>
         ${d.lotus ? `<span class="dtag lotus">⚡ ${d.lotus.label}</span>` : ""}
-        ${d.sourceTag ? `<span class="dtag">${d.sourceTag}</span>` : ""}
       </div>
+      ${d.sourceTag ? `<div class="drink-meta">${d.sourceTag}</div>` : ""}
     </div>
     <div class="drink-actions">${actionsHtml}</div>
   `;
