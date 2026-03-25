@@ -17,7 +17,7 @@
       "id": "house-fizz-razzle-dazzle",
       "name": "The Razzle Dazzle",
       "source": "Drink Shoppe",
-      "collection": "House Signature",
+      "collection": "House Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
       "syrupIds": [
@@ -79,7 +79,7 @@
       "id": "house-energy-purple-lightning",
       "name": "Purple Lightning",
       "source": "Drink Shoppe",
-      "collection": "House Energy",
+      "collection": "House Fizz",
       "baseId": "fizz",
       "lotusRequired": true,
       "syrupIds": [
@@ -115,7 +115,7 @@
       "id": "house-energy-gotham-night",
       "name": "Gotham Night",
       "source": "Drink Shoppe",
-      "collection": "House Energy",
+      "collection": "House Fizz",
       "baseId": "fizz",
       "lotusRequired": true,
       "syrupIds": [
