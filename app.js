@@ -1,5 +1,6 @@
 const CFG = {
   PAGE_SIZE: 40,
+  PAGE_SIZE_ALL_BASE: 10,
   STORE_FAV: "drinkshoppe:favorites",
   STORE_HIDE: "drinkshoppe:hidden",
   STORE_MENU: "drinkshoppe:menu:override",
@@ -681,15 +682,14 @@ function renderItem(d) {
   }
 
   div.innerHTML = `
-    <div class="drink-emoji">${d.base.emoji}</div>
     <div class="drink-body" data-action="open-detail" data-drink-id="${d.id}">
       <div class="drink-name">${d.name}</div>
-      <div class="drink-build">${d.recipe}</div>
       <div class="drink-tags">
+        <span class="dtag">${d.recipe}</span>
         <span class="dtag">${d.base.category.toUpperCase()}</span>
         ${d.lotus ? `<span class="dtag lotus">⚡ ${d.lotus.label}</span>` : ""}
+        ${d.sourceTag ? `<span class="dtag">${d.sourceTag}</span>` : ""}
       </div>
-      ${d.sourceTag ? `<div class="drink-meta">${d.sourceTag}</div>` : ""}
     </div>
     <div class="drink-actions">${actionsHtml}</div>
   `;
@@ -714,12 +714,17 @@ function renderSavedDrinks(list) {
   list.appendChild(divider2);
 }
 
+function getPageSize() {
+  return state.baseCategory === 'all' ? CFG.PAGE_SIZE_ALL_BASE : CFG.PAGE_SIZE;
+}
+
 function renderColumn({ listEl, footEl, countEl, prevBtn, nextBtn, items, pageKey, includeSaved = false }) {
+  const pageSize = getPageSize();
   const total = items.length;
-  const maxPage = Math.max(0, Math.ceil(total / CFG.PAGE_SIZE) - 1);
+  const maxPage = Math.max(0, Math.ceil(total / pageSize) - 1);
   state.pages[pageKey] = Math.min(Math.max(state.pages[pageKey], 0), maxPage);
 
-  const slice = items.slice(state.pages[pageKey] * CFG.PAGE_SIZE, (state.pages[pageKey] + 1) * CFG.PAGE_SIZE);
+  const slice = items.slice(state.pages[pageKey] * pageSize, (state.pages[pageKey] + 1) * pageSize);
 
   listEl.innerHTML = "";
   if (includeSaved && state.pages[pageKey] === 0 && state.savedDrinks.length) renderSavedDrinks(listEl);
@@ -733,7 +738,7 @@ function renderColumn({ listEl, footEl, countEl, prevBtn, nextBtn, items, pageKe
   countEl.textContent = `${total} · pg ${state.pages[pageKey] + 1}/${maxPage + 1}`;
   prevBtn.disabled = state.pages[pageKey] <= 0;
   nextBtn.disabled = state.pages[pageKey] >= maxPage;
-  footEl.style.display = total > CFG.PAGE_SIZE ? "flex" : "none";
+  footEl.style.display = total > pageSize ? "flex" : "none";
 }
 
 function renderSyrupChips() {
