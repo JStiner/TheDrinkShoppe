@@ -126,34 +126,37 @@ async function loadMenu() {
 }
 
 async function loadRecipes() {
-  const recipeFiles = [
-    "recipes_house.json",
-    "recipes_7brew.json",
-    "recipes_torani.json"
+  const sources = [
+    { file: "recipes_house.json", priority: 1 },
+    { file: "recipes_7brew.json", priority: 2 },
+    { file: "recipes_torani.json", priority: 3 }
   ];
 
-  try {
-    const results = await Promise.all(
-      recipeFiles.map(async (file) => {
-        try {
-          const res = await fetch(file, { cache: "no-store" });
-          const data = await res.json();
+  const all = [];
 
-          if (Array.isArray(data)) return data;
-          if (Array.isArray(data.recipes)) return data.recipes;
-          return [];
-        } catch (err) {
-          console.warn(`Could not load ${file}`, err);
-          return [];
-        }
-      })
-    );
+  for (const src of sources) {
+    try {
+      const res = await fetch(src.file, { cache: "no-store" });
+      const data = await res.json();
 
-    return results.flat();
-  } catch (err) {
-    console.error("Failed to load recipe files", err);
-    return [];
+      const recipes = Array.isArray(data)
+        ? data
+        : Array.isArray(data.recipes)
+        ? data.recipes
+        : [];
+
+      recipes.forEach(r => {
+        all.push({
+          ...r,
+          _priority: src.priority
+        });
+      });
+    } catch (err) {
+      console.warn(`Skipping ${src.file}`, err);
+    }
   }
+
+  return all;
 }
 
 function applyMenu(menu) {
