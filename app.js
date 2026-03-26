@@ -126,13 +126,32 @@ async function loadMenu() {
 }
 
 async function loadRecipes() {
+  const recipeFiles = [
+    "recipes_house.json",
+    "recipes_7brew.json",
+    "recipes_torani.json"
+  ];
+
   try {
-    const res = await fetch("recipes.json", { cache: "no-store" });
-    const data = await res.json();
-    if (Array.isArray(data)) return data;
-    if (Array.isArray(data.recipes)) return data.recipes;
-    return [];
-  } catch {
+    const results = await Promise.all(
+      recipeFiles.map(async (file) => {
+        try {
+          const res = await fetch(file, { cache: "no-store" });
+          const data = await res.json();
+
+          if (Array.isArray(data)) return data;
+          if (Array.isArray(data.recipes)) return data.recipes;
+          return [];
+        } catch (err) {
+          console.warn(`Could not load ${file}`, err);
+          return [];
+        }
+      })
+    );
+
+    return results.flat();
+  } catch (err) {
+    console.error("Failed to load recipe files", err);
     return [];
   }
 }
