@@ -13,30 +13,30 @@
         "brown_sugar_cinnamon"
       ]
     },
-        {
+         {
       "id": "house-fizz-murphy",
       "name": "The Murphy",
       "source": "Drink Shoppe",
       "collection": "House Signiture",
       "baseId": "fizz",
       "lotusRequired": false,
-  "syrups": [
-    { "id": "blackberry", "pumps": 2 },
-    { "id": "vanila", "pumps": 2 },
-    { "id": "brown_sugar_cinnamon", "pumps": 0.5 }
-  ]
+      "syrups": [
+        { "id": "blackberry", "pumps": 2 },
+        { "id": "vanilla", "pumps": 2 },
+        { "id": "brown_sugar_cinnamon", "pumps": 0.5 }
+      ]
     },
-        {
+    {
       "id": "house-fizz-dachshund",
       "name": "The Dachsund",
       "source": "Drink Shoppe",
       "collection": "House Signiture",
       "baseId": "fizz",
       "lotusRequired": false,
-  "syrups": [
-    { "id": "almond", "pumps": 1.5 },
-    { "id": "Vanila", "pumps": 1.5 }
-  ]
+      "syrups": [
+        { "id": "almond", "pumps": 1.5 },
+        { "id": "vanilla", "pumps": 1.5 }
+      ]
     },
     {
       "id": "house-fizz-princess-parker-peach",
