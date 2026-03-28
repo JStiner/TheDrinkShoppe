@@ -17,7 +17,7 @@
       "id": "house-fizz-murphy",
       "name": "The Murphy",
       "source": "Drink Shoppe",
-      "collection": "House Signiture",
+      "collection": "House Signature",
       "baseId": "fizz",
       "lotusRequired": false,
       "syrups": [
@@ -30,7 +30,7 @@
       "id": "house-fizz-dachshund",
       "name": "The Dachsund",
       "source": "Drink Shoppe",
-      "collection": "House Signiture",
+      "collection": "House Signature",
       "baseId": "fizz",
       "lotusRequired": false,
       "syrups": [
