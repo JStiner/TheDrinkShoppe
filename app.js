@@ -283,18 +283,6 @@ function getRecipeSyrupSpecs(recipe) {
   return [];
 }
 
-  if (Array.isArray(recipe.syrupIds) && recipe.syrupIds.length) {
-    return recipe.syrupIds
-      .filter(Boolean)
-      .map((id, idx) => ({
-        id,
-        pumps: idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS
-      }));
-  }
-
-  return [];
-}
-
 function getRecipeSyrupIds(recipe) {
   return getRecipeSyrupSpecs(recipe).map(s => s.id);
 }
@@ -337,9 +325,6 @@ function scalePumpCount(pumps, cupSizeOz = state.cupSizeOz, syrupCount = 1) {
 function formatPumpCount(pumps) {
   if (Number.isInteger(pumps)) return String(pumps);
   return pumps.toFixed(2).replace(/\.00$/, "").replace(/0$/, "");
-}
-function formatPumpCount(pumps) {
-  return Number.isInteger(pumps) ? String(pumps) : pumps.toFixed(1).replace(/\.0$/, "");
 }
 
 function formatPumpLabel(pumps) {
@@ -469,7 +454,9 @@ function drinkRecipe({ base, primary, secondary, tertiary, lotus }, matchedRecip
     parts.push(`${syrup.label} (${formatPumpCount(scalePumpCount(pumps, state.cupSizeOz, syrupCount))})`);
   });
 
-  if (lotus) parts.push(`${lotus.label} (${formatPumpCount(scalePumpCount(1, state.cupSizeOz, 1))})`);
+  if (lotus) {
+    parts.push(`${lotus.label} (${formatPumpCount(scalePumpCount(1, state.cupSizeOz, 1))})`);
+  }
 
   return parts.join(" + ");
 }
@@ -597,6 +584,25 @@ function getDrinkIngredients(d) {
   const list = [
     { label: d.base.label, id: d.base.id, amount: `${state.cupSizeOz} oz base` }
   ];
+
+  syrupDetails.forEach(({ syrup, pumps }) => {
+    list.push({
+      label: syrup.label,
+      id: syrup.id,
+      amount: formatPumpLabel(scalePumpCount(pumps, state.cupSizeOz, syrupCount))
+    });
+  });
+
+  if (d.lotus) {
+    list.push({
+      label: d.lotus.label,
+      id: d.lotus.id,
+      amount: formatPumpLabel(scalePumpCount(1, state.cupSizeOz, 1))
+    });
+  }
+
+  return list;
+}
 
   syrupDetails.forEach(({ syrup, pumps }) => {
     list.push({
