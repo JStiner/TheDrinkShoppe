@@ -4,7 +4,8 @@ const CFG = {
   STORE_FAV: "drinkshoppe:favorites",
   STORE_HIDE: "drinkshoppe:hidden",
   STORE_MENU: "drinkshoppe:menu:override",
-  STORE_SAVED: "drinkshoppe:saveddrinks"
+  STORE_SAVED: "drinkshoppe:saveddrinks",
+  STORE_CUP_SIZE: "drinkshoppe:cupsizeoz"
 };
 
 let BASES = [];
@@ -13,6 +14,10 @@ let LOTUS_OPTIONS = [];
 let MENU = null;
 let RECIPES = [];
 let RECIPE_INDEX = new Map();
+
+const DEFAULT_PRIMARY_PUMPS = 2;
+const DEFAULT_SECONDARY_PUMPS = 1;
+const CUP_SIZE_MULTIPLIER = { 6: 0.5, 12: 1, 18: 1.5 };
 
 const Store = {
   loadSet(key) {
@@ -80,7 +85,9 @@ const state = {
   favorites: loadFavoritesWithMigration(),
   hidden: Store.loadSet(CFG.STORE_HIDE),
   savedDrinks: Store.loadJson(CFG.STORE_SAVED, []),
-  lastHidden: null
+  cupSizeOz: [6, 12, 18].includes(Number(Store.loadJson(CFG.STORE_CUP_SIZE, 12))) ? Number(Store.loadJson(CFG.STORE_CUP_SIZE, 12)) : 12,
+  lastHidden: null,
+  currentDetailId: null
 };
 
 function stableHash(str) {
@@ -243,16 +250,86 @@ function getComboBaseTokens(c) {
   return [...tokens];
 }
 
+function getRecipeSyrupSpecs(recipe) {
+  if (!recipe) return [];
+
+  if (Array.isArray(recipe.syrups) && recipe.syrups.length) {
+    return recipe.syrups
+      .filter(s => s && s.id)
+      .map((s, idx) => ({
+        id: s.id,
+        pumps: typeof s.pumps === "number" && !Number.isNaN(s.pumps) ? s.pumps : (idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS)
+      }));
+  }
+
+  if (Array.isArray(recipe.syrupIds) && recipe.syrupIds.length) {
+    return recipe.syrupIds
+      .filter(Boolean)
+      .map((id, idx) => ({
+        id,
+        pumps: idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS
+      }));
+  }
+
+  return [];
+}
+
+function getRecipeSyrupIds(recipe) {
+  return getRecipeSyrupSpecs(recipe).map(s => s.id);
+}
+
+function getDefaultSyrupSpecsFromCombo(combo) {
+  return [combo?.primary, combo?.secondary, combo?.tertiary]
+    .filter(Boolean)
+    .map((s, idx) => ({
+      syrup: s,
+      pumps: idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS
+    }));
+}
+
+function scalePumpCount(pumps, cupSizeOz = state.cupSizeOz) {
+  const multiplier = CUP_SIZE_MULTIPLIER[cupSizeOz] || 1;
+  return Math.round((pumps * multiplier) * 2) / 2;
+}
+
+function formatPumpCount(pumps) {
+  return Number.isInteger(pumps) ? String(pumps) : pumps.toFixed(1).replace(/\.0$/, "");
+}
+
+function formatPumpLabel(pumps) {
+  return `${formatPumpCount(pumps)} pump${pumps === 1 ? "" : "s"}`;
+}
+
+function buildRecipeSyrupDetails(combo, matchedRecipe = null) {
+  const defaultSpecs = getDefaultSyrupSpecsFromCombo(combo);
+
+  if (matchedRecipe) {
+    const byId = new Map(defaultSpecs.map(s => [s.syrup.id, s.syrup]));
+    const recipeSpecs = getRecipeSyrupSpecs(matchedRecipe);
+    const matchedSpecs = recipeSpecs
+      .map(spec => ({
+        syrup: byId.get(spec.id),
+        pumps: spec.pumps
+      }))
+      .filter(spec => spec.syrup);
+
+    if (matchedSpecs.length) return matchedSpecs;
+  }
+
+  return defaultSpecs;
+}
+
 function applyRecipes(recipes) {
   RECIPES = Array.isArray(recipes) ? recipes.slice() : [];
   RECIPE_INDEX = new Map();
 
   RECIPES.forEach(r => {
-    if (!r?.baseId || !Array.isArray(r.syrupIds) || !r.syrupIds.length || !r.name) return;
+    const recipeSyrupIds = getRecipeSyrupIds(r);
+    if (!r?.baseId || !recipeSyrupIds.length || !r.name) return;
 
     const baseTokens = getRecipeBaseTokens(r.baseId);
     for (const token of baseTokens) {
-      RECIPE_INDEX.set(recipeKey(token, r.syrupIds, !!r.lotusRequired), r);
+      RECIPE_INDEX.set(recipeKey(token, recipeSyrupIds, !!r.lotusRequired), r);
     }
   });
 }
@@ -337,22 +414,15 @@ function drinkName({ base, primary, secondary, tertiary }) {
 }
 
 function drinkRecipe({ base, primary, secondary, tertiary, lotus }, matchedRecipe = null) {
-  let syrups = [primary, secondary, tertiary].filter(Boolean);
-
-  if (matchedRecipe?.syrupIds?.length) {
-    const byId = new Map(syrups.map(s => [s.id, s]));
-    syrups = matchedRecipe.syrupIds
-      .map(id => byId.get(id))
-      .filter(Boolean);
-  }
+  const syrupDetails = buildRecipeSyrupDetails({ base, primary, secondary, tertiary, lotus }, matchedRecipe);
 
   const parts = [base.label];
 
-  syrups.forEach((s, idx) => {
-    parts.push(`${s.label} (${idx === 0 ? 2 : 1})`);
+  syrupDetails.forEach(({ syrup, pumps }) => {
+    parts.push(`${syrup.label} (${formatPumpCount(scalePumpCount(pumps))})`);
   });
 
-  if (lotus) parts.push(`${lotus.label} (1)`);
+  if (lotus) parts.push(`${lotus.label} (${formatPumpCount(scalePumpCount(1))})`);
 
   return parts.join(" + ");
 }
@@ -474,24 +544,17 @@ function getDrinkById(id) {
 }
 
 function getDrinkIngredients(d) {
-  let syrups = [d.primary, d.secondary, d.tertiary].filter(Boolean);
-
-  if (d.matchedRecipe?.syrupIds?.length) {
-    const byId = new Map(syrups.map(s => [s.id, s]));
-    syrups = d.matchedRecipe.syrupIds
-      .map(id => byId.get(id))
-      .filter(Boolean);
-  }
+  const syrupDetails = buildRecipeSyrupDetails(d, d.matchedRecipe);
 
   const list = [
-    { label: d.base.label, id: d.base.id, amount: "Base" }
+    { label: d.base.label, id: d.base.id, amount: `${state.cupSizeOz} oz base` }
   ];
 
-  syrups.forEach((s, idx) => {
+  syrupDetails.forEach(({ syrup, pumps }) => {
     list.push({
-      label: s.label,
-      id: s.id,
-      amount: idx === 0 ? "2 pumps" : "1 pump"
+      label: syrup.label,
+      id: syrup.id,
+      amount: formatPumpLabel(scalePumpCount(pumps))
     });
   });
 
@@ -499,7 +562,7 @@ function getDrinkIngredients(d) {
     list.push({
       label: d.lotus.label,
       id: d.lotus.id,
-      amount: "1 pump"
+      amount: formatPumpLabel(scalePumpCount(1))
     });
   }
 
@@ -508,6 +571,7 @@ function getDrinkIngredients(d) {
 
 function openDrinkDetail(id) {
   const d = getDrinkById(id);
+  state.currentDetailId = d ? id : null;
   if (!d) return;
 
   const detail = document.getElementById("drinkDetail");
@@ -826,6 +890,35 @@ function renderLotusOptions() {
   state.selectedLotus = sel.value;
 }
 
+function setCupSizePickerOpen(isOpen) {
+  const picker = document.getElementById("cupSizePicker");
+  const badge = document.getElementById("cupSizeBadge");
+  if (picker) picker.classList.toggle("open", !!isOpen);
+  if (badge) badge.setAttribute("aria-expanded", isOpen ? "true" : "false");
+}
+
+function renderCupSizeControls() {
+  const badge = document.getElementById("cupSizeBadge");
+  if (badge) badge.textContent = `🍹 ${state.cupSizeOz}oz Glass`;
+
+  const buttons = document.querySelectorAll("[data-cup-size]");
+  buttons.forEach(btn => {
+    const size = Number(btn.dataset.cupSize);
+    const active = size === state.cupSizeOz;
+    btn.classList.toggle("active", active);
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+}
+
+function setCupSize(size) {
+  if (![6, 12, 18].includes(size) || size === state.cupSizeOz) return;
+  state.cupSizeOz = size;
+  Store.saveJson(CFG.STORE_CUP_SIZE, size);
+  renderCupSizeControls();
+  render();
+  if (state.currentDetailId) openDrinkDetail(state.currentDetailId);
+}
+
 function showToast(msg) {
   const el = document.getElementById("toast");
   const msgEl = document.getElementById("toast-msg");
@@ -910,6 +1003,28 @@ function render() {
   if (grid) grid.dataset.cols = visible <= 1 ? "1" : visible === 2 ? "2" : "3";
   renderSyrupChips();
 }
+
+const cupSizeBadgeBtn = document.getElementById("cupSizeBadge");
+if (cupSizeBadgeBtn) cupSizeBadgeBtn.addEventListener("click", () => {
+  const wrap = document.getElementById("cupSizePicker");
+  setCupSizePickerOpen(!(wrap && wrap.classList.contains("open")));
+});
+
+const cupSizePickerEl = document.getElementById("cupSizePicker");
+if (cupSizePickerEl) cupSizePickerEl.addEventListener("click", e => {
+  const btn = e.target.closest("[data-cup-size]");
+  if (!btn) return;
+  setCupSize(Number(btn.dataset.cupSize));
+  setCupSizePickerOpen(false);
+});
+
+document.addEventListener("click", e => {
+  const picker = document.getElementById("cupSizePicker");
+  const badge = document.getElementById("cupSizeBadge");
+  if (!picker || !badge) return;
+  if (picker.contains(e.target) || badge.contains(e.target)) return;
+  setCupSizePickerOpen(false);
+});
 
 const saveDrinkBtn = document.getElementById("saveDrinkBtn");
 if (saveDrinkBtn) saveDrinkBtn.addEventListener("click", saveCurrentDrink);
@@ -1103,6 +1218,7 @@ async function init() {
   renderBaseOptions();
   renderBaseFlavorOptions();
   renderLotusOptions();
+  renderCupSizeControls();
   render();
 }
 

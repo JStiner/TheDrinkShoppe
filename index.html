@@ -26,6 +26,13 @@
     .hdr-brand{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
     .hdr-title{font-family:var(--font-display);font-size:clamp(36px,7vw,72px);font-weight:800;line-height:.95;letter-spacing:-.01em;background:linear-gradient(135deg,var(--ink) 0%,var(--accent3) 60%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .hdr-badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.12em;padding:8px 18px;border-radius:999px;margin-bottom:10px;white-space:nowrap}
+    .cup-size-wrap{position:relative;display:flex;align-items:center}
+    .cup-size-btn{appearance:none;cursor:pointer}
+    .cup-size-btn:hover{background:rgba(255,255,255,.2)}
+    .cup-size-picker{position:absolute;top:calc(100% + 8px);left:0;display:none;gap:6px;padding:6px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(8,12,16,.98);box-shadow:0 16px 40px rgba(0,0,0,.4);z-index:20}
+    .cup-size-picker.open{display:flex}
+    .cup-size-option{appearance:none;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:rgba(255,255,255,.86);padding:8px 12px;border-radius:999px;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer}
+    .cup-size-option.active{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);color:#fff}
     .header-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.10);color:rgba(255,255,255,.92);font-family:var(--font-display);font-weight:700;letter-spacing:.06em;cursor:pointer;white-space:nowrap;text-decoration:none}
     .push-right{margin-left:auto}
     .hdr-sub{font-size:12px;letter-spacing:.07em;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
@@ -207,13 +214,21 @@
   <header class="hdr">
     <div class="hdr-brand">
       <div class="hdr-title">The Drink Shoppe</div>
-      <div class="hdr-badge">🍹 12oz Glass</div>
+      <div class="cup-size-wrap">
+        <button class="hdr-badge cup-size-btn" id="cupSizeBadge" type="button" aria-haspopup="true" aria-expanded="false">🍹 12oz Glass</button>
+        <div class="cup-size-picker" id="cupSizePicker">
+          <button class="cup-size-option" type="button" data-cup-size="6">6 oz</button>
+          <button class="cup-size-option" type="button" data-cup-size="12">12 oz</button>
+          <button class="cup-size-option" type="button" data-cup-size="18">18 oz</button>
+        </div>
+      </div>
       <button class="header-btn push-right" id="resetAll" type="button">↻ Reset</button>
       <button class="header-btn" id="saveDrinkBtn" type="button">★ Save My Drink</button>
       <button class="header-btn" id="openAdmin" type="button" onclick="location.href='admin.html'">⚙ Admin</button>
     </div>
     <div class="hdr-sub">
       <span>⚡ Pick up to 3 syrups</span>
+      <span>🍹 Tap the glass to change cup size</span>
       <span>🌿 Lotus only pairs with Chill and Fizz</span>
       <span>✕ Hide to remove from view</span>
     </div>
