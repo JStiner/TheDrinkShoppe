@@ -441,7 +441,88 @@
         "vanilla"
       ]
     },
-    {
+  {
+    "id": "7brew-fizz-tigers-blood",
+    "name": "Tiger's Blood",
+    "source": "Inspired by 7 Brew",
+    "collection": "Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["strawberry", "coconut"]
+  },
+  {
+    "id": "7brew-energy-tigers-blood",
+    "name": "Tiger's Blood",
+    "source": "Inspired by 7 Brew",
+    "collection": "Energy",
+    "baseId": "fizz",
+    "lotusRequired": true,
+    "syrupIds": ["strawberry", "coconut"]
+  },
+  {
+    "id": "7brew-energy-nightshade",
+    "name": "Nightshade",
+    "source": "Inspired by 7 Brew",
+    "collection": "Energy",
+    "baseId": "fizz",
+    "lotusRequired": true,
+    "syrupIds": ["blue_raspberry", "lavender", "pomegranate"]
+  },
+  {
+    "id": "7brew-fizz-georgia-peach",
+    "name": "Georgia Peach",
+    "source": "Inspired by 7 Brew",
+    "collection": "Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "strawberry"]
+  },
+  {
+    "id": "7brew-energy-georgia-peach",
+    "name": "Georgia Peach",
+    "source": "Inspired by 7 Brew",
+    "collection": "Energy",
+    "baseId": "fizz",
+    "lotusRequired": true,
+    "syrupIds": ["peach", "strawberry"]
+  },
+  {
+    "id": "7brew-fizz-ocean-breeze",
+    "name": "Ocean Breeze",
+    "source": "Inspired by 7 Brew",
+    "collection": "Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["blue_raspberry", "coconut"]
+  },
+  {
+    "id": "7brew-energy-ocean-breeze",
+    "name": "Ocean Breeze",
+    "source": "Inspired by 7 Brew",
+    "collection": "Energy",
+    "baseId": "fizz",
+    "lotusRequired": true,
+    "syrupIds": ["blue_raspberry", "coconut"]
+  },
+  {
+    "id": "7brew-fizz-sunset",
+    "name": "Sunset",
+    "source": "Inspired by 7 Brew",
+    "collection": "Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "orange", "strawberry"]
+  },
+  {
+    "id": "7brew-energy-sunset",
+    "name": "Sunset",
+    "source": "Inspired by 7 Brew",
+    "collection": "Energy",
+    "baseId": "fizz",
+    "lotusRequired": true,
+    "syrupIds": ["peach", "orange", "strawberry"]
+  },
+   {
       "id": "7brew-energy-razorberry",
       "name": "Razorberry",
       "source": "Inspired by 7 Brew",
