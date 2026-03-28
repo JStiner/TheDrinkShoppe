@@ -14,6 +14,18 @@
       ]
     },
     {
+      "id": "house-fizz-princess-parker-peach",
+      "name": "Princess Parker Peach",
+      "source": "Drink Shoppe",
+      "collection": "House Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrupIds": [
+        "white_peach",
+        "peach"
+      ]
+    },
+    {
       "id": "house-fizz-razzle-dazzle",
       "name": "The Razzle Dazzle",
       "source": "Drink Shoppe",
