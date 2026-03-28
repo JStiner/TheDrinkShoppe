@@ -7,10 +7,19 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "blackberry",
-        "cherry",
-        "almond"
+      "syrups": [
+        {
+          "id": "blackberry",
+          "pumps": 2
+        },
+        {
+          "id": "cherry",
+          "pumps": 1
+        },
+        {
+          "id": "almond",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -20,9 +29,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "strawberry",
-        "lavender"
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "lavender",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -32,10 +47,19 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "strawberry",
-        "lavender",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "lavender",
+          "pumps": 1
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -45,9 +69,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "cherry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -57,9 +87,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "strawberry",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -69,9 +105,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange",
-        "pomegranate"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "pomegranate",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -81,9 +123,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "cherry",
-        "peach"
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        },
+        {
+          "id": "peach",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -93,9 +141,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange",
-        "blue_raspberry"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "blue_raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -105,9 +159,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "pomegranate",
-        "blackberry"
+      "syrups": [
+        {
+          "id": "pomegranate",
+          "pumps": 2
+        },
+        {
+          "id": "blackberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -117,9 +177,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "blue_raspberry",
-        "blackberry"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "blackberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -129,9 +195,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "blue_raspberry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -141,10 +213,19 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange",
-        "strawberry",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -154,9 +235,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "peach",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -166,9 +253,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "strawberry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -178,10 +271,19 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "pomegranate",
-        "orange",
-        "almond"
+      "syrups": [
+        {
+          "id": "pomegranate",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        },
+        {
+          "id": "almond",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -191,10 +293,19 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "blackberry",
-        "strawberry",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "blackberry",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -204,9 +315,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "brown_sugar_cinnamon",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "brown_sugar_cinnamon",
+          "pumps": 0.5
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -216,9 +333,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "blue_raspberry",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -228,9 +351,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "peach",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -240,9 +369,15 @@
       "collection": "Fizz",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange",
-        "strawberry"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -252,9 +387,15 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange",
-        "pomegranate"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "pomegranate",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -264,9 +405,15 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "peach",
-        "cherry"
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "cherry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -276,9 +423,15 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "raspberry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -288,9 +441,15 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "peach",
-        "strawberry"
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -300,9 +459,15 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "blue_raspberry",
-        "blackberry"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "blackberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -312,9 +477,15 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "blue_raspberry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -324,10 +495,19 @@
       "collection": "Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "blackberry",
-        "strawberry",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "blackberry",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -337,9 +517,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "cherry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -349,9 +535,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "orange",
-        "pomegranate"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "pomegranate",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -361,10 +553,19 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "strawberry",
-        "blue_raspberry",
-        "pomegranate"
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "blue_raspberry",
+          "pumps": 1
+        },
+        {
+          "id": "pomegranate",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -374,9 +575,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "blue_raspberry",
-        "strawberry"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -386,9 +593,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "cherry",
-        "blue_raspberry"
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        },
+        {
+          "id": "blue_raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -398,10 +611,19 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "orange",
-        "pomegranate",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "pomegranate",
+          "pumps": 1
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -411,9 +633,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "blue_raspberry",
-        "blackberry"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "blackberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -423,9 +651,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "blue_raspberry",
-        "coconut"
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -435,104 +669,215 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "orange",
-        "strawberry",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
-  {
-    "id": "7brew-fizz-tigers-blood",
-    "name": "Tiger's Blood",
-    "source": "Inspired by 7 Brew",
-    "collection": "Fizz",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["strawberry", "coconut"]
-  },
-  {
-    "id": "7brew-energy-tigers-blood",
-    "name": "Tiger's Blood",
-    "source": "Inspired by 7 Brew",
-    "collection": "Energy",
-    "baseId": "fizz",
-    "lotusRequired": true,
-    "syrupIds": ["strawberry", "coconut"]
-  },
-  {
-    "id": "7brew-energy-nightshade",
-    "name": "Nightshade",
-    "source": "Inspired by 7 Brew",
-    "collection": "Energy",
-    "baseId": "fizz",
-    "lotusRequired": true,
-    "syrupIds": ["blue_raspberry", "lavender", "pomegranate"]
-  },
-  {
-    "id": "7brew-fizz-georgia-peach",
-    "name": "Georgia Peach",
-    "source": "Inspired by 7 Brew",
-    "collection": "Fizz",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["peach", "strawberry"]
-  },
-  {
-    "id": "7brew-energy-georgia-peach",
-    "name": "Georgia Peach",
-    "source": "Inspired by 7 Brew",
-    "collection": "Energy",
-    "baseId": "fizz",
-    "lotusRequired": true,
-    "syrupIds": ["peach", "strawberry"]
-  },
-  {
-    "id": "7brew-fizz-ocean-breeze",
-    "name": "Ocean Breeze",
-    "source": "Inspired by 7 Brew",
-    "collection": "Fizz",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["blue_raspberry", "coconut"]
-  },
-  {
-    "id": "7brew-energy-ocean-breeze",
-    "name": "Ocean Breeze",
-    "source": "Inspired by 7 Brew",
-    "collection": "Energy",
-    "baseId": "fizz",
-    "lotusRequired": true,
-    "syrupIds": ["blue_raspberry", "coconut"]
-  },
-  {
-    "id": "7brew-fizz-sunset",
-    "name": "Sunset",
-    "source": "Inspired by 7 Brew",
-    "collection": "Fizz",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["peach", "orange", "strawberry"]
-  },
-  {
-    "id": "7brew-energy-sunset",
-    "name": "Sunset",
-    "source": "Inspired by 7 Brew",
-    "collection": "Energy",
-    "baseId": "fizz",
-    "lotusRequired": true,
-    "syrupIds": ["peach", "orange", "strawberry"]
-  },
-   {
+    {
+      "id": "7brew-fizz-tigers-blood",
+      "name": "Tiger's Blood",
+      "source": "Inspired by 7 Brew",
+      "collection": "Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-energy-tigers-blood",
+      "name": "Tiger's Blood",
+      "source": "Inspired by 7 Brew",
+      "collection": "Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-energy-nightshade",
+      "name": "Nightshade",
+      "source": "Inspired by 7 Brew",
+      "collection": "Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "lavender",
+          "pumps": 1
+        },
+        {
+          "id": "pomegranate",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-fizz-georgia-peach",
+      "name": "Georgia Peach",
+      "source": "Inspired by 7 Brew",
+      "collection": "Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-energy-georgia-peach",
+      "name": "Georgia Peach",
+      "source": "Inspired by 7 Brew",
+      "collection": "Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-fizz-ocean-breeze",
+      "name": "Ocean Breeze",
+      "source": "Inspired by 7 Brew",
+      "collection": "Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-energy-ocean-breeze",
+      "name": "Ocean Breeze",
+      "source": "Inspired by 7 Brew",
+      "collection": "Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrups": [
+        {
+          "id": "blue_raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "coconut",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-fizz-sunset",
+      "name": "Sunset",
+      "source": "Inspired by 7 Brew",
+      "collection": "Fizz",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "7brew-energy-sunset",
+      "name": "Sunset",
+      "source": "Inspired by 7 Brew",
+      "collection": "Energy",
+      "baseId": "fizz",
+      "lotusRequired": true,
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        }
+      ]
+    },
+    {
       "id": "7brew-energy-razorberry",
       "name": "Razorberry",
       "source": "Inspired by 7 Brew",
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "blackberry",
-        "strawberry",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "blackberry",
+          "pumps": 2
+        },
+        {
+          "id": "strawberry",
+          "pumps": 1
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -542,9 +887,15 @@
       "collection": "Energy",
       "baseId": "fizz",
       "lotusRequired": true,
-      "syrupIds": [
-        "peach",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     }
   ]

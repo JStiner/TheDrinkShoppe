@@ -7,83 +7,141 @@
       "collection": "Torani Soda",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "raspberry",
-        "blueberry"
+      "syrups": [
+        {
+          "id": "raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "blueberry",
+          "pumps": 1
+        }
       ]
     },
-  {
-    "id": "torani-diet-cherry-cola",
-    "name": "Diet Cherry Cola",
-    "source": "Adapted from Torani",
-    "collection": "Torani Soda",
-    "baseId": "nt_cola",
-    "lotusRequired": false,
-    "syrupIds": ["cherry"]
-  },
-  {
-    "id": "torani-apple-italian-soda",
-    "name": "Apple Italian Soda",
-    "source": "Adapted from Torani",
-    "collection": "Torani Soda",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["green_apple"]
-  },
-  {
-    "id": "torani-peach-vanilla-mocktail",
-    "name": "Peach Vanilla Mocktail",
-    "source": "Adapted from Torani",
-    "collection": "Torani Soda",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["peach", "vanilla"]
-  },
-  {
-    "id": "torani-blackberry-lemonade",
-    "name": "Blackberry Lemonade",
-    "source": "Adapted from Torani",
-    "collection": "Torani Lemonade",
-    "baseId": "chill",
-    "lotusRequired": false,
-    "syrupIds": ["blackberry"]
-  },
-  {
-    "id": "torani-white-peach-lemonade",
-    "name": "White Peach Lemonade",
-    "source": "Adapted from Torani",
-    "collection": "Torani Lemonade",
-    "baseId": "chill",
-    "lotusRequired": false,
-    "syrupIds": ["white_peach"]
-  },
-  {
-    "id": "torani-strawberry-mango-lemonade",
-    "name": "Strawberry Mango Lemonade",
-    "source": "Adapted from Torani",
-    "collection": "Torani Lemonade",
-    "baseId": "chill",
-    "lotusRequired": false,
-    "syrupIds": ["strawberry", "mango"]
-  },
-  {
-    "id": "torani-raspberry-peach-soda",
-    "name": "Raspberry Peach Soda",
-    "source": "Adapted from Torani",
-    "collection": "Torani Soda",
-    "baseId": "fizz",
-    "lotusRequired": false,
-    "syrupIds": ["raspberry", "peach"]
-  },
-  {
-    "id": "torani-vanilla-orange-soda",
-    "name": "Vanilla Orange Soda",
-    "source": "Adapted from Torani",
-    "collection": "Torani Soda",
-    "baseId": "nt_orange",
-    "lotusRequired": false,
-    "syrupIds": ["vanilla"]
-  },
+    {
+      "id": "torani-diet-cherry-cola",
+      "name": "Diet Cherry Cola",
+      "source": "Adapted from Torani",
+      "collection": "Torani Soda",
+      "baseId": "nt_cola",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        }
+      ]
+    },
+    {
+      "id": "torani-apple-italian-soda",
+      "name": "Apple Italian Soda",
+      "source": "Adapted from Torani",
+      "collection": "Torani Soda",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "green_apple",
+          "pumps": 2
+        }
+      ]
+    },
+    {
+      "id": "torani-peach-vanilla-mocktail",
+      "name": "Peach Vanilla Mocktail",
+      "source": "Adapted from Torani",
+      "collection": "Torani Soda",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "torani-blackberry-lemonade",
+      "name": "Blackberry Lemonade",
+      "source": "Adapted from Torani",
+      "collection": "Torani Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "blackberry",
+          "pumps": 2
+        }
+      ]
+    },
+    {
+      "id": "torani-white-peach-lemonade",
+      "name": "White Peach Lemonade",
+      "source": "Adapted from Torani",
+      "collection": "Torani Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "white_peach",
+          "pumps": 2
+        }
+      ]
+    },
+    {
+      "id": "torani-strawberry-mango-lemonade",
+      "name": "Strawberry Mango Lemonade",
+      "source": "Adapted from Torani",
+      "collection": "Torani Lemonade",
+      "baseId": "chill",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "strawberry",
+          "pumps": 2
+        },
+        {
+          "id": "mango",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "torani-raspberry-peach-soda",
+      "name": "Raspberry Peach Soda",
+      "source": "Adapted from Torani",
+      "collection": "Torani Soda",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "peach",
+          "pumps": 1
+        }
+      ]
+    },
+    {
+      "id": "torani-vanilla-orange-soda",
+      "name": "Vanilla Orange Soda",
+      "source": "Adapted from Torani",
+      "collection": "Torani Soda",
+      "baseId": "nt_orange",
+      "lotusRequired": false,
+      "syrups": [
+        {
+          "id": "vanilla",
+          "pumps": 2
+        }
+      ]
+    },
     {
       "id": "torani-blue-sky-lemonade",
       "name": "Blue Sky Lemonade",
@@ -91,8 +149,11 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "blueberry"
+      "syrups": [
+        {
+          "id": "blueberry",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -102,8 +163,11 @@
       "collection": "Torani Soda",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "blueberry"
+      "syrups": [
+        {
+          "id": "blueberry",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -113,9 +177,15 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "blueberry",
-        "orange"
+      "syrups": [
+        {
+          "id": "blueberry",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -125,9 +195,15 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_cola",
       "lotusRequired": false,
-      "syrupIds": [
-        "cherry",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -137,9 +213,15 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_lemonlime",
       "lotusRequired": false,
-      "syrupIds": [
-        "cherry",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "cherry",
+          "pumps": 2
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -149,9 +231,15 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "coconut",
-        "blueberry"
+      "syrups": [
+        {
+          "id": "coconut",
+          "pumps": 2
+        },
+        {
+          "id": "blueberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -161,9 +249,15 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_cola",
       "lotusRequired": false,
-      "syrupIds": [
-        "coconut",
-        "orange"
+      "syrups": [
+        {
+          "id": "coconut",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -173,9 +267,15 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "blueberry",
-        "raspberry"
+      "syrups": [
+        {
+          "id": "blueberry",
+          "pumps": 2
+        },
+        {
+          "id": "raspberry",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -185,8 +285,11 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -196,8 +299,11 @@
       "collection": "Torani Soda",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -207,8 +313,11 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_orange",
       "lotusRequired": false,
-      "syrupIds": [
-        "vanilla"
+      "syrups": [
+        {
+          "id": "vanilla",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -218,9 +327,15 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_root",
       "lotusRequired": false,
-      "syrupIds": [
-        "orange",
-        "vanilla"
+      "syrups": [
+        {
+          "id": "orange",
+          "pumps": 2
+        },
+        {
+          "id": "vanilla",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -230,9 +345,15 @@
       "collection": "Torani Soda",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "peach",
-        "orange"
+      "syrups": [
+        {
+          "id": "peach",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -242,8 +363,11 @@
       "collection": "Torani Soda",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "raspberry"
+      "syrups": [
+        {
+          "id": "raspberry",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -253,9 +377,15 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "raspberry",
-        "orange"
+      "syrups": [
+        {
+          "id": "raspberry",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -265,8 +395,11 @@
       "collection": "Torani Soda",
       "baseId": "fizz",
       "lotusRequired": false,
-      "syrupIds": [
-        "red_raspberry"
+      "syrups": [
+        {
+          "id": "red_raspberry",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -276,8 +409,11 @@
       "collection": "Torani Lemonade",
       "baseId": "chill",
       "lotusRequired": false,
-      "syrupIds": [
-        "red_raspberry"
+      "syrups": [
+        {
+          "id": "red_raspberry",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -287,9 +423,15 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_root",
       "lotusRequired": false,
-      "syrupIds": [
-        "vanilla",
-        "orange"
+      "syrups": [
+        {
+          "id": "vanilla",
+          "pumps": 2
+        },
+        {
+          "id": "orange",
+          "pumps": 1
+        }
       ]
     },
     {
@@ -299,8 +441,11 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_lemonlime",
       "lotusRequired": false,
-      "syrupIds": [
-        "vanilla"
+      "syrups": [
+        {
+          "id": "vanilla",
+          "pumps": 2
+        }
       ]
     },
     {
@@ -310,8 +455,11 @@
       "collection": "Torani Dirty Soda",
       "baseId": "nt_root",
       "lotusRequired": false,
-      "syrupIds": [
-        "vanilla"
+      "syrups": [
+        {
+          "id": "vanilla",
+          "pumps": 2
+        }
       ]
     }
   ]
