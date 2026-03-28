@@ -604,44 +604,6 @@ function getDrinkIngredients(d) {
   return list;
 }
 
-  syrupDetails.forEach(({ syrup, pumps }) => {
-    list.push({
-      label: syrup.label,
-      id: syrup.id,
-      amount: formatPumpLabel(scalePumpCount(pumps, state.cupSizeOz, syrupCount))
-    });
-  });
-
-  if (d.lotus) {
-    list.push({
-      label: d.lotus.label,
-      id: d.lotus.id,
-      amount: formatPumpLabel(scalePumpCount(1, state.cupSizeOz, 1))
-    });
-  }
-
-  return list;
-}
-
-  syrupDetails.forEach(({ syrup, pumps }) => {
-    list.push({
-      label: syrup.label,
-      id: syrup.id,
-      amount: formatPumpLabel(scalePumpCount(pumps))
-    });
-  });
-
-  if (d.lotus) {
-    list.push({
-      label: d.lotus.label,
-      id: d.lotus.id,
-      amount: formatPumpLabel(scalePumpCount(1))
-    });
-  }
-
-  return list;
-}
-
 function openDrinkDetail(id) {
   const d = getDrinkById(id);
   state.currentDetailId = d ? id : null;
