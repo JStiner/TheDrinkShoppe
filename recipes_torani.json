@@ -12,6 +12,78 @@
         "blueberry"
       ]
     },
+  {
+    "id": "torani-diet-cherry-cola",
+    "name": "Diet Cherry Cola",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["cherry"]
+  },
+  {
+    "id": "torani-apple-italian-soda",
+    "name": "Apple Italian Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["green_apple"]
+  },
+  {
+    "id": "torani-peach-vanilla-mocktail",
+    "name": "Peach Vanilla Mocktail",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "vanilla"]
+  },
+  {
+    "id": "torani-blackberry-lemonade",
+    "name": "Blackberry Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["blackberry"]
+  },
+  {
+    "id": "torani-white-peach-lemonade",
+    "name": "White Peach Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["white_peach"]
+  },
+  {
+    "id": "torani-strawberry-mango-lemonade",
+    "name": "Strawberry Mango Lemonade",
+    "source": "Adapted from Torani",
+    "collection": "Torani Lemonade",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["strawberry", "mango"]
+  },
+  {
+    "id": "torani-raspberry-peach-soda",
+    "name": "Raspberry Peach Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry", "peach"]
+  },
+  {
+    "id": "torani-vanilla-orange-soda",
+    "name": "Vanilla Orange Soda",
+    "source": "Adapted from Torani",
+    "collection": "Torani Soda",
+    "baseId": "nt_orange",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
     {
       "id": "torani-blue-sky-lemonade",
       "name": "Blue Sky Lemonade",
