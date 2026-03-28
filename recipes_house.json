@@ -75,6 +75,177 @@
         "orange"
       ]
     },
+  {
+    "id": "house-soda-cherry-vanilla-dr",
+    "name": "Cherry Vanilla Dr",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_dr",
+    "lotusRequired": false,
+    "syrupIds": ["cherry", "vanilla"]
+  },
+  {
+    "id": "house-soda-coconut-lime-dr",
+    "name": "Coconut Lime Dr",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_dr",
+    "lotusRequired": false,
+    "syrupIds": ["coconut", "lime"]
+  },
+  {
+    "id": "house-soda-peach-vanilla-dr",
+    "name": "Peach Vanilla Dr",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_dr",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "vanilla"]
+  },
+  {
+    "id": "house-soda-strawberry-coconut-dr",
+    "name": "Strawberry Coconut Dr",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_dr",
+    "lotusRequired": false,
+    "syrupIds": ["strawberry", "coconut"]
+  },
+  {
+    "id": "house-soda-raspberry-cream-dr",
+    "name": "Raspberry Cream Dr",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_dr",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry", "vanilla"]
+  },
+  {
+    "id": "house-soda-cherry-cola",
+    "name": "Cherry Cola",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["cherry"]
+  },
+  {
+    "id": "house-soda-vanilla-cola",
+    "name": "Vanilla Cola",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
+  {
+    "id": "house-soda-coconut-cola",
+    "name": "Coconut Cola",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_cola",
+    "lotusRequired": false,
+    "syrupIds": ["coconut"]
+  },
+  {
+    "id": "house-soda-rootbeer-float-style",
+    "name": "Vanilla Root Beer",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_root",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
+  {
+    "id": "house-soda-caramel-rootbeer",
+    "name": "Caramel Root Beer",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_root",
+    "lotusRequired": false,
+    "syrupIds": ["caramel"]
+  },
+  {
+    "id": "house-soda-orange-creamsicle",
+    "name": "Orange Creamsicle",
+    "source": "Drink Shoppe",
+    "collection": "House Soda",
+    "baseId": "nt_orange",
+    "lotusRequired": false,
+    "syrupIds": ["vanilla"]
+  },
+  {
+    "id": "house-fizz-tropical",
+    "name": "Tropical Fizz",
+    "source": "Drink Shoppe",
+    "collection": "House Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["pineapple", "coconut"]
+  },
+  {
+    "id": "house-fizz-berry",
+    "name": "Berry Fizz",
+    "source": "Drink Shoppe",
+    "collection": "House Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["strawberry", "raspberry"]
+  },
+  {
+    "id": "house-fizz-peach-mango",
+    "name": "Peach Mango Fizz",
+    "source": "Drink Shoppe",
+    "collection": "House Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["peach", "mango"]
+  },
+  {
+    "id": "house-fizz-cucumber-lime",
+    "name": "Cucumber Lime Fizz",
+    "source": "Drink Shoppe",
+    "collection": "House Fizz",
+    "baseId": "fizz",
+    "lotusRequired": false,
+    "syrupIds": ["cucumber", "lime"]
+  },
+  {
+    "id": "house-chill-strawberry-lemonade",
+    "name": "Strawberry Lemonade",
+    "source": "Drink Shoppe",
+    "collection": "House Chill",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["strawberry"]
+  },
+  {
+    "id": "house-chill-raspberry-lemonade",
+    "name": "Raspberry Lemonade",
+    "source": "Drink Shoppe",
+    "collection": "House Chill",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["raspberry"]
+  },
+  {
+    "id": "house-chill-peach-lemonade",
+    "name": "Peach Lemonade",
+    "source": "Drink Shoppe",
+    "collection": "House Chill",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["peach"]
+  },
+  {
+    "id": "house-chill-mango-lemonade",
+    "name": "Mango Lemonade",
+    "source": "Drink Shoppe",
+    "collection": "House Chill",
+    "baseId": "chill",
+    "lotusRequired": false,
+    "syrupIds": ["mango"]
+  },
     {
       "id": "house-energy-purple-lightning",
       "name": "Purple Lightning",
