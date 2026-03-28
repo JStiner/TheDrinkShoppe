@@ -135,15 +135,19 @@ recipes.json
 Each entry looks like this:
 
 ```json
-{
-  "id": "house-soda-dr-cherry-vanilla",
-  "name": "Cherry Vanilla Dr.",
-  "source": "Drink Shoppe",
-  "collection": "House Soda",
-  "baseId": "nt_dr",
-  "lotusRequired": false,
-  "syrupIds": ["cherry","vanilla"]
-}
+ {
+      "id": "house-fizz-murphy",
+      "name": "The Murphy",
+      "source": "Drink Shoppe",
+      "collection": "House Signature",
+      "baseId": "fizz",
+      "lotusRequired": false,
+      "syrups": [
+        { "id": "blackberry", "pumps": 2 },
+        { "id": "vanilla", "pumps": 2 },
+        { "id": "brown_sugar_cinnamon", "pumps": 0.5 }
+      ]
+    }
 ```
 
 Fields:
