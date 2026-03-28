@@ -17,7 +17,7 @@ let RECIPE_INDEX = new Map();
 
 const DEFAULT_PRIMARY_PUMPS = 2;
 const DEFAULT_SECONDARY_PUMPS = 1;
-const CUP_SIZE_MULTIPLIER = { 6: 0.5, 12: 1, 18: 1.5 };
+const DEFAULT_BROWN_SUGAR_CINNAMON_PUMPS = 0.5;
 
 const Store = {
   loadSet(key) {
@@ -250,6 +250,12 @@ function getComboBaseTokens(c) {
   return [...tokens];
 }
 
+function getDefaultPumpCountForSyrup(id, idx = 0) {
+  const token = normalizeToken(id);
+  if (token === "brown_sugar_cinnamon") return DEFAULT_BROWN_SUGAR_CINNAMON_PUMPS;
+  return idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS;
+}
+
 function getRecipeSyrupSpecs(recipe) {
   if (!recipe) return [];
 
@@ -258,9 +264,24 @@ function getRecipeSyrupSpecs(recipe) {
       .filter(s => s && s.id)
       .map((s, idx) => ({
         id: s.id,
-        pumps: typeof s.pumps === "number" && !Number.isNaN(s.pumps) ? s.pumps : (idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS)
+        pumps:
+          typeof s.pumps === "number" && !Number.isNaN(s.pumps)
+            ? s.pumps
+            : getDefaultPumpCountForSyrup(s.id, idx)
       }));
   }
+
+  if (Array.isArray(recipe.syrupIds) && recipe.syrupIds.length) {
+    return recipe.syrupIds
+      .filter(Boolean)
+      .map((id, idx) => ({
+        id,
+        pumps: getDefaultPumpCountForSyrup(id, idx)
+      }));
+  }
+
+  return [];
+}
 
   if (Array.isArray(recipe.syrupIds) && recipe.syrupIds.length) {
     return recipe.syrupIds
@@ -283,15 +304,40 @@ function getDefaultSyrupSpecsFromCombo(combo) {
     .filter(Boolean)
     .map((s, idx) => ({
       syrup: s,
-      pumps: idx === 0 ? DEFAULT_PRIMARY_PUMPS : DEFAULT_SECONDARY_PUMPS
+      pumps: getDefaultPumpCountForSyrup(s.id, idx)
     }));
 }
 
-function scalePumpCount(pumps, cupSizeOz = state.cupSizeOz) {
-  const multiplier = CUP_SIZE_MULTIPLIER[cupSizeOz] || 1;
-  return Math.round((pumps * multiplier) * 2) / 2;
+function roundToQuarter(value) {
+  return Math.round(value * 4) / 4;
 }
 
+function applyPumpFloor(value) {
+  return Math.max(0.25, roundToQuarter(value));
+}
+
+function get18ozMultiplier(syrupCount) {
+  if (syrupCount === 2) return 1.5;
+  if (syrupCount >= 3) return 1.25;
+  return 1.5;
+}
+
+function getCupSizeMultiplier(cupSizeOz, syrupCount = 1) {
+  if (cupSizeOz === 6) return 0.5;
+  if (cupSizeOz === 12) return 1;
+  if (cupSizeOz === 18) return get18ozMultiplier(syrupCount);
+  return 1;
+}
+
+function scalePumpCount(pumps, cupSizeOz = state.cupSizeOz, syrupCount = 1) {
+  const multiplier = getCupSizeMultiplier(cupSizeOz, syrupCount);
+  return applyPumpFloor(pumps * multiplier);
+}
+
+function formatPumpCount(pumps) {
+  if (Number.isInteger(pumps)) return String(pumps);
+  return pumps.toFixed(2).replace(/\.00$/, "").replace(/0$/, "");
+}
 function formatPumpCount(pumps) {
   return Number.isInteger(pumps) ? String(pumps) : pumps.toFixed(1).replace(/\.0$/, "");
 }
@@ -415,14 +461,15 @@ function drinkName({ base, primary, secondary, tertiary }) {
 
 function drinkRecipe({ base, primary, secondary, tertiary, lotus }, matchedRecipe = null) {
   const syrupDetails = buildRecipeSyrupDetails({ base, primary, secondary, tertiary, lotus }, matchedRecipe);
+  const syrupCount = syrupDetails.length;
 
   const parts = [base.label];
 
   syrupDetails.forEach(({ syrup, pumps }) => {
-    parts.push(`${syrup.label} (${formatPumpCount(scalePumpCount(pumps))})`);
+    parts.push(`${syrup.label} (${formatPumpCount(scalePumpCount(pumps, state.cupSizeOz, syrupCount))})`);
   });
 
-  if (lotus) parts.push(`${lotus.label} (${formatPumpCount(scalePumpCount(1))})`);
+  if (lotus) parts.push(`${lotus.label} (${formatPumpCount(scalePumpCount(1, state.cupSizeOz, 1))})`);
 
   return parts.join(" + ");
 }
@@ -545,10 +592,30 @@ function getDrinkById(id) {
 
 function getDrinkIngredients(d) {
   const syrupDetails = buildRecipeSyrupDetails(d, d.matchedRecipe);
+  const syrupCount = syrupDetails.length;
 
   const list = [
     { label: d.base.label, id: d.base.id, amount: `${state.cupSizeOz} oz base` }
   ];
+
+  syrupDetails.forEach(({ syrup, pumps }) => {
+    list.push({
+      label: syrup.label,
+      id: syrup.id,
+      amount: formatPumpLabel(scalePumpCount(pumps, state.cupSizeOz, syrupCount))
+    });
+  });
+
+  if (d.lotus) {
+    list.push({
+      label: d.lotus.label,
+      id: d.lotus.id,
+      amount: formatPumpLabel(scalePumpCount(1, state.cupSizeOz, 1))
+    });
+  }
+
+  return list;
+}
 
   syrupDetails.forEach(({ syrup, pumps }) => {
     list.push({
