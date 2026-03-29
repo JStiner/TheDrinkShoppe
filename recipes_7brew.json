@@ -22,6 +22,32 @@
         }
       ]
     },
+{
+  "id": "7brew-energy-tropical-candy-explosion",
+  "name": "Tropical Candy Explosion",
+  "source": "Inspired by 7 Brew",
+  "collection": "Energy",
+  "baseId": "lotus",
+  "lotusRequired": true,
+  "syrups": [
+    { "id": "blue_raspberry", "pumps": 1.5 },
+    { "id": "pineapple", "pumps": 1.5 },
+    { "id": "cherry", "pumps": 1.5 }
+  ]
+},
+{
+  "id": "7brew-fizz-tropical-candy",
+  "name": "Tropical Candy",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "blue_raspberry", "pumps": 1.5 },
+    { "id": "pineapple", "pumps": 1.5 },
+    { "id": "cherry", "pumps": 1.5 }
+  ]
+},
     {
       "id": "7brew-fizz-fruit-rollup",
       "name": "Fruit Rollup",
