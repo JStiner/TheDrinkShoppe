@@ -101,49 +101,49 @@
   "label": "Caramel",
   "vibe": ["Smooth", "Golden", "Sweet"],
   "tags": ["caramel", "sweet", "dessert"],
-  "active": true
+  "active": false
 },
 {
   "id": "cupcake",
   "label": "Cupcake",
   "vibe": ["Bakery", "Sweet", "Party"],
   "tags": ["cupcake", "cake", "dessert"],
-  "active": true
+  "active": false
 },
 {
   "id": "hazelnut",
   "label": "Hazelnut",
   "vibe": ["Nutty", "Warm", "Roasted"],
   "tags": ["hazelnut", "nutty", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "passion_fruit",
   "label": "Passion Fruit",
   "vibe": ["Tropical", "Bright", "Tangy"],
   "tags": ["passion fruit", "tropical", "fruit"],
-  "active": true
+  "active": false 
 },
 {
   "id": "kiwi",
   "label": "Kiwi",
   "vibe": ["Green", "Tart", "Fresh"],
   "tags": ["kiwi", "green", "fruit"],
-  "active": true
+  "active": false 
 },
 {
   "id": "peppermint",
   "label": "Peppermint",
   "vibe": ["Cool", "Minty", "Sharp"],
   "tags": ["peppermint", "mint", "cool"],
-  "active": true
+  "active": false 
 },
 {
   "id": "white_chocolate",
   "label": "White Chocolate",
   "vibe": ["Creamy", "Sweet", "Dessert"],
   "tags": ["white chocolate", "chocolate", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "lime",
@@ -164,28 +164,28 @@
   "label": "Toasted Marshmallow",
   "vibe": ["Toasty", "Creamy", "Campfire"],
   "tags": ["marshmallow", "toasted", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "salted_caramel",
   "label": "Salted Caramel",
   "vibe": ["Sweet", "Salty", "Rich"],
   "tags": ["salted caramel", "caramel", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "dark_chocolate",
   "label": "Dark Chocolate",
   "vibe": ["Rich", "Bold", "Dessert"],
   "tags": ["dark chocolate", "chocolate", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "guava",
   "label": "Guava",
   "vibe": ["Tropical", "Soft", "Juicy"],
   "tags": ["guava", "tropical", "fruit"],
-  "active": true
+  "active": false 
 },
 {
   "id": "pineapple",
@@ -199,21 +199,21 @@
   "label": "Mango",
   "vibe": ["Tropical", "Juicy", "Golden"],
   "tags": ["mango", "tropical", "fruit"],
-  "active": true
+  "active": false 
 },
 {
   "id": "irish_cream",
   "label": "Irish Cream",
   "vibe": ["Creamy", "Smooth", "Cafe"],
   "tags": ["irish cream", "cream", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "pumpkin",
   "label": "Pumpkin",
   "vibe": ["Fall", "Spiced", "Cozy"],
   "tags": ["pumpkin", "fall", "dessert"],
-  "active": true
+  "active": false 
 },
 {
   "id": "honey",
