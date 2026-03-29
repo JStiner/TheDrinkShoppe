@@ -62,6 +62,670 @@
         }
       ]
     },
+{
+  "id": "7brew-fizz-angel-food",
+  "name": "Angel Food",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cupcake", "pumps": 2 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-banana-bread",
+  "name": "Banana Bread",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "banana_cream", "pumps": 2 },
+    { "id": "hazelnut", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-beyonce",
+  "name": "Beyoncé",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "hazelnut", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-bikini-bottom",
+  "name": "Bikini Bottom",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "banana_cream", "pumps": 1 },
+    { "id": "guava", "pumps": 1 },
+    { "id": "coconut", "pumps": 2 }
+  ]
+},
+{
+  "id": "7brew-fizz-birthday-cake",
+  "name": "Birthday Cake",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cupcake", "pumps": 2 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-black-mamba",
+  "name": "Black Mamba",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "passion_fruit", "pumps": 1 },
+    { "id": "blue_raspberry", "pumps": 1 },
+    { "id": "strawberry", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-blackberry-cobbler",
+  "name": "Blackberry Cobbler",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "blackberry", "pumps": 1 },
+    { "id": "cupcake", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-blondie",
+  "name": "Blondie",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-brew-lagoon",
+  "name": "Brew Lagoon",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "lime", "pumps": 1 },
+    { "id": "blue_raspberry", "pumps": 1 },
+    { "id": "coconut", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-brew-frost",
+  "name": "Brew Frost",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "blue_raspberry", "pumps": 1 },
+    { "id": "coconut", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-brunette",
+  "name": "Brunette",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "hazelnut", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-candy-cane",
+  "name": "Candy Cane",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "peppermint", "pumps": 2 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cherry-cobbler",
+  "name": "Cherry Cobbler",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cherry", "pumps": 1 },
+    { "id": "cupcake", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cherry-limeade",
+  "name": "Cherry Limeade",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cherry", "pumps": 2 },
+    { "id": "lime", "pumps": 1 },
+    { "id": "lemon_concentrate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cloud-9",
+  "name": "Cloud 9",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "lavender", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cinnamon-roll",
+  "name": "Cinnamon Roll",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "brown_sugar_cinnamon", "pumps": 2 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cocoa-butter",
+  "name": "Cocoa Butter",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cookies-n-cream",
+  "name": "Cookies 'n Cream",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cupcake", "pumps": 1 },
+    { "id": "dark_chocolate", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-creme-brulee",
+  "name": "Crème Brûlée",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "toasted_marshmallow", "pumps": 1 },
+    { "id": "salted_caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-cupids-special",
+  "name": "Cupid's Special",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "toasted_marshmallow", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-emerald",
+  "name": "Emerald",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "peppermint", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-french-vanilla",
+  "name": "French Vanilla",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-funnel-cake",
+  "name": "Funnel Cake",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "salted_caramel", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-german-chocolate",
+  "name": "German Chocolate",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "coconut", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-golden-pear",
+  "name": "Golden Pear",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "kiwi", "pumps": 1 },
+    { "id": "watermelon", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-grasshopper",
+  "name": "Grasshopper",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "peppermint", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "dark_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-hawaiian-punch",
+  "name": "Hawaiian Punch",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "orange", "pumps": 1 },
+    { "id": "passion_fruit", "pumps": 1 },
+    { "id": "pomegranate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-heatwave",
+  "name": "Heatwave",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "orange", "pumps": 1 },
+    { "id": "lime", "pumps": 1 },
+    { "id": "lemon_concentrate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-hummingbird",
+  "name": "Hummingbird",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "kiwi", "pumps": 1 },
+    { "id": "strawberry", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-island-dream",
+  "name": "Island Dream",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "pineapple", "pumps": 1 },
+    { "id": "coconut", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-key-lime-pie",
+  "name": "Key Lime Pie",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "lime", "pumps": 1 },
+    { "id": "lemon_concentrate", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-kokomo",
+  "name": "Kokomo",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "mango", "pumps": 1 },
+    { "id": "orange", "pumps": 1 },
+    { "id": "passion_fruit", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-lemonberry",
+  "name": "Lemonberry",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "blackberry", "pumps": 1 },
+    { "id": "lemon_concentrate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-love-potion",
+  "name": "Love Potion",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "kiwi", "pumps": 1 },
+    { "id": "passion_fruit", "pumps": 1 },
+    { "id": "strawberry", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-maui",
+  "name": "Maui",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "banana_cream", "pumps": 1 },
+    { "id": "coconut", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-midnight-mint",
+  "name": "Midnight Mint",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "peppermint", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-mojito",
+  "name": "Mojito",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "lime", "pumps": 1 },
+    { "id": "peppermint", "pumps": 1 },
+    { "id": "coconut", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-orange-sherbet-deluxe",
+  "name": "Orange Sherbet Deluxe",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "orange", "pumps": 1 },
+    { "id": "strawberry", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-pink-paradise",
+  "name": "Pink Paradise",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cherry", "pumps": 1 },
+    { "id": "watermelon", "pumps": 1 },
+    { "id": "raspberry", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-pumpkin-roll",
+  "name": "Pumpkin Roll",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "brown_sugar_cinnamon", "pumps": 1 },
+    { "id": "pumpkin", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-raspberry-truffle",
+  "name": "Raspberry Truffle",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "raspberry", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-red-giant",
+  "name": "Red Giant",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "almond", "pumps": 1 },
+    { "id": "strawberry", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-rocky-road",
+  "name": "Rocky Road",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "toasted_marshmallow", "pumps": 1 },
+    { "id": "hazelnut", "pumps": 1 },
+    { "id": "caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-salted-honey",
+  "name": "Salted Honey",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "honey", "pumps": 1 },
+    { "id": "salted_caramel", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-shortbread",
+  "name": "Shortbread",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "hazelnut", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-smooth-7",
+  "name": "Smooth 7",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "irish_cream", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-smores",
+  "name": "S'mores",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "toasted_marshmallow", "pumps": 1 },
+    { "id": "brown_sugar_cinnamon", "pumps": 1 },
+    { "id": "dark_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-sugar-cookie",
+  "name": "Sugar Cookie",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "cupcake", "pumps": 1 },
+    { "id": "vanilla", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-summer-breeze",
+  "name": "Summer Breeze",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "banana_cream", "pumps": 1 },
+    { "id": "passion_fruit", "pumps": 1 },
+    { "id": "peach", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-sunny-7",
+  "name": "Sunny 7",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "passion_fruit", "pumps": 1 },
+    { "id": "peach", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-sweet-salty",
+  "name": "Sweet & Salty",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "salted_caramel", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-toasted-coconut",
+  "name": "Toasted Coconut",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "toasted_marshmallow", "pumps": 1 },
+    { "id": "coconut", "pumps": 1 }
+  ]
+},
+{
+  "id": "7brew-fizz-tuxedo",
+  "name": "Tuxedo",
+  "source": "Inspired by 7 Brew",
+  "collection": "Fizz",
+  "baseId": "fizz",
+  "lotusRequired": false,
+  "syrups": [
+    { "id": "dark_chocolate", "pumps": 1 },
+    { "id": "white_chocolate", "pumps": 1 }
+  ]
+},
     {
       "id": "7brew-fizz-bahama-mama",
       "name": "Bahama Mama",
